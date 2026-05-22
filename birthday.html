@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aanya 🎂🏏</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#ff6ec7;--purple:#a855f7;--blue:#60a5fa;--teal:#2dd4bf;
+  --rcb-red:#cc0000;--rcb-gold:#d4a843;--rcb-dark:#1a0000;
+  --glass:rgba(255,255,255,0.07);--glass-b:rgba(255,255,255,0.15);
+  --insta-grad:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#080015;color:#fff;overflow-x:hidden;cursor:none}
+
+/* ── CURSOR ── */
+#cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--pink);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .1s}
+#cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(168,85,247,.6);pointer-events:none;z-index:99998;transform:translate(-50%,-50%)}
+
+/* ── BG ── */
+.bg-wrap{position:fixed;inset:0;z-index:0;
+  background:radial-gradient(ellipse 90% 70% at 15% -10%,#3b0764 0%,transparent 55%),
+    radial-gradient(ellipse 70% 60% at 85% 110%,#1e1b4b 0%,transparent 55%),
+    radial-gradient(ellipse 60% 50% at 50% 50%,#200040 0%,transparent 65%),
+    linear-gradient(160deg,#080015,#12002a,#060020);
+  animation:bgPulse 10s ease-in-out infinite alternate}
+@keyframes bgPulse{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(20deg) brightness(1.1)}}
+
+.blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.blob-1{width:500px;height:500px;background:rgba(168,85,247,.18);top:-120px;left:-120px;animation:bm1 14s ease-in-out infinite}
+.blob-2{width:380px;height:380px;background:rgba(255,110,199,.14);bottom:-80px;right:-80px;animation:bm2 11s ease-in-out infinite}
+.blob-3{width:300px;height:300px;background:rgba(204,0,0,.1);top:40%;left:55%;animation:bm3 16s ease-in-out infinite}
+.blob-4{width:220px;height:220px;background:rgba(212,168,67,.08);top:20%;right:20%;animation:bm4 9s ease-in-out infinite}
+@keyframes bm1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.1)}66%{transform:translate(-30px,70px) scale(.95)}}
+@keyframes bm2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,-40px) scale(1.15)}}
+@keyframes bm3{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(40px,-60px) scale(1.2)}80%{transform:translate(-40px,30px) scale(.9)}}
+@keyframes bm4{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,50px)}}
+
+#particles{position:fixed;inset:0;z-index:1;pointer-events:none}
+.confetti-wrap{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.c-piece{position:absolute;top:-14px;opacity:0;animation:confettiFall linear infinite}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(108vh) rotate(800deg);opacity:0}}
+.sparkle{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;animation:sparklePop .7s ease forwards}
+@keyframes sparklePop{0%{transform:scale(0);opacity:1}100%{transform:scale(2) translateY(-20px);opacity:0}}
+section{position:relative;z-index:5}
+
+/* ════════════════════════════
+   HERO
+════════════════════════════ */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;overflow:hidden}
+
+/* Instagram Stories row */
+.stories-row{display:flex;gap:14px;margin-bottom:2.5rem;opacity:0;animation:fadeDown .8s ease .2s forwards}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+.story-bubble{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:none}
+.story-ring{width:68px;height:68px;border-radius:50%;padding:3px;background:var(--insta-grad);animation:storyPulse 2.5s ease-in-out infinite}
+.story-ring.seen{background:rgba(255,255,255,.2)}
+.story-inner{width:100%;height:100%;border-radius:50%;background:#1a0533;display:flex;align-items:center;justify-content:center;font-size:1.8rem;border:2px solid #080015;transition:transform .3s ease}
+.story-bubble:hover .story-inner{transform:scale(1.08)}
+.story-name{font-size:.62rem;color:rgba(255,255,255,.55);letter-spacing:.04em;max-width:68px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@keyframes storyPulse{0%,100%{box-shadow:0 0 0 0 rgba(220,39,67,.4)}70%{box-shadow:0 0 0 8px rgba(220,39,67,0)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(14px);border-radius:100px;padding:8px 22px;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:#e2b4ff;margin-bottom:1.5rem;opacity:0;animation:badgeDrop .9s cubic-bezier(.34,1.56,.64,1) .6s forwards}
+@keyframes badgeDrop{0%{opacity:0;transform:translateY(-24px) scale(.8)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,8.5rem);font-weight:700;line-height:1.05;background:linear-gradient(135deg,#ff9de2,#c084fc,#818cf8,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 80px rgba(192,132,252,.45));display:flex;flex-wrap:wrap;justify-content:center;gap:0 .08em}
+.hero-title .char{display:inline-block;opacity:0;animation:charPop .6s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes charPop{0%{opacity:0;transform:translateY(60px) rotate(-8deg) scale(.5)}60%{transform:translateY(-8px) rotate(2deg) scale(1.1)}100%{opacity:1;transform:none}}
+
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.7rem);color:rgba(255,255,255,.5);margin-top:.6rem;opacity:0;animation:fadeUp 1s ease 1.7s forwards}
+.hero-name{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,7vw,5.5rem);background:linear-gradient(90deg,#ff6ec7,#a855f7,#60a5fa,#cc0000,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:400%;margin-top:.3rem;opacity:0;animation:fadeUp 1s ease 1.9s forwards,shimmer 5s linear 2.9s infinite}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:400% 50%}}
+
+/* RCB tag */
+.rcb-tag{margin-top:1.2rem;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(204,0,0,.25),rgba(212,168,67,.15));border:1px solid rgba(204,0,0,.4);backdrop-filter:blur(12px);border-radius:100px;padding:7px 20px;font-size:.78rem;letter-spacing:.1em;color:#d4a843;opacity:0;animation:fadeUp .8s ease 2.2s forwards}
+.rcb-dot{width:8px;height:8px;border-radius:50%;background:#cc0000;animation:rcbPulse 1.5s ease-in-out infinite}
+@keyframes rcbPulse{0%,100%{box-shadow:0 0 0 0 rgba(204,0,0,.6)}70%{box-shadow:0 0 0 8px rgba(204,0,0,0)}}
+
+.emoji-ring{position:relative;width:230px;height:55px;margin-top:1.8rem;opacity:0;animation:fadeUp .8s ease 2.4s forwards}
+.emoji-ring span{position:absolute;font-size:1.9rem;animation:orbitFloat ease-in-out infinite}
+.emoji-ring span:nth-child(1){left:0;animation-duration:2s}
+.emoji-ring span:nth-child(2){left:45px;animation-duration:2.2s;animation-delay:.2s}
+.emoji-ring span:nth-child(3){left:90px;animation-duration:1.9s;animation-delay:.4s}
+.emoji-ring span:nth-child(4){left:135px;animation-duration:2.4s;animation-delay:.6s}
+.emoji-ring span:nth-child(5){left:180px;animation-duration:2.1s;animation-delay:.8s}
+@keyframes orbitFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-13px) rotate(4deg)}}
+
+.hero-ribbon{margin-top:2rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);opacity:0;animation:fadeUp .8s ease 2.6s forwards}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.28);font-size:.7rem;letter-spacing:.1em;animation:fadeIn 2s ease 3s both}
+.scroll-dot{width:22px;height:36px;border:1.5px solid rgba(255,255,255,.18);border-radius:100px;display:flex;justify-content:center;padding-top:5px}
+.scroll-dot::after{content:'';width:4px;height:7px;background:var(--pink);border-radius:100px;animation:scrollDot 1.6s ease-in-out infinite}
+@keyframes scrollDot{0%,100%{transform:translateY(0);opacity:1}80%{transform:translateY(14px);opacity:0}}
+
+/* ════════════════════════════
+   INSTAGRAM POST SECTION
+════════════════════════════ */
+#insta-post{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+
+.section-label{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#c084fc;display:flex;align-items:center;gap:14px}
+.section-label::before,.section-label::after{content:'';height:1px;width:60px}
+.section-label::before{background:linear-gradient(90deg,transparent,#c084fc)}
+.section-label::after{background:linear-gradient(90deg,#c084fc,transparent)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);text-align:center;background:linear-gradient(135deg,#fff,#e2b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Instagram phone mockup */
+.insta-phone{
+  width:340px;max-width:92vw;
+  background:#0a0a0a;border-radius:36px;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(168,85,247,.15),inset 0 1px 0 rgba(255,255,255,.08);
+  overflow:hidden;position:relative;
+  animation:phoneFloat 4s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+
+.insta-statusbar{height:28px;background:#0a0a0a;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:.65rem;color:rgba(255,255,255,.6)}
+
+.insta-topbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.insta-logo{font-family:'Dancing Script',cursive;font-size:1.3rem;flex:1;background:var(--insta-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.insta-icons{display:flex;gap:12px;font-size:1.1rem}
+
+/* Story bar inside phone */
+.phone-stories{display:flex;gap:10px;padding:12px 14px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.06)}
+.phone-stories::-webkit-scrollbar{display:none}
+.ph-story{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
+.ph-story-ring{width:52px;height:52px;border-radius:50%;padding:2px;background:var(--insta-grad)}
+.ph-story-inner{width:100%;height:100%;border-radius:50%;background:#1a0a2a;display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:2px solid #0a0a0a}
+.ph-story-name{font-size:.52rem;color:rgba(255,255,255,.5);max-width:52px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Post card */
+.insta-post-card{background:#0a0a0a}
+.post-header{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.post-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#cc0000,#d4a843);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 0 12px rgba(204,0,0,.5)}
+.post-username{font-size:.8rem;font-weight:500;color:#fff}
+.post-location{font-size:.65rem;color:rgba(255,255,255,.4)}
+.post-more{margin-left:auto;font-size:1.1rem;color:rgba(255,255,255,.5)}
+
+.post-image{
+  width:100%;aspect-ratio:1;
+  background:linear-gradient(135deg,#1a0000 0%,#2d0000 30%,#1a0533 60%,#0a0a2e 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden}
+.post-image::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(204,0,0,.3),transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(212,168,67,.2),transparent 60%)}
+.post-big-emoji{font-size:5rem;animation:postEmojiFloat 3s ease-in-out infinite;position:relative;z-index:2}
+@keyframes postEmojiFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.05)}}
+.post-caption-img{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,.8));font-family:'Dancing Script',cursive;font-size:1.3rem;color:#d4a843;z-index:2}
+.post-rcb-badge{position:absolute;top:12px;right:12px;background:rgba(204,0,0,.85);border:1px solid #d4a843;border-radius:8px;padding:4px 10px;font-size:.65rem;font-weight:500;letter-spacing:.08em;color:#d4a843;z-index:2}
+
+.post-actions{display:flex;align-items:center;gap:14px;padding:10px 14px 6px}
+.post-act-icon{font-size:1.3rem;cursor:none;transition:transform .2s ease}
+.post-act-icon:hover{transform:scale(1.2)}
+.post-act-save{margin-left:auto}
+.post-likes{padding:0 14px;font-size:.78rem;font-weight:500}
+.post-likes span{color:var(--pink)}
+.post-caption-text{padding:6px 14px 4px;font-size:.75rem;line-height:1.5;color:rgba(255,255,255,.8)}
+.post-caption-text strong{color:#fff}
+.post-hashtags{padding:2px 14px 8px;font-size:.7rem;color:#60a5fa;line-height:1.6}
+.post-comment{padding:4px 14px 14px;font-size:.7rem;color:rgba(255,255,255,.35)}
+
+/* Likes animation */
+.like-heart{position:fixed;font-size:2rem;pointer-events:none;z-index:9999;animation:likeFloat 1s ease forwards}
+@keyframes likeFloat{0%{transform:scale(0) translateY(0);opacity:1}50%{transform:scale(1.5) translateY(-30px);opacity:1}100%{transform:scale(1) translateY(-60px);opacity:0}}
+
+/* ════════════════════════════
+   COUNTDOWN
+════════════════════════════ */
+#countdown{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.countdown-grid{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.cd-card{
+  background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(24px);
+  border-radius:24px;padding:2rem 1.6rem;min-width:118px;text-align:center;
+  box-shadow:0 8px 32px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);
+  position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;
+  animation:cardEntry .7s cubic-bezier(.34,1.56,.64,1) both}
+.cd-card:nth-child(1){animation-delay:.1s}.cd-card:nth-child(2){animation-delay:.2s}
+.cd-card:nth-child(3){animation-delay:.3s}.cd-card:nth-child(4){animation-delay:.4s}
+@keyframes cardEntry{0%{opacity:0;transform:translateY(40px) scale(.8)}100%{opacity:1;transform:none}}
+.cd-card::after{content:'';position:absolute;inset:-1px;border-radius:25px;background:conic-gradient(from var(--a,0deg),#cc0000,#d4a843,#a855f7,#60a5fa,#cc0000);opacity:.4;animation:spinRing 4s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spinRing{to{--a:360deg}}
+.cd-card:hover{transform:translateY(-8px) scale(1.06);box-shadow:0 0 50px rgba(204,0,0,.3),0 20px 60px rgba(0,0,0,.4)}
+.cd-num{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;background:linear-gradient(135deg,#ff9de2,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.cd-num.flip{animation:numFlip .3s ease}
+@keyframes numFlip{0%{transform:rotateX(90deg);opacity:0}100%{transform:rotateX(0);opacity:1}}
+.cd-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem}
+
+/* ════════════════════════════
+   CHAT SECTION
+════════════════════════════ */
+#squad{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.chat-window{background:rgba(8,0,18,.85);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(24px);border-radius:32px;padding:2rem;max-width:680px;width:100%;box-shadow:0 20px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);position:relative;overflow:hidden}
+.chat-window::before{content:'';position:absolute;inset:0;border-radius:32px;background:linear-gradient(135deg,rgba(204,0,0,.04),rgba(212,168,67,.03));pointer-events:none}
+.chat-header{display:flex;align-items:center;gap:12px;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.chat-dots{display:flex;gap:6px}
+.chat-dots span{width:11px;height:11px;border-radius:50%}
+.chat-dots span:nth-child(1){background:#ff5f57}.chat-dots span:nth-child(2){background:#fabb2c}.chat-dots span:nth-child(3){background:#2ac840}
+.chat-title{font-size:.82rem;color:rgba(255,255,255,.38);letter-spacing:.06em;flex:1;text-align:center}
+.chat-online{font-size:.68rem;color:#2dd4bf;display:flex;align-items:center;gap:5px}
+.chat-online::before{content:'';width:6px;height:6px;border-radius:50%;background:#2dd4bf;animation:onlinePulse 1.5s ease-in-out infinite}
+@keyframes onlinePulse{0%,100%{box-shadow:0 0 0 0 rgba(45,212,191,.7)}70%{box-shadow:0 0 0 7px rgba(45,212,191,0)}}
+.chat-body{display:flex;flex-direction:column;gap:1rem;min-height:280px}
+.msg-row{display:flex;align-items:flex-end;gap:10px;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.msg-row.visible{opacity:1;transform:none}
+.msg-row.right{flex-direction:row-reverse}
+.msg-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;animation:avatarBob 3s ease-in-out infinite}
+.av-1{background:linear-gradient(135deg,#ff6ec7,#f472b6);box-shadow:0 0 14px rgba(255,110,199,.5)}
+.av-2{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 0 14px rgba(168,85,247,.5);animation-delay:.5s}
+.av-3{background:linear-gradient(135deg,#60a5fa,#3b82f6);box-shadow:0 0 14px rgba(96,165,250,.5);animation-delay:1s}
+.av-4{background:linear-gradient(135deg,#cc0000,#d4a843);box-shadow:0 0 14px rgba(204,0,0,.5);animation-delay:1.5s}
+@keyframes avatarBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.msg-bubble{max-width:76%;padding:.75rem 1.1rem;border-radius:18px;font-size:.86rem;line-height:1.6;position:relative}
+.msg-row:not(.right) .msg-bubble{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.09);border-bottom-left-radius:4px}
+.msg-row.right .msg-bubble{background:linear-gradient(135deg,rgba(204,0,0,.25),rgba(212,168,67,.15));border:1px solid rgba(204,0,0,.25);border-bottom-right-radius:4px}
+.msg-name{font-size:.65rem;color:rgba(255,255,255,.33);margin-bottom:.2rem;letter-spacing:.04em}
+.msg-time{font-size:.6rem;color:rgba(255,255,255,.2);text-align:right;margin-top:.25rem}
+.msg-typing{display:flex;gap:4px;align-items:center;padding:.5rem .8rem}
+.msg-typing span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);animation:typing 1.2s ease-in-out infinite}
+.msg-typing span:nth-child(2){animation-delay:.2s}.msg-typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-6px);opacity:1}}
+
+/* ════════════════════════════
+   RCB TRIBUTE SECTION
+════════════════════════════ */
+#rcb-tribute{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+
+.rcb-card{
+  max-width:680px;width:100%;
+  background:linear-gradient(135deg,rgba(30,0,0,.9),rgba(20,0,40,.9));
+  border:1px solid rgba(204,0,0,.3);backdrop-filter:blur(24px);border-radius:32px;
+  padding:3rem 2.5rem;position:relative;overflow:hidden;
+  box-shadow:0 0 60px rgba(204,0,0,.15),0 20px 60px rgba(0,0,0,.5)}
+.rcb-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(204,0,0,.2),transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(212,168,67,.1),transparent 50%);pointer-events:none}
+.rcb-card::after{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#cc0000,#d4a843,#cc0000,transparent);animation:rcbLine 3s ease-in-out infinite}
+@keyframes rcbLine{0%,100%{opacity:.5}50%{opacity:1}}
+
+.rcb-header{display:flex;align-items:center;gap:16px;margin-bottom:2rem}
+.rcb-logo-big{font-size:3.5rem;animation:rcbSpin 4s ease-in-out infinite}
+@keyframes rcbSpin{0%,100%{transform:rotate(-5deg) scale(1)}50%{transform:rotate(5deg) scale(1.1)}}
+.rcb-title-block .rcb-title{font-family:'Playfair Display',serif;font-size:1.8rem;background:linear-gradient(135deg,#cc0000,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700}
+.rcb-title-block .rcb-sub{font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase;margin-top:.2rem}
+
+.rcb-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.rcb-stat{background:rgba(204,0,0,.12);border:1px solid rgba(204,0,0,.2);border-radius:16px;padding:1rem 1.4rem;flex:1;min-width:120px;text-align:center}
+.rcb-stat-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,#cc0000,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rcb-stat-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem}
+
+.rcb-quote{font-style:italic;color:rgba(255,255,255,.65);line-height:1.9;font-size:.95rem;border-left:3px solid #cc0000;padding-left:1.2rem;margin-bottom:1.5rem}
+.rcb-quote strong{color:#d4a843;font-style:normal}
+
+.rcb-tags{display:flex;flex-wrap:wrap;gap:8px}
+.rcb-tag-pill{background:rgba(204,0,0,.15);border:1px solid rgba(204,0,0,.3);border-radius:100px;padding:5px 14px;font-size:.72rem;color:#d4a843;letter-spacing:.06em}
+
+/* cricket ball bounce */
+.cricket-balls{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}
+.cricket-ball{font-size:1.8rem;animation:ballBounce 1s ease-in-out infinite}
+.cricket-ball:nth-child(2){animation-delay:.15s}
+.cricket-ball:nth-child(3){animation-delay:.3s}
+.cricket-ball:nth-child(4){animation-delay:.45s}
+@keyframes ballBounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px)}60%{transform:translateY(-7px)}}
+
+/* ════════════════════════════
+   WISH CARDS (4 girls)
+════════════════════════════ */
+#wishes{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.wishes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.8rem;max-width:1100px;width:100%}
+
+.wish-card{background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(22px);border-radius:28px;padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:transform .5s cubic-bezier(.17,.67,.45,1.3),box-shadow .5s;animation:wishEntry .8s cubic-bezier(.34,1.2,.64,1) both}
+.wish-card:nth-child(1){animation-delay:.1s}.wish-card:nth-child(2){animation-delay:.25s}
+.wish-card:nth-child(3){animation-delay:.4s}.wish-card:nth-child(4){animation-delay:.55s}
+@keyframes wishEntry{0%{opacity:0;transform:translateY(50px) scale(.85) rotate(-3deg)}100%{opacity:1;transform:none}}
+.wish-card::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transition:left .6s;pointer-events:none}
+.wish-card:hover::before{left:150%}
+
+/* Insta handle on card */
+.insta-handle{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.04em;margin-bottom:.8rem;display:flex;align-items:center;gap:5px}
+.insta-handle::before{content:'📸';font-size:.8rem}
+
+.wish-card.c1{box-shadow:0 8px 32px rgba(255,110,199,.1);border-color:rgba(255,110,199,.2)}.wish-card.c1:hover{transform:translateY(-12px) rotate(-1.5deg);box-shadow:0 30px 70px rgba(255,110,199,.25)}
+.wish-card.c2{box-shadow:0 8px 32px rgba(168,85,247,.1);border-color:rgba(168,85,247,.2)}.wish-card.c2:hover{transform:translateY(-12px) rotate(1.5deg);box-shadow:0 30px 70px rgba(168,85,247,.25)}
+.wish-card.c3{box-shadow:0 8px 32px rgba(96,165,250,.1);border-color:rgba(96,165,250,.2)}.wish-card.c3:hover{transform:translateY(-12px) rotate(-1deg);box-shadow:0 30px 70px rgba(96,165,250,.25)}
+.wish-card.c4{box-shadow:0 8px 32px rgba(204,0,0,.12);border-color:rgba(204,0,0,.25)}.wish-card.c4:hover{transform:translateY(-12px) rotate(1deg);box-shadow:0 30px 70px rgba(204,0,0,.25)}
+
+.wish-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:1rem;animation:avatarBob 3s ease-in-out infinite}
+.c1 .wish-avatar{background:linear-gradient(135deg,#ff6ec7,#f472b6);box-shadow:0 0 22px rgba(255,110,199,.5)}
+.c2 .wish-avatar{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 0 22px rgba(168,85,247,.5);animation-delay:.5s}
+.c3 .wish-avatar{background:linear-gradient(135deg,#60a5fa,#3b82f6);box-shadow:0 0 22px rgba(96,165,250,.5);animation-delay:1s}
+.c4 .wish-avatar{background:linear-gradient(135deg,#cc0000,#d4a843);box-shadow:0 0 22px rgba(204,0,0,.55);animation-delay:1.5s}
+
+.wish-name{font-size:1.05rem;font-weight:500;color:#fff;margin-bottom:.2rem}
+.wish-role{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.1em;margin-bottom:.9rem}
+.wish-text{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.7);font-style:italic}
+.wish-hearts{margin-top:1.1rem;font-size:1.2rem;letter-spacing:.2em}
+
+/* ════════════════════════════
+   SURPRISE
+════════════════════════════ */
+#surprise{padding:9rem 2rem;display:flex;flex-direction:column;align-items:center;gap:2.2rem;text-align:center}
+.surprise-desc{color:rgba(255,255,255,.45);max-width:460px;line-height:1.9;font-size:.93rem}
+.glow-btn{position:relative;padding:1.2rem 3.2rem;border:none;border-radius:100px;cursor:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#fff;letter-spacing:.06em;background:linear-gradient(135deg,#cc0000,#d4a843,#a855f7,#ff6ec7);background-size:300%;animation:btnG 4s ease infinite;box-shadow:0 0 40px rgba(204,0,0,.4),0 6px 24px rgba(0,0,0,.3);transition:transform .3s,box-shadow .3s;overflow:hidden}
+.glow-btn::before{content:'';position:absolute;inset:-3px;border-radius:100px;background:inherit;z-index:-1;filter:blur(20px);opacity:.7;animation:glowP 2.5s ease-in-out infinite}
+.glow-btn::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,.15);transform:rotate(20deg);transition:left .5s}
+.glow-btn:hover{transform:scale(1.1);box-shadow:0 0 80px rgba(204,0,0,.7),0 10px 40px rgba(0,0,0,.4)}
+.glow-btn:hover::after{left:130%}
+@keyframes btnG{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes glowP{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+
+.surprise-reveal{display:none;flex-direction:column;align-items:center;gap:2rem;text-align:center;animation:revealPop .7s cubic-bezier(.34,1.56,.64,1) both}
+.surprise-reveal.show{display:flex}
+@keyframes revealPop{0%{opacity:0;transform:scale(.5) rotate(-10deg)}60%{transform:scale(1.08) rotate(2deg)}100%{opacity:1;transform:none}}
+.surprise-cake{font-size:6rem;animation:cakeBounce 1s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes cakeBounce{0%{transform:scale(0) rotate(-20deg)}60%{transform:scale(1.2) rotate(5deg)}100%{transform:none}}
+.surprise-msg{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.8rem);background:linear-gradient(135deg,#cc0000,#d4a843,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.surprise-quote{max-width:520px;font-style:italic;color:rgba(255,255,255,.6);line-height:1.9;font-size:.93rem}
+.firework-grid{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:2.8rem}
+.firework-grid span{animation:fwPop .5s cubic-bezier(.34,1.56,.64,1) both}
+.firework-grid span:nth-child(1){animation-delay:.1s}.firework-grid span:nth-child(2){animation-delay:.2s}
+.firework-grid span:nth-child(3){animation-delay:.3s}.firework-grid span:nth-child(4){animation-delay:.4s}
+.firework-grid span:nth-child(5){animation-delay:.5s}.firework-grid span:nth-child(6){animation-delay:.6s}
+@keyframes fwPop{0%{opacity:0;transform:scale(0) translateY(30px)}100%{opacity:1;transform:none}}
+
+/* ════════════════════════════
+   FOOTER
+════════════════════════════ */
+footer{position:relative;z-index:5;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.25);font-size:.76rem;letter-spacing:.1em}
+footer span{color:var(--rcb-red)}
+
+/* ════════════════════════════
+   SCROLL REVEAL
+════════════════════════════ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.25s}.reveal-delay-3{transition-delay:.4s}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+@media(max-width:600px){
+  .countdown-grid{gap:.9rem}.cd-card{min-width:76px;padding:1.2rem .9rem}
+  .wishes-grid{grid-template-columns:1fr}.stories-row{gap:10px}
+  .story-ring{width:56px;height:56px}.rcb-stats{gap:1rem}
+  .chat-window{padding:1.2rem}.insta-phone{width:300px}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div class="bg-wrap"></div>
+<div class="blob blob-1"></div><div class="blob blob-2"></div>
+<div class="blob blob-3"></div><div class="blob blob-4"></div>
+<canvas id="particles"></canvas>
+<div class="confetti-wrap" id="confetti"></div>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <!-- Instagram-style stories -->
+  <div class="stories-row">
+    <div class="story-bubble">
+      <div class="story-ring"><div class="story-inner">🌺</div></div>
+      <div class="story-name">priya.✨</div>
+    </div>
+    <div class="story-bubble">
+      <div class="story-ring"><div class="story-inner">🦋</div></div>
+      <div class="story-name">meera🦋</div>
+    </div>
+    <div class="story-bubble">
+      <div class="story-ring"><div class="story-inner">🌙</div></div>
+      <div class="story-name">zara.moon</div>
+    </div>
+    <div class="story-bubble">
+      <div class="story-ring" style="background:linear-gradient(45deg,#cc0000,#d4a843,#cc0000)"><div class="story-inner">⭐</div></div>
+      <div class="story-name">riya_rcb</div>
+    </div>
+    <div class="story-bubble">
+      <div class="story-ring seen"><div class="story-inner">🎂</div></div>
+      <div class="story-name">aanya 🎂</div>
+    </div>
+  </div>
+
+  <div class="hero-badge">📸 Instagram Squad · Est. Online · Never Met IRL 💕</div>
+  <h1 class="hero-title" id="heroTitle"></h1>
+  <p class="hero-sub">to our favourite RCB girl 🏏❤️</p>
+  <div class="hero-name">Aanya ✨</div>
+  <div class="rcb-tag">
+    <span class="rcb-dot"></span>
+    🏏 Die-Hard RCB Fan · Virat Kohli Army
+  </div>
+  <div class="emoji-ring">
+    <span>🎂</span><span>🏏</span><span>🎉</span><span>❤️</span><span>🌟</span>
+  </div>
+  <div class="hero-ribbon">FOUR FANS · ONE CHAT · ZERO DISTANCE · INFINITE LOVE</div>
+  <div class="scroll-hint"><div class="scroll-dot"></div>SCROLL</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     INSTAGRAM POST MOCKUP
+══════════════════════════════════════ -->
+<section id="insta-post">
+  <div class="section-label reveal">AS SEEN ON INSTAGRAM</div>
+  <h2 class="section-title reveal reveal-delay-1">The Post We Wish We Could Tag You In 📸</h2>
+  <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,.4);max-width:440px;text-align:center;line-height:1.8;font-size:.9rem">Four cricket girls who slid into each other's DMs and never left 🏏💕</p>
+
+  <div class="insta-phone reveal reveal-delay-3">
+    <div class="insta-statusbar">
+      <span>9:41</span><span>📶 🔋</span>
+    </div>
+    <div class="insta-topbar">
+      <div class="insta-logo">Instagram</div>
+      <div class="insta-icons"><span>❤️</span><span>✈️</span></div>
+    </div>
+
+    <!-- Stories inside phone -->
+    <div class="phone-stories">
+      <div class="ph-story">
+        <div class="ph-story-ring"><div class="ph-story-inner">🌺</div></div>
+        <div class="ph-story-name">priya.✨</div>
+      </div>
+      <div class="ph-story">
+        <div class="ph-story-ring"><div class="ph-story-inner">🦋</div></div>
+        <div class="ph-story-name">meera🦋</div>
+      </div>
+      <div class="ph-story">
+        <div class="ph-story-ring"><div class="ph-story-inner">🌙</div></div>
+        <div class="ph-story-name">zara.moon</div>
+      </div>
+      <div class="ph-story">
+        <div class="ph-story-ring" style="background:linear-gradient(45deg,#cc0000,#d4a843)"><div class="ph-story-inner">⭐</div></div>
+        <div class="ph-story-name">riya_rcb</div>
+      </div>
+    </div>
+
+    <!-- Post -->
+    <div class="insta-post-card">
+      <div class="post-header">
+        <div class="post-av">🏏</div>
+        <div>
+          <div class="post-username">rcb_birthday_squad 🏏</div>
+          <div class="post-location">📍 Somewhere on the Internet</div>
+        </div>
+        <div class="post-more">···</div>
+      </div>
+
+      <div class="post-image" id="postImage" onclick="tapLike(event)">
+        <div class="post-rcb-badge">🔴 RCB FOREVER</div>
+        <div class="post-big-emoji">🎂🏏</div>
+        <div class="post-caption-img">Happy Birthday Aanya! 🌸</div>
+      </div>
+
+      <div class="post-actions">
+        <span class="post-act-icon" id="likeBtn" onclick="toggleLike(event)">🤍</span>
+        <span class="post-act-icon">💬</span>
+        <span class="post-act-icon">📤</span>
+        <span class="post-act-icon post-act-save">🔖</span>
+      </div>
+      <div class="post-likes"><span id="likeCount">24,526</span> likes</div>
+      <div class="post-caption-text">
+        <strong>rcb_birthday_squad</strong> To our favourite RCB die-hard 🏏❤️ We met on Instagram, never shook hands, but somehow you became the most real friendship we have. Happy Birthday Aanya! 🎂 @kohli is winning today just for you ✨
+      </div>
+      <div class="post-hashtags">
+        #HappyBirthdayAanya #RCBForever #KohliArmy #CricketGirls #OnlineSquad #NeverMetButAlwaysThere #IPL #RCBFamily #BirthdayGirl 🏏🎉
+      </div>
+      <div class="post-comment">View all 847 comments</div>
+
+      <!-- Comments -->
+      <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:.72rem"><strong style="color:#fff">priya.✨</strong> <span style="color:rgba(255,255,255,.65)">I can't believe we found each other on here 😭❤️ HBD bestie!!</span></div>
+        <div style="font-size:.72rem"><strong style="color:#fff">meera🦋</strong> <span style="color:rgba(255,255,255,.65)">RCB winning for your birthday energy 🏏🔴 WE LOVE YOU</span></div>
+        <div style="font-size:.72rem"><strong style="color:#fff">zara.moon</strong> <span style="color:rgba(255,255,255,.65)">One day we'll watch RCB live TOGETHER 🌙🏟️✨</span></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.28)">14 minutes ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     COUNTDOWN
+══════════════════════════════════════ -->
+<section id="countdown">
+  <div class="section-label reveal">COUNTING EVERY SECOND</div>
+  <h2 class="section-title reveal reveal-delay-1">Until Your Special Day 🎈</h2>
+  <div class="countdown-grid reveal reveal-delay-2">
+    <div class="cd-card"><div class="cd-num" id="cd-days">00</div><div class="cd-label">Days</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">Minutes</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">Seconds</div></div>
+  </div>
+  <div id="birthday-msg" style="display:none;font-family:'Playfair Display',serif;font-size:1.8rem;color:#ff9de2;text-align:center;animation:fadeUp 1s ease">🎉 IT'S YOUR BIRTHDAY! RCB wins today just for you! 🏏🔴</div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SQUAD CHAT
+══════════════════════════════════════ -->
+<section id="squad">
+  <div class="section-label reveal">DM'S THAT STARTED IT ALL</div>
+  <h2 class="section-title reveal reveal-delay-1">Met in the Comments, Stayed Forever 💬</h2>
+  <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,.4);max-width:480px;text-align:center;line-height:1.8;font-size:.9rem">Started as cricket fans arguing about RCB in someone's comments. Ended up as the realest friendship on the internet 🏏💕</p>
+
+  <div class="chat-window reveal reveal-delay-3">
+    <div class="chat-header">
+      <div class="chat-dots"><span></span><span></span><span></span></div>
+      <div class="chat-title">🏏 rcb_girls_chat · 4 Members</div>
+      <div class="chat-online">4 online</div>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     RCB TRIBUTE
+══════════════════════════════════════ -->
+<section id="rcb-tribute">
+  <div class="section-label reveal">FOR THE BIGGEST FAN</div>
+  <h2 class="section-title reveal reveal-delay-1">A Tribute to Your Cricket Heart 🏏❤️</h2>
+
+  <div class="rcb-card reveal reveal-delay-2">
+    <div class="rcb-header">
+      <div class="rcb-logo-big">🏏</div>
+      <div class="rcb-title-block">
+        <div class="rcb-title">Royal Challengers Birthday</div>
+        <div class="rcb-sub">Forever Red · Forever Gold · Forever You</div>
+      </div>
+    </div>
+
+    <div class="rcb-stats">
+      <div class="rcb-stat">
+        <div class="rcb-stat-num">🔴</div>
+        <div class="rcb-stat-label">RCB Fan Since Day 1</div>
+      </div>
+      <div class="rcb-stat">
+        <div class="rcb-stat-num">18</div>
+        <div class="rcb-stat-label">Kohli Jersey No.</div>
+      </div>
+      <div class="rcb-stat">
+        <div class="rcb-stat-num">💯</div>
+        <div class="rcb-stat-label">Our Love for You</div>
+      </div>
+      <div class="rcb-stat">
+        <div class="rcb-stat-num">4</div>
+        <div class="rcb-stat-label">Girls, One Dream</div>
+      </div>
+    </div>
+
+    <div class="rcb-quote">
+      "Ee sala cup namde!" — and this year, <strong>the birthday is yours</strong>. 🏆 You cheer RCB through every heartbreak and every win with the same fire. That's exactly how you love us — unconditionally, loudly, and with your whole heart. Happy Birthday to the girl who makes even cricket more beautiful 🌸
+    </div>
+
+    <div class="rcb-tags">
+      <span class="rcb-tag-pill">🔴 RCB Forever</span>
+      <span class="rcb-tag-pill">👑 Kohli Army</span>
+      <span class="rcb-tag-pill">🏏 Cricket Girl</span>
+      <span class="rcb-tag-pill">📸 Insta Bestie</span>
+      <span class="rcb-tag-pill">💕 Never Met IRL</span>
+      <span class="rcb-tag-pill">🌸 Always There</span>
+    </div>
+
+    <div class="cricket-balls">
+      <span class="cricket-ball">🏏</span>
+      <span class="cricket-ball">🔴</span>
+      <span class="cricket-ball">⭐</span>
+      <span class="cricket-ball">🏆</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WISH CARDS
+══════════════════════════════════════ -->
+<section id="wishes">
+  <div class="section-label reveal">WITH ALL OUR LOVE</div>
+  <h2 class="section-title reveal reveal-delay-1">From Your Online Cricket Gang 💌🏏</h2>
+
+  <div class="wishes-grid">
+    <div class="wish-card c1 reveal reveal-delay-1">
+      <div class="insta-handle">@priya.✨</div>
+      <div class="wish-avatar">🌺</div>
+      <div class="wish-name">Priya</div>
+      <div class="wish-role">The Overthinker™ · Slid into DMs first</div>
+      <div class="wish-text">"I saw you defending RCB in the comments at 2am and I knew we'd be friends. I've never hugged you but I feel every single thing you feel. Happy Birthday to my absolute ride-or-die 🌸💗"</div>
+      <div class="wish-hearts">💗 📸 💗</div>
+    </div>
+
+    <div class="wish-card c2 reveal reveal-delay-2">
+      <div class="insta-handle">@meera🦋</div>
+      <div class="wish-avatar">🦋</div>
+      <div class="wish-name">Meera</div>
+      <div class="wish-role">The Meme Queen · Main character energy</div>
+      <div class="wish-text">"We bonded over Kohli's centuries and now I can't imagine a day without your voice notes. One day we'll be at Chinnaswamy cheering together and I'm MANIFESTING it 🏟️🔴 Love you girlie 💜"</div>
+      <div class="wish-hearts">💜 🏏 💜</div>
+    </div>
+
+    <div class="wish-card c3 reveal reveal-delay-3">
+      <div class="insta-handle">@zara.moon</div>
+      <div class="wish-avatar">🌙</div>
+      <div class="wish-name">Zara</div>
+      <div class="wish-role">The Empath · 3am talk specialist</div>
+      <div class="wish-text">"We've cried together over RCB losses, celebrated every Kohli run, and somewhere in between I realised you're one of the most important people in my life. Distance is nothing. You're everything 🌙💙"</div>
+      <div class="wish-hearts">💙 🌊 💙</div>
+    </div>
+
+    <div class="wish-card c4 reveal" style="transition-delay:.5s">
+      <div class="insta-handle">@riya_rcb</div>
+      <div class="wish-avatar">⭐</div>
+      <div class="wish-name">Riya</div>
+      <div class="wish-role">The Hype Girl · RCB flag carrier</div>
+      <div class="wish-text">"Fellow RCB soldier, fellow cricket fanatic, fellow chaos lover 🏏 You deserve a Kohli century on your birthday, a trophy in your hands, and all the love in the universe. Ee sala cup aur birthday dono namde! 🏆🥳"</div>
+      <div class="wish-hearts">❤️ 🏏 🌟</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SURPRISE
+══════════════════════════════════════ -->
+<section id="surprise">
+  <div class="section-label reveal">ONE LAST THING</div>
+  <h2 class="section-title reveal reveal-delay-1">Your Surprise is Here 🎁</h2>
+  <p class="surprise-desc reveal reveal-delay-2">From four girls who found you through cricket, stayed for you, and love you endlessly ❤️🏏</p>
+  <button class="glow-btn reveal reveal-delay-3" id="surpriseBtn" onclick="revealSurprise()">🏏 Open Your Birthday Gift 🎂</button>
+
+  <div class="surprise-reveal" id="surpriseReveal">
+    <div class="surprise-cake">🎂🏏</div>
+    <div class="surprise-msg">You Are Our Favourite Person</div>
+    <p class="surprise-quote">"Four cricket girls. Four different cities. One group chat that changed everything. We started arguing about RCB and ended up becoming each other's safe place. You — with your passion, your laugh, your Kohli stanning, your whole wonderful self — you make every day better. Ee sala cup namde, aur tumhara birthday bhi! Here's to you, always. 🌸🏏🔴💕"</p>
+    <p style="color:rgba(255,255,255,.3);font-size:.78rem;letter-spacing:.1em;margin-top:.5rem">— Priya 🌺, Meera 🦋, Zara 🌙 & Riya ⭐ · Your Instagram Cricket Squad 💌</p>
+    <div class="firework-grid">
+      <span>🎉</span><span>🏏</span><span>🎂</span><span>🔴</span><span>⭐</span><span>🏆</span>
+    </div>
+  </div>
+</section>
+
+<footer>Made with <span>♥</span> &amp; cricket energy by your Instagram squad · 24 May 2026 🏏🔴</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cursor'),curR=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  spawnSparkle(mx,my);
+});
+(function animR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animR)})();
+
+/* ── SPARKLE TRAIL ── */
+const spC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#f9a8d4'];
+let lastSp=0;
+function spawnSparkle(x,y){
+  const now=Date.now();if(now-lastSp<35)return;lastSp=now;
+  if(Math.random()>.5)return;
+  const sp=document.createElement('div');sp.className='sparkle';
+  const s=4+Math.random()*8;
+  sp.style.cssText=`left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;background:${spC[Math.floor(Math.random()*spC.length)]}`;
+  document.body.appendChild(sp);setTimeout(()=>sp.remove(),700);
+}
+
+/* ── HERO TITLE ── */
+const titleEl=document.getElementById('heroTitle');
+['Happy','Birthday'].forEach((w,wi)=>{
+  const ws=document.createElement('span');
+  ws.style.cssText='display:inline-flex;gap:0';
+  if(wi===1)ws.style.marginLeft='.25em';
+  [...w].forEach((ch,ci)=>{
+    const s=document.createElement('span');
+    s.className='char';s.textContent=ch;
+    s.style.animationDelay=(.8+wi*.35+ci*.07)+'s';
+    ws.appendChild(s);
+  });
+  titleEl.appendChild(ws);
+});
+
+/* ── PARTICLES ── */
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}rsz();addEventListener('resize',rsz);
+const pC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#f9a8d4','#c084fc','#fff'];
+class P{
+  reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2.2+.4;this.color=pC[Math.floor(Math.random()*pC.length)];this.vx=(Math.random()-.5)*.5;this.vy=(Math.random()-.5)*.5;this.a=Math.random()*.7+.15;this.t=Math.random()*Math.PI*2;this.life=0;this.maxLife=Math.random()*350+150;this.star=Math.random()>.6}
+  constructor(){this.reset()}
+  update(){this.x+=this.vx;this.y+=this.vy;this.t+=.045;this.life++;if(this.life>this.maxLife||this.x<-5||this.x>W+5||this.y<-5||this.y>H+5)this.reset()}
+  draw(){const a=this.a*(0.4+0.6*Math.sin(this.t));ctx.save();ctx.globalAlpha=a;ctx.fillStyle=this.color;if(this.star)dStar(this.x,this.y,4,this.r*2.5,this.r*.9);else{ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}ctx.restore()}
+}
+function dStar(cx,cy,sp,oR,iR){let rot=(Math.PI/2)*3,step=Math.PI/sp;ctx.beginPath();ctx.moveTo(cx,cy-oR);for(let i=0;i<sp;i++){ctx.lineTo(cx+Math.cos(rot)*oR,cy+Math.sin(rot)*oR);rot+=step;ctx.lineTo(cx+Math.cos(rot)*iR,cy+Math.sin(rot)*iR);rot+=step}ctx.closePath();ctx.fill()}
+for(let i=0;i<170;i++)pts.push(new P());
+(function animP(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.update();p.draw()});requestAnimationFrame(animP)})();
+
+/* ── CONFETTI ── */
+const cWrap=document.getElementById('confetti');
+const cC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#fbbf24','#f472b6','#818cf8'];
+for(let i=0;i<80;i++){
+  const el=document.createElement('div');el.className='c-piece';
+  const isC=Math.random()>.5;
+  el.style.cssText=`left:${Math.random()*100}%;background:${cC[Math.floor(Math.random()*cC.length)]};animation-duration:${5+Math.random()*8}s;animation-delay:${Math.random()*12}s;width:${5+Math.random()*9}px;height:${isC?5+Math.random()*9+'px':9+Math.random()*14+'px'};border-radius:${isC?'50%':'3px'}`;
+  cWrap.appendChild(el);
+}
+
+/* ── COUNTDOWN ── */
+const prevV={};
+function upCount(){
+  const diff=new Date('2026-05-24T00:00:00')-new Date();
+  if(diff<=0){document.querySelector('.countdown-grid').style.display='none';document.getElementById('birthday-msg').style.display='block';return}
+  const v={days:Math.floor(diff/86400000),hours:Math.floor((diff%86400000)/3600000),mins:Math.floor((diff%3600000)/60000),secs:Math.floor((diff%60000)/1000)};
+  ['days','hours','mins','secs'].forEach(k=>{
+    const el=document.getElementById('cd-'+k),f=String(v[k]).padStart(2,'0');
+    if(f!==prevV[k]){el.textContent=f;prevV[k]=f;el.classList.remove('flip');void el.offsetWidth;el.classList.add('flip')}
+  });
+}
+upCount();setInterval(upCount,1000);
+
+/* ── INSTAGRAM LIKE ── */
+let liked=false,likeCount=24526;
+function toggleLike(e){
+  liked=!liked;
+  const btn=document.getElementById('likeBtn');
+  btn.textContent=liked?'❤️':'🤍';
+  likeCount+=liked?1:-1;
+  document.getElementById('likeCount').textContent=likeCount.toLocaleString();
+  if(liked)spawnHeart(e.clientX,e.clientY);
+}
+function tapLike(e){
+  spawnHeart(e.clientX,e.clientY);
+  const h=document.createElement('div');
+  h.style.cssText=`position:fixed;left:${e.clientX-20}px;top:${e.clientY-20}px;font-size:2.5rem;pointer-events:none;z-index:9999;animation:likeFloat 1s ease forwards`;
+  h.textContent='❤️';
+  document.body.appendChild(h);setTimeout(()=>h.remove(),1000);
+}
+function spawnHeart(x,y){
+  const el=document.createElement('div');
+  el.style.cssText=`position:fixed;left:${x}px;top:${y}px;font-size:1.8rem;pointer-events:none;z-index:9999;animation:likeFloat .8s ease forwards`;
+  el.textContent='❤️';document.body.appendChild(el);setTimeout(()=>el.remove(),800);
+}
+const likeStyle=document.createElement('style');
+likeStyle.textContent='@keyframes likeFloat{0%{transform:scale(0) translateY(0);opacity:1}50%{transform:scale(1.6) translateY(-30px)}100%{transform:scale(1) translateY(-60px);opacity:0}}';
+document.head.appendChild(likeStyle);
+
+/* ── CHAT ── */
+const msgs=[
+  {side:'left',av:'av-1',name:'Priya 🌺',text:'GUYS IT IS FINALLY HER BIRTHDAY I HAVE BEEN WAITING FOR THIS DAY 🎂🎂🎂',time:'11:57 PM'},
+  {side:'left',av:'av-2',name:'Meera 🦋',text:'I literally set an alarm 😭😭 HAPPY BIRTHDAY AANYA WE LOVE YOU SO MUCH 🏏❤️',time:'11:57 PM'},
+  {side:'left',av:'av-3',name:'Zara 🌙',text:'One year ago we met arguing about RCB in the comments and now look at us making a whole WEBSITE 😭💙',time:'11:58 PM'},
+  {side:'right',av:'av-4',name:'Riya ⭐',text:'SCROLL DOWN SCROLL DOWN WE MADE YOU SOMETHING !! 🎉🏏 Ee sala birthday namde bestie!!',time:'11:58 PM'},
+  {side:'left',av:'av-1',name:'Priya 🌺',text:'Four cricket girls, four corners of India, one chat that changed my whole life 🌸',time:'11:59 PM'},
+  {side:'left',av:'av-2',name:'Meera 🦋',text:'One day we WILL watch RCB live together at Chinnaswamy and I am not accepting no 🏟️🔴',time:'12:00 AM'},
+  {side:'left',av:'av-3',name:'Zara 🌙',text:'Until then — we have this. And we have each other. Happy birthday to our girl 💙🎂',time:'12:00 AM'},
+];
+const chatBody=document.getElementById('chatBody');let mIdx=0;
+const avE={'av-1':'🌺','av-2':'🦋','av-3':'🌙','av-4':'⭐'};
+function addTyping(av){const r=document.createElement('div');r.className='msg-row';r.id='typing-row';r.innerHTML=`<div class="msg-avatar ${av}">${avE[av]}</div><div class="msg-bubble"><div class="msg-typing"><span></span><span></span><span></span></div></div>`;chatBody.appendChild(r);setTimeout(()=>r.classList.add('visible'),50)}
+function addMsg(m){const r=document.getElementById('typing-row');if(r)r.remove();const el=document.createElement('div');el.className=`msg-row ${m.side==='right'?'right':''}`;el.innerHTML=`<div class="msg-avatar ${m.av}">${avE[m.av]}</div><div class="msg-bubble"><div class="msg-name">${m.name}</div>${m.text}<div class="msg-time">${m.time}</div></div>`;chatBody.appendChild(el);chatBody.scrollTop=chatBody.scrollHeight;setTimeout(()=>el.classList.add('visible'),50)}
+function runChat(){if(mIdx>=msgs.length)return;const m=msgs[mIdx++];addTyping(m.av);setTimeout(()=>{addMsg(m);setTimeout(runChat,1100+Math.random()*900)},1000+Math.random()*600)}
+const cObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){runChat();cObs.disconnect()}},{threshold:.25});
+cObs.observe(document.getElementById('squad'));
+
+/* ── SURPRISE ── */
+function revealSurprise(){
+  document.getElementById('surpriseBtn').style.display='none';
+  document.getElementById('surpriseReveal').classList.add('show');
+  burstConfetti();
+}
+function burstConfetti(){
+  for(let i=0;i<80;i++){
+    setTimeout(()=>{
+      const el=document.createElement('div');el.className='c-piece';
+      el.style.cssText=`left:${20+Math.random()*60}%;top:50%;background:${cC[Math.floor(Math.random()*cC.length)]};position:fixed;z-index:9999;width:${5+Math.random()*9}px;height:${8+Math.random()*14}px;border-radius:${Math.random()>.5?'50%':'3px'};animation:confettiFall ${1.5+Math.random()}s ease forwards;opacity:1`;
+      document.body.appendChild(el);setTimeout(()=>el.remove(),2500);
+    },i*30);
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+const rObs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
+</script>
+</body>
+</html>
