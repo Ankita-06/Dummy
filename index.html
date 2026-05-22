@@ -1,2703 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Swastika 🎂🏏❤️</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap"
-    rel="stylesheet">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    :root {
-      --pink: #ff6ec7;
-      --purple: #a855f7;
-      --blue: #60a5fa;
-      --teal: #2dd4bf;
-      --rcb-red: #cc0000;
-      --rcb-gold: #d4a843;
-      --glass: rgba(255, 255, 255, 0.07);
-      --glass-b: rgba(255, 255, 255, 0.15);
-      --insta: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #080015;
-      color: #fff;
-      overflow-x: hidden;
-      cursor: none
-    }
-
-    /* ── CURSOR ── */
-    #cursor {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--pink);
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen
-    }
-
-    #cursor-ring {
-      position: fixed;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(168, 85, 247, .55);
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%, -50%)
-    }
-
-    /* ── BG ── */
-    .bg-wrap {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: radial-gradient(ellipse 90% 70% at 15% -10%, #3b0764 0%, transparent 55%), radial-gradient(ellipse 70% 60% at 85% 110%, #1e1b4b 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 50% 50%, #200040 0%, transparent 65%), linear-gradient(160deg, #080015, #12002a, #060020);
-      animation: bgPulse 10s ease-in-out infinite alternate
-    }
-
-    @keyframes bgPulse {
-      0% {
-        filter: hue-rotate(0deg) brightness(1)
-      }
-
-      100% {
-        filter: hue-rotate(20deg) brightness(1.1)
-      }
-    }
-
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0
-    }
-
-    .b1 {
-      width: 500px;
-      height: 500px;
-      background: rgba(168, 85, 247, .18);
-      top: -120px;
-      left: -120px;
-      animation: bm1 14s ease-in-out infinite
-    }
-
-    .b2 {
-      width: 380px;
-      height: 380px;
-      background: rgba(255, 110, 199, .13);
-      bottom: -80px;
-      right: -80px;
-      animation: bm2 11s ease-in-out infinite
-    }
-
-    .b3 {
-      width: 320px;
-      height: 320px;
-      background: rgba(204, 0, 0, .12);
-      top: 40%;
-      left: 55%;
-      animation: bm3 16s ease-in-out infinite
-    }
-
-    .b4 {
-      width: 220px;
-      height: 220px;
-      background: rgba(212, 168, 67, .09);
-      top: 20%;
-      right: 20%;
-      animation: bm4 9s ease-in-out infinite
-    }
-
-    @keyframes bm1 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1)
-      }
-
-      33% {
-        transform: translate(60px, 40px) scale(1.1)
-      }
-
-      66% {
-        transform: translate(-30px, 70px) scale(.95)
-      }
-    }
-
-    @keyframes bm2 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1)
-      }
-
-      50% {
-        transform: translate(-50px, -40px) scale(1.15)
-      }
-    }
-
-    @keyframes bm3 {
-
-      0%,
-      100% {
-        transform: translate(0, 0) scale(1)
-      }
-
-      40% {
-        transform: translate(40px, -60px) scale(1.2)
-      }
-
-      80% {
-        transform: translate(-40px, 30px) scale(.9)
-      }
-    }
-
-    @keyframes bm4 {
-
-      0%,
-      100% {
-        transform: translate(0, 0)
-      }
-
-      50% {
-        transform: translate(-30px, 50px)
-      }
-    }
-
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none
-    }
-
-    .confetti-wrap {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      overflow: hidden
-    }
-
-    .c-piece {
-      position: absolute;
-      top: -14px;
-      opacity: 0;
-      animation: cfAll linear infinite
-    }
-
-    @keyframes cfAll {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1
-      }
-
-      100% {
-        transform: translateY(108vh) rotate(800deg);
-        opacity: 0
-      }
-    }
-
-    .sparkle {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      border-radius: 50%;
-      animation: spPop .7s ease forwards
-    }
-
-    @keyframes spPop {
-      0% {
-        transform: scale(0);
-        opacity: 1
-      }
-
-      100% {
-        transform: scale(2) translateY(-22px);
-        opacity: 0
-      }
-    }
-
-    section {
-      position: relative;
-      z-index: 5
-    }
-
-    /* ════════════ HERO ════════════ */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      overflow: hidden
-    }
-
-    /* ── Insta Stories row ── */
-    .stories-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 2.4rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      opacity: 0;
-      animation: fadeDown .9s ease .2s forwards
-    }
-
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-22px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .story-bub {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      cursor: none
-    }
-
-    .story-ring {
-      width: 66px;
-      height: 66px;
-      border-radius: 50%;
-      padding: 3px;
-      animation: sRingPulse 2.5s ease-in-out infinite
-    }
-
-    .story-ring.active {
-      background: var(--insta)
-    }
-
-    .story-ring.rcb {
-      background: linear-gradient(45deg, #cc0000, #d4a843, #cc0000)
-    }
-
-    .story-ring.seen {
-      background: rgba(255, 255, 255, .18)
-    }
-
-    .story-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #14002a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      border: 2.5px solid #080015;
-      transition: transform .3s
-    }
-
-    .story-bub:hover .story-inner {
-      transform: scale(1.1)
-    }
-
-    .story-name {
-      font-size: .6rem;
-      color: rgba(255, 255, 255, .5);
-      max-width: 68px;
-      text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap
-    }
-
-    @keyframes sRingPulse {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(220, 39, 67, .35)
-      }
-
-      70% {
-        box-shadow: 0 0 0 7px rgba(220, 39, 67, 0)
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      backdrop-filter: blur(14px);
-      border-radius: 100px;
-      padding: 8px 22px;
-      font-size: .76rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: #e2b4ff;
-      margin-bottom: 1.6rem;
-      opacity: 0;
-      animation: badgeDrop .9s cubic-bezier(.34, 1.56, .64, 1) .5s forwards
-    }
-
-    @keyframes badgeDrop {
-      0% {
-        opacity: 0;
-        transform: translateY(-24px) scale(.8)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 10vw, 8.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      background: linear-gradient(135deg, #ff9de2, #c084fc, #818cf8, #60a5fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 80px rgba(192, 132, 252, .45));
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0 .08em
-    }
-
-    .hero-title .char {
-      display: inline-block;
-      opacity: 0;
-      animation: charPop .6s cubic-bezier(.34, 1.56, .64, 1) forwards
-    }
-
-    @keyframes charPop {
-      0% {
-        opacity: 0;
-        transform: translateY(60px) rotate(-8deg) scale(.5)
-      }
-
-      60% {
-        transform: translateY(-8px) rotate(2deg) scale(1.1)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .hero-sub {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.7rem);
-      color: rgba(255, 255, 255, .5);
-      margin-top: .5rem;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.8s forwards
-    }
-
-    .hero-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.4rem, 7vw, 5.5rem);
-      background: linear-gradient(90deg, #ff6ec7, #a855f7, #cc0000, #d4a843);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 400%;
-      margin-top: .3rem;
-      opacity: 0;
-      animation: fadeUp 1s ease 2s forwards, shimmer 5s linear 3s infinite
-    }
-
-    @keyframes shimmer {
-      0% {
-        background-position: 0% 50%
-      }
-
-      100% {
-        background-position: 400% 50%
-      }
-    }
-
-    .rcb-hero-tag {
-      margin-top: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(204, 0, 0, .22), rgba(212, 168, 67, .12));
-      border: 1px solid rgba(204, 0, 0, .38);
-      backdrop-filter: blur(12px);
-      border-radius: 100px;
-      padding: 7px 20px;
-      font-size: .76rem;
-      letter-spacing: .1em;
-      color: #d4a843;
-      opacity: 0;
-      animation: fadeUp .8s ease 2.2s forwards
-    }
-
-    .rcb-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #cc0000;
-      animation: rcbP 1.5s ease-in-out infinite
-    }
-
-    @keyframes rcbP {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(204, 0, 0, .6)
-      }
-
-      70% {
-        box-shadow: 0 0 0 8px rgba(204, 0, 0, 0)
-      }
-    }
-
-    .emoji-ring {
-      position: relative;
-      width: 240px;
-      height: 55px;
-      margin-top: 1.8rem;
-      opacity: 0;
-      animation: fadeUp .8s ease 2.4s forwards
-    }
-
-    .emoji-ring span {
-      position: absolute;
-      font-size: 1.9rem;
-      animation: eFloat ease-in-out infinite
-    }
-
-    .emoji-ring span:nth-child(1) {
-      left: 0;
-      animation-duration: 2s
-    }
-
-    .emoji-ring span:nth-child(2) {
-      left: 48px;
-      animation-duration: 2.2s;
-      animation-delay: .2s
-    }
-
-    .emoji-ring span:nth-child(3) {
-      left: 96px;
-      animation-duration: 1.9s;
-      animation-delay: .4s
-    }
-
-    .emoji-ring span:nth-child(4) {
-      left: 144px;
-      animation-duration: 2.4s;
-      animation-delay: .6s
-    }
-
-    .emoji-ring span:nth-child(5) {
-      left: 192px;
-      animation-duration: 2.1s;
-      animation-delay: .8s
-    }
-
-    @keyframes eFloat {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(-4deg)
-      }
-
-      50% {
-        transform: translateY(-14px) rotate(4deg)
-      }
-    }
-
-    .hero-ribbon {
-      margin-top: 2rem;
-      font-size: .7rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .26);
-      opacity: 0;
-      animation: fadeUp .8s ease 2.6s forwards
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 255, 255, .27);
-      font-size: .7rem;
-      letter-spacing: .1em;
-      animation: fadeIn 2s ease 3s both
-    }
-
-    .scroll-dot {
-      width: 22px;
-      height: 36px;
-      border: 1.5px solid rgba(255, 255, 255, .18);
-      border-radius: 100px;
-      display: flex;
-      justify-content: center;
-      padding-top: 5px
-    }
-
-    .scroll-dot::after {
-      content: '';
-      width: 4px;
-      height: 7px;
-      background: var(--pink);
-      border-radius: 100px;
-      animation: sDot 1.6s ease-in-out infinite
-    }
-
-    @keyframes sDot {
-
-      0%,
-      100% {
-        transform: translateY(0);
-        opacity: 1
-      }
-
-      80% {
-        transform: translateY(14px);
-        opacity: 0
-      }
-    }
-
-    /* ════════════ SECTION SHARED ════════════ */
-    .section-label {
-      font-size: .7rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: #c084fc;
-      display: flex;
-      align-items: center;
-      gap: 14px
-    }
-
-    .section-label::before,
-    .section-label::after {
-      content: '';
-      height: 1px;
-      width: 60px
-    }
-
-    .section-label::before {
-      background: linear-gradient(90deg, transparent, #c084fc)
-    }
-
-    .section-label::after {
-      background: linear-gradient(90deg, #c084fc, transparent)
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      text-align: center;
-      background: linear-gradient(135deg, #fff, #e2b4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text
-    }
-
-    /* ════════════ BIGG BOSS ORIGIN ════════════ */
-    #origin {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .origin-card {
-      max-width: 700px;
-      width: 100%;
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      backdrop-filter: blur(24px);
-      border-radius: 32px;
-      padding: 3rem 2.5rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .4)
-    }
-
-    .origin-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 32px;
-      background: radial-gradient(ellipse at 0% 0%, rgba(212, 168, 67, .08), transparent 50%), radial-gradient(ellipse at 100% 100%, rgba(204, 0, 0, .08), transparent 50%);
-      pointer-events: none
-    }
-
-    .origin-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      position: relative
-    }
-
-    .origin-timeline::before {
-      content: '';
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--rcb-gold), var(--rcb-red), var(--purple), var(--blue))
-    }
-
-    .origin-step {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      padding-left: .5rem
-    }
-
-    .step-dot {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      position: relative;
-      z-index: 2;
-      animation: stepPop .5s cubic-bezier(.34, 1.56, .64, 1) both
-    }
-
-    .step-dot.s1 {
-      background: linear-gradient(135deg, #d4a843, #f59e0b);
-      box-shadow: 0 0 16px rgba(212, 168, 67, .5);
-      animation-delay: .1s
-    }
-
-    .step-dot.s2 {
-      background: linear-gradient(135deg, #cc0000, #ef4444);
-      box-shadow: 0 0 16px rgba(204, 0, 0, .5);
-      animation-delay: .3s
-    }
-
-    .step-dot.s3 {
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      box-shadow: 0 0 16px rgba(168, 85, 247, .5);
-      animation-delay: .5s
-    }
-
-    .step-dot.s4 {
-      background: linear-gradient(135deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 16px rgba(96, 165, 250, .5);
-      animation-delay: .7s
-    }
-
-    @keyframes stepPop {
-      0% {
-        transform: scale(0)
-      }
-
-      100% {
-        transform: scale(1)
-      }
-    }
-
-    .step-content {
-      padding-top: .3rem
-    }
-
-    .step-title {
-      font-weight: 500;
-      font-size: .95rem;
-      color: #fff;
-      margin-bottom: .3rem
-    }
-
-    .step-desc {
-      font-size: .82rem;
-      color: rgba(255, 255, 255, .55);
-      line-height: 1.7
-    }
-
-    /* ════════════ INSTAGRAM PHONE ════════════ */
-    #insta-section {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .insta-phone {
-      width: 340px;
-      max-width: 92vw;
-      background: #0a0a0a;
-      border-radius: 36px;
-      border: 1px solid rgba(255, 255, 255, .1);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 60px rgba(168, 85, 247, .12), inset 0 1px 0 rgba(255, 255, 255, .07);
-      overflow: hidden;
-      animation: phoneFloat 4s ease-in-out infinite
-    }
-
-    @keyframes phoneFloat {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(-1deg)
-      }
-
-      50% {
-        transform: translateY(-12px) rotate(1deg)
-      }
-    }
-
-    .insta-sb {
-      height: 28px;
-      background: #0a0a0a;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-      font-size: .62rem;
-      color: rgba(255, 255, 255, .55)
-    }
-
-    .insta-tb {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, .06)
-    }
-
-    .insta-logo {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.3rem;
-      flex: 1;
-      background: var(--insta);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text
-    }
-
-    .insta-icons {
-      display: flex;
-      gap: 12px;
-      font-size: 1.05rem
-    }
-
-    .ph-stories {
-      display: flex;
-      gap: 10px;
-      padding: 12px 14px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      border-bottom: 1px solid rgba(255, 255, 255, .06)
-    }
-
-    .ph-stories::-webkit-scrollbar {
-      display: none
-    }
-
-    .ph-story {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      flex-shrink: 0
-    }
-
-    .ph-sr {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      padding: 2px;
-      background: var(--insta)
-    }
-
-    .ph-sr.rcb-s {
-      background: linear-gradient(45deg, #cc0000, #d4a843)
-    }
-
-    .ph-si {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #1a0a2a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      border: 2px solid #0a0a0a
-    }
-
-    .ph-sn {
-      font-size: .5rem;
-      color: rgba(255, 255, 255, .45);
-      max-width: 50px;
-      text-align: center
-    }
-
-    .post-hdr {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px
-    }
-
-    .post-av {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #cc0000, #d4a843);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .95rem;
-      flex-shrink: 0;
-      box-shadow: 0 0 10px rgba(204, 0, 0, .45)
-    }
-
-    .post-uname {
-      font-size: .78rem;
-      font-weight: 500;
-      color: #fff
-    }
-
-    .post-loc {
-      font-size: .62rem;
-      color: rgba(255, 255, 255, .38)
-    }
-
-    .post-more {
-      margin-left: auto;
-      color: rgba(255, 255, 255, .45);
-      font-size: 1.1rem
-    }
-
-    .post-img {
-      width: 100%;
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #1a0000, #2d0000 30%, #1a0533 60%, #0a0a2e);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      cursor: none
-    }
-
-    .post-img::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 30% 30%, rgba(204, 0, 0, .3), transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(212, 168, 67, .18), transparent 60%)
-    }
-
-    .post-big {
-      font-size: 4.5rem;
-      animation: postFloat 3s ease-in-out infinite;
-      position: relative;
-      z-index: 2
-    }
-
-    @keyframes postFloat {
-
-      0%,
-      100% {
-        transform: translateY(0) scale(1)
-      }
-
-      50% {
-        transform: translateY(-9px) scale(1.05)
-      }
-    }
-
-    .post-cap-img {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 14px;
-      background: linear-gradient(transparent, rgba(0, 0, 0, .85));
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.25rem;
-      color: #d4a843;
-      z-index: 2
-    }
-
-    .post-badge {
-      position: absolute;
-      top: 11px;
-      right: 11px;
-      background: rgba(204, 0, 0, .88);
-      border: 1px solid #d4a843;
-      border-radius: 8px;
-      padding: 4px 9px;
-      font-size: .62rem;
-      font-weight: 500;
-      color: #d4a843;
-      z-index: 2;
-      letter-spacing: .05em
-    }
-
-    .post-acts {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      padding: 10px 14px 5px
-    }
-
-    .pact {
-      font-size: 1.25rem;
-      cursor: none;
-      transition: transform .2s
-    }
-
-    .pact:hover {
-      transform: scale(1.2)
-    }
-
-    .pact-save {
-      margin-left: auto
-    }
-
-    .post-likes {
-      padding: 0 14px;
-      font-size: .76rem;
-      font-weight: 500
-    }
-
-    .post-likes span {
-      color: var(--pink)
-    }
-
-    .post-cap {
-      padding: 5px 14px 3px;
-      font-size: .73rem;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, .78)
-    }
-
-    .post-cap strong {
-      color: #fff
-    }
-
-    .post-tags {
-      padding: 2px 14px 7px;
-      font-size: .68rem;
-      color: #60a5fa;
-      line-height: 1.7
-    }
-
-    .post-cmt-btn {
-      padding: 3px 14px 12px;
-      font-size: .68rem;
-      color: rgba(255, 255, 255, .32)
-    }
-
-    .post-cmts {
-      padding: 0 14px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px
-    }
-
-    .post-cmts div {
-      font-size: .7rem
-    }
-
-    /* ════════════ COUNTDOWN ════════════ */
-    #countdown {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .cdgrid {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center
-    }
-
-    .cd-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      backdrop-filter: blur(24px);
-      border-radius: 24px;
-      padding: 2rem 1.6rem;
-      min-width: 118px;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .08);
-      position: relative;
-      overflow: hidden;
-      transition: transform .3s, box-shadow .3s;
-      animation: cdEntry .7s cubic-bezier(.34, 1.56, .64, 1) both
-    }
-
-    .cd-card:nth-child(1) {
-      animation-delay: .1s
-    }
-
-    .cd-card:nth-child(2) {
-      animation-delay: .2s
-    }
-
-    .cd-card:nth-child(3) {
-      animation-delay: .3s
-    }
-
-    .cd-card:nth-child(4) {
-      animation-delay: .4s
-    }
-
-    @keyframes cdEntry {
-      0% {
-        opacity: 0;
-        transform: translateY(40px) scale(.8)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .cd-card::after {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 25px;
-      background: conic-gradient(from var(--a, 0deg), #cc0000, #d4a843, #a855f7, #60a5fa, #cc0000);
-      opacity: .38;
-      animation: spinR 4s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      padding: 1px
-    }
-
-    @property --a {
-      syntax: '<angle>';
-      initial-value: 0deg;
-      inherits: false
-    }
-
-    @keyframes spinR {
-      to {
-        --a: 360deg
-      }
-    }
-
-    .cd-card:hover {
-      transform: translateY(-8px) scale(1.06);
-      box-shadow: 0 0 50px rgba(204, 0, 0, .3), 0 20px 60px rgba(0, 0, 0, .4)
-    }
-
-    .cd-num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      background: linear-gradient(135deg, #ff9de2, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1
-    }
-
-    .cd-num.flip {
-      animation: nFlip .3s ease
-    }
-
-    @keyframes nFlip {
-      0% {
-        transform: rotateX(90deg);
-        opacity: 0
-      }
-
-      100% {
-        transform: none;
-        opacity: 1
-      }
-    }
-
-    .cd-label {
-      font-size: .66rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .38);
-      margin-top: .5rem
-    }
-
-    /* ════════════ CHAT ════════════ */
-    #squad {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .chat-win {
-      background: rgba(8, 0, 18, .88);
-      border: 1px solid rgba(255, 255, 255, .09);
-      backdrop-filter: blur(24px);
-      border-radius: 32px;
-      padding: 2rem;
-      max-width: 680px;
-      width: 100%;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .05);
-      position: relative;
-      overflow: hidden
-    }
-
-    .chat-win::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 32px;
-      background: linear-gradient(135deg, rgba(204, 0, 0, .04), rgba(212, 168, 67, .03));
-      pointer-events: none
-    }
-
-    .chat-hdr {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 1.8rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, .06)
-    }
-
-    .cdots {
-      display: flex;
-      gap: 6px
-    }
-
-    .cdots span {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%
-    }
-
-    .cdots span:nth-child(1) {
-      background: #ff5f57
-    }
-
-    .cdots span:nth-child(2) {
-      background: #fabb2c
-    }
-
-    .cdots span:nth-child(3) {
-      background: #2ac840
-    }
-
-    .ctitle {
-      font-size: .8rem;
-      color: rgba(255, 255, 255, .35);
-      letter-spacing: .06em;
-      flex: 1;
-      text-align: center
-    }
-
-    .conline {
-      font-size: .66rem;
-      color: #2dd4bf;
-      display: flex;
-      align-items: center;
-      gap: 5px
-    }
-
-    .conline::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #2dd4bf;
-      animation: onP 1.5s ease-in-out infinite
-    }
-
-    @keyframes onP {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 0 rgba(45, 212, 191, .7)
-      }
-
-      70% {
-        box-shadow: 0 0 0 7px rgba(45, 212, 191, 0)
-      }
-    }
-
-    .cbody {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      min-height: 280px
-    }
-
-    .mrow {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .5s, transform .5s
-    }
-
-    .mrow.visible {
-      opacity: 1;
-      transform: none
-    }
-
-    .mrow.right {
-      flex-direction: row-reverse
-    }
-
-    .mav {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      animation: avBob 3s ease-in-out infinite
-    }
-
-    .av1 {
-      background: linear-gradient(135deg, #ff6ec7, #f472b6);
-      box-shadow: 0 0 12px rgba(255, 110, 199, .5)
-    }
-
-    .av2 {
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      box-shadow: 0 0 12px rgba(168, 85, 247, .5);
-      animation-delay: .5s
-    }
-
-    .av3 {
-      background: linear-gradient(135deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 12px rgba(96, 165, 250, .5);
-      animation-delay: 1s
-    }
-
-    .av4 {
-      background: linear-gradient(135deg, #cc0000, #d4a843);
-      box-shadow: 0 0 12px rgba(204, 0, 0, .5);
-      animation-delay: 1.5s
-    }
-
-    @keyframes avBob {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-4px)
-      }
-    }
-
-    .mbub {
-      max-width: 76%;
-      padding: .75rem 1.1rem;
-      border-radius: 18px;
-      font-size: .85rem;
-      line-height: 1.6
-    }
-
-    .mrow:not(.right) .mbub {
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(255, 255, 255, .09);
-      border-bottom-left-radius: 4px
-    }
-
-    .mrow.right .mbub {
-      background: linear-gradient(135deg, rgba(204, 0, 0, .22), rgba(212, 168, 67, .14));
-      border: 1px solid rgba(204, 0, 0, .22);
-      border-bottom-right-radius: 4px
-    }
-
-    .mname {
-      font-size: .64rem;
-      color: rgba(255, 255, 255, .32);
-      margin-bottom: .2rem;
-      letter-spacing: .04em
-    }
-
-    .mtime {
-      font-size: .6rem;
-      color: rgba(255, 255, 255, .2);
-      text-align: right;
-      margin-top: .25rem
-    }
-
-    .mtyping {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      padding: .5rem .8rem
-    }
-
-    .mtyping span {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .3);
-      animation: tDot 1.2s ease-in-out infinite
-    }
-
-    .mtyping span:nth-child(2) {
-      animation-delay: .2s
-    }
-
-    .mtyping span:nth-child(3) {
-      animation-delay: .4s
-    }
-
-    @keyframes tDot {
-
-      0%,
-      60%,
-      100% {
-        transform: translateY(0);
-        opacity: .35
-      }
-
-      30% {
-        transform: translateY(-6px);
-        opacity: 1
-      }
-    }
-
-    /* ════════════ PLAYER CARDS ════════════ */
-    #players {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .players-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.6rem;
-      max-width: 1100px;
-      width: 100%
-    }
-
-    .player-card {
-      border-radius: 28px;
-      overflow: hidden;
-      position: relative;
-      cursor: default;
-      transition: transform .5s cubic-bezier(.17, .67, .45, 1.3), box-shadow .5s;
-      animation: pcEntry .8s cubic-bezier(.34, 1.2, .64, 1) both
-    }
-
-    .player-card:nth-child(1) {
-      animation-delay: .05s
-    }
-
-    .player-card:nth-child(2) {
-      animation-delay: .15s
-    }
-
-    .player-card:nth-child(3) {
-      animation-delay: .25s
-    }
-
-    .player-card:nth-child(4) {
-      animation-delay: .35s
-    }
-
-    .player-card:nth-child(5) {
-      animation-delay: .45s
-    }
-
-    @keyframes pcEntry {
-      0% {
-        opacity: 0;
-        transform: translateY(50px) scale(.85)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .player-card:hover {
-      transform: translateY(-12px) scale(1.03)
-    }
-
-    /* Virat – special gold */
-    .pc-virat {
-      background: linear-gradient(160deg, #1a0000, #2a0000, #1a0533);
-      border: 1px solid rgba(212, 168, 67, .4);
-      box-shadow: 0 8px 32px rgba(212, 168, 67, .15)
-    }
-
-    .pc-virat:hover {
-      box-shadow: 0 30px 70px rgba(212, 168, 67, .35)
-    }
-
-    /* RCB red */
-    .pc-rcb {
-      background: linear-gradient(160deg, #1a0000, #2d0000, #0a0a0a);
-      border: 1px solid rgba(204, 0, 0, .35);
-      box-shadow: 0 8px 32px rgba(204, 0, 0, .12)
-    }
-
-    .pc-rcb:hover {
-      box-shadow: 0 30px 70px rgba(204, 0, 0, .3)
-    }
-
-    /* SRH orange */
-    .pc-srh {
-      background: linear-gradient(160deg, #1a0800, #2a1000, #0a0a0a);
-      border: 1px solid rgba(249, 115, 22, .35);
-      box-shadow: 0 8px 32px rgba(249, 115, 22, .12)
-    }
-
-    .pc-srh:hover {
-      box-shadow: 0 30px 70px rgba(249, 115, 22, .3)
-    }
-
-    /* ---- Card glow top bar ---- */
-    .pc-bar {
-      height: 4px;
-      width: 100%;
-      position: relative
-    }
-
-    .pc-virat .pc-bar {
-      background: linear-gradient(90deg, #cc0000, #d4a843, #cc0000)
-    }
-
-    .pc-rcb .pc-bar {
-      background: linear-gradient(90deg, #cc0000, #d4a843)
-    }
-
-    .pc-srh .pc-bar {
-      background: linear-gradient(90deg, #f97316, #fb923c)
-    }
-
-    .pc-body {
-      padding: 1.8rem 1.6rem
-    }
-
-    /* big emoji avatar */
-    .pc-avatar {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin-bottom: 1.1rem;
-      position: relative;
-      animation: avBob 3s ease-in-out infinite
-    }
-
-    .pc-virat .pc-avatar {
-      background: linear-gradient(135deg, #cc0000, #d4a843);
-      box-shadow: 0 0 28px rgba(212, 168, 67, .55)
-    }
-
-    .pc-rcb .pc-avatar {
-      background: linear-gradient(135deg, #cc0000, #7c0000);
-      box-shadow: 0 0 22px rgba(204, 0, 0, .5)
-    }
-
-    .pc-srh .pc-avatar {
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      box-shadow: 0 0 22px rgba(249, 115, 22, .5)
-    }
-
-    .pc-team-badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      font-size: .6rem;
-      background: rgba(0, 0, 0, .7);
-      border: 1px solid rgba(255, 255, 255, .15);
-      border-radius: 100px;
-      padding: 2px 7px;
-      letter-spacing: .05em;
-      white-space: nowrap
-    }
-
-    .pc-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .2rem
-    }
-
-    .pc-role {
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: .8rem
-    }
-
-    .pc-virat .pc-role {
-      color: #d4a843
-    }
-
-    .pc-rcb .pc-role {
-      color: rgba(204, 0, 0, .9)
-    }
-
-    .pc-srh .pc-role {
-      color: #f97316
-    }
-
-    .pc-stat-row {
-      display: flex;
-      gap: .7rem;
-      flex-wrap: wrap;
-      margin-bottom: .9rem
-    }
-
-    .pc-stat {
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-radius: 10px;
-      padding: 5px 10px;
-      text-align: center
-    }
-
-    .pc-stat-val {
-      font-size: .9rem;
-      font-weight: 500;
-      color: #fff
-    }
-
-    .pc-stat-lbl {
-      font-size: .56rem;
-      color: rgba(255, 255, 255, .38);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-top: 1px
-    }
-
-    .pc-quote {
-      font-size: .8rem;
-      font-style: italic;
-      color: rgba(255, 255, 255, .6);
-      line-height: 1.65;
-      border-left: 2px solid;
-      padding-left: .8rem
-    }
-
-    .pc-virat .pc-quote {
-      border-color: #d4a843
-    }
-
-    .pc-rcb .pc-quote {
-      border-color: #cc0000
-    }
-
-    .pc-srh .pc-quote {
-      border-color: #f97316
-    }
-
-    .pc-hearts {
-      margin-top: .9rem;
-      font-size: 1.1rem;
-      letter-spacing: .15em
-    }
-
-    /* "Her faves" banner */
-    .faves-banner {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(135deg, rgba(204, 0, 0, .15), rgba(212, 168, 67, .1));
-      border: 1px solid rgba(204, 0, 0, .25);
-      border-radius: 16px;
-      padding: 12px 20px;
-      max-width: 680px;
-      width: 100%;
-      font-size: .85rem;
-      color: rgba(255, 255, 255, .7)
-    }
-
-    .faves-banner span {
-      font-size: 1.2rem
-    }
-
-    /* ════════════ WISH CARDS ════════════ */
-    #wishes {
-      padding: 7rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem
-    }
-
-    .wishes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-      gap: 1.8rem;
-      max-width: 1100px;
-      width: 100%
-    }
-
-    .wish-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-b);
-      backdrop-filter: blur(22px);
-      border-radius: 28px;
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-      cursor: default;
-      transition: transform .5s cubic-bezier(.17, .67, .45, 1.3), box-shadow .5s;
-      animation: wcEntry .8s cubic-bezier(.34, 1.2, .64, 1) both
-    }
-
-    .wish-card:nth-child(1) {
-      animation-delay: .1s
-    }
-
-    .wish-card:nth-child(2) {
-      animation-delay: .25s
-    }
-
-    .wish-card:nth-child(3) {
-      animation-delay: .4s
-    }
-
-    .wish-card:nth-child(4) {
-      animation-delay: .55s
-    }
-
-    @keyframes wcEntry {
-      0% {
-        opacity: 0;
-        transform: translateY(50px) scale(.85) rotate(-3deg)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .wish-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .05), transparent);
-      transition: left .6s;
-      pointer-events: none
-    }
-
-    .wish-card:hover::before {
-      left: 150%
-    }
-
-    .wc1 {
-      box-shadow: 0 8px 32px rgba(255, 110, 199, .1);
-      border-color: rgba(255, 110, 199, .2)
-    }
-
-    .wc1:hover {
-      transform: translateY(-12px) rotate(-1.5deg);
-      box-shadow: 0 30px 70px rgba(255, 110, 199, .25)
-    }
-
-    .wc2 {
-      box-shadow: 0 8px 32px rgba(168, 85, 247, .1);
-      border-color: rgba(168, 85, 247, .2)
-    }
-
-    .wc2:hover {
-      transform: translateY(-12px) rotate(1.5deg);
-      box-shadow: 0 30px 70px rgba(168, 85, 247, .25)
-    }
-
-    .wc3 {
-      box-shadow: 0 8px 32px rgba(96, 165, 250, .1);
-      border-color: rgba(96, 165, 250, .2)
-    }
-
-    .wc3:hover {
-      transform: translateY(-12px) rotate(-1deg);
-      box-shadow: 0 30px 70px rgba(96, 165, 250, .25)
-    }
-
-    .wc4 {
-      box-shadow: 0 8px 32px rgba(204, 0, 0, .12);
-      border-color: rgba(204, 0, 0, .22)
-    }
-
-    .wc4:hover {
-      transform: translateY(-12px) rotate(1deg);
-      box-shadow: 0 30px 70px rgba(204, 0, 0, .25)
-    }
-
-    .insta-handle {
-      font-size: .68rem;
-      color: rgba(255, 255, 255, .32);
-      letter-spacing: .04em;
-      margin-bottom: .8rem;
-      display: flex;
-      align-items: center;
-      gap: 5px
-    }
-
-    .insta-handle::before {
-      content: '📸';
-      font-size: .8rem
-    }
-
-    .wish-av {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.9rem;
-      margin-bottom: 1rem;
-      animation: avBob 3s ease-in-out infinite
-    }
-
-    .wc1 .wish-av {
-      background: linear-gradient(135deg, #ff6ec7, #f472b6);
-      box-shadow: 0 0 20px rgba(255, 110, 199, .5)
-    }
-
-    .wc2 .wish-av {
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      box-shadow: 0 0 20px rgba(168, 85, 247, .5);
-      animation-delay: .5s
-    }
-
-    .wc3 .wish-av {
-      background: linear-gradient(135deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 20px rgba(96, 165, 250, .5);
-      animation-delay: 1s
-    }
-
-    .wc4 .wish-av {
-      background: linear-gradient(135deg, #cc0000, #d4a843);
-      box-shadow: 0 0 20px rgba(204, 0, 0, .5);
-      animation-delay: 1.5s
-    }
-
-    .wish-name {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #fff;
-      margin-bottom: .2rem
-    }
-
-    .wish-role {
-      font-size: .7rem;
-      color: rgba(255, 255, 255, .33);
-      letter-spacing: .1em;
-      margin-bottom: .9rem
-    }
-
-    .wish-text {
-      font-size: .87rem;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, .68);
-      font-style: italic
-    }
-
-    .wish-hearts {
-      margin-top: 1.1rem;
-      font-size: 1.15rem;
-      letter-spacing: .2em
-    }
-
-    /* ════════════ SURPRISE ════════════ */
-    #surprise {
-      padding: 9rem 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.2rem;
-      text-align: center
-    }
-
-    .surprise-desc {
-      color: rgba(255, 255, 255, .42);
-      max-width: 460px;
-      line-height: 1.9;
-      font-size: .92rem
-    }
-
-    .glow-btn {
-      position: relative;
-      padding: 1.2rem 3.2rem;
-      border: none;
-      border-radius: 100px;
-      cursor: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #fff;
-      letter-spacing: .06em;
-      background: linear-gradient(135deg, #cc0000, #d4a843, #a855f7, #ff6ec7);
-      background-size: 300%;
-      animation: btnG 4s ease infinite;
-      box-shadow: 0 0 40px rgba(204, 0, 0, .4), 0 6px 24px rgba(0, 0, 0, .3);
-      transition: transform .3s, box-shadow .3s;
-      overflow: hidden
-    }
-
-    .glow-btn::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 100px;
-      background: inherit;
-      z-index: -1;
-      filter: blur(20px);
-      opacity: .7;
-      animation: glP 2.5s ease-in-out infinite
-    }
-
-    .glow-btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -60%;
-      width: 40%;
-      height: 200%;
-      background: rgba(255, 255, 255, .14);
-      transform: rotate(20deg);
-      transition: left .5s
-    }
-
-    .glow-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 80px rgba(204, 0, 0, .7), 0 10px 40px rgba(0, 0, 0, .4)
-    }
-
-    .glow-btn:hover::after {
-      left: 130%
-    }
-
-    @keyframes btnG {
-
-      0%,
-      100% {
-        background-position: 0% 50%
-      }
-
-      50% {
-        background-position: 100% 50%
-      }
-    }
-
-    @keyframes glP {
-
-      0%,
-      100% {
-        opacity: .7;
-        transform: scale(1)
-      }
-
-      50% {
-        opacity: 1;
-        transform: scale(1.08)
-      }
-    }
-
-    .surp-rev {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      text-align: center;
-      animation: revPop .7s cubic-bezier(.34, 1.56, .64, 1) both
-    }
-
-    .surp-rev.show {
-      display: flex
-    }
-
-    @keyframes revPop {
-      0% {
-        opacity: 0;
-        transform: scale(.5) rotate(-10deg)
-      }
-
-      60% {
-        transform: scale(1.08) rotate(2deg)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .surp-cake {
-      font-size: 6rem;
-      animation: cakB 1s cubic-bezier(.34, 1.56, .64, 1) both
-    }
-
-    @keyframes cakB {
-      0% {
-        transform: scale(0) rotate(-20deg)
-      }
-
-      60% {
-        transform: scale(1.2) rotate(5deg)
-      }
-
-      100% {
-        transform: none
-      }
-    }
-
-    .surp-msg {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 4vw, 2.8rem);
-      background: linear-gradient(135deg, #cc0000, #d4a843, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text
-    }
-
-    .surp-quote {
-      max-width: 540px;
-      font-style: italic;
-      color: rgba(255, 255, 255, .58);
-      line-height: 1.9;
-      font-size: .93rem
-    }
-
-    .fw-grid {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      font-size: 2.8rem
-    }
-
-    .fw-grid span {
-      animation: fwP .5s cubic-bezier(.34, 1.56, .64, 1) both
-    }
-
-    .fw-grid span:nth-child(1) {
-      animation-delay: .1s
-    }
-
-    .fw-grid span:nth-child(2) {
-      animation-delay: .2s
-    }
-
-    .fw-grid span:nth-child(3) {
-      animation-delay: .3s
-    }
-
-    .fw-grid span:nth-child(4) {
-      animation-delay: .4s
-    }
-
-    .fw-grid span:nth-child(5) {
-      animation-delay: .5s
-    }
-
-    .fw-grid span:nth-child(6) {
-      animation-delay: .6s
-    }
-
-    @keyframes fwP {
-      0% {
-        opacity: 0;
-        transform: scale(0) translateY(30px)
-      }
-
-      100% {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    footer {
-      position: relative;
-      z-index: 5;
-      padding: 3rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, .05);
-      color: rgba(255, 255, 255, .22);
-      font-size: .74rem;
-      letter-spacing: .1em
-    }
-
-    footer span {
-      color: var(--rcb-red)
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity .9s ease, transform .9s ease
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none
-    }
-
-    .rd1 {
-      transition-delay: .1s
-    }
-
-    .rd2 {
-      transition-delay: .25s
-    }
-
-    .rd3 {
-      transition-delay: .4s
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0
-      }
-
-      to {
-        opacity: 1
-      }
-    }
-
-    @media(max-width:600px) {
-      .cdgrid {
-        gap: .9rem
-      }
-
-      .cd-card {
-        min-width: 76px;
-        padding: 1.2rem .8rem
-      }
-
-      .wishes-grid,
-      .players-grid {
-        grid-template-columns: 1fr
-      }
-
-      .stories-row {
-        gap: 9px
-      }
-
-      .story-ring {
-        width: 56px;
-        height: 56px
-      }
-
-      .chat-win {
-        padding: 1.2rem
-      }
-
-      .insta-phone {
-        width: 300px
-      }
-
-      .origin-card {
-        padding: 2rem 1.5rem
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aanya 🎂🏏❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#ff6ec7;--purple:#a855f7;--blue:#60a5fa;--teal:#2dd4bf;
+  --rcb-red:#cc0000;--rcb-gold:#d4a843;
+  --glass:rgba(255,255,255,0.07);--glass-b:rgba(255,255,255,0.15);
+  --insta:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#080015;color:#fff;overflow-x:hidden;cursor:none}
+
+/* ── CURSOR ── */
+#cursor{position:fixed;width:12px;height:12px;border-radius:50%;background:var(--pink);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+#cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(168,85,247,.55);pointer-events:none;z-index:99998;transform:translate(-50%,-50%)}
+
+/* ── BG ── */
+.bg-wrap{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 90% 70% at 15% -10%,#3b0764 0%,transparent 55%),radial-gradient(ellipse 70% 60% at 85% 110%,#1e1b4b 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 50% 50%,#200040 0%,transparent 65%),linear-gradient(160deg,#080015,#12002a,#060020);animation:bgPulse 10s ease-in-out infinite alternate}
+@keyframes bgPulse{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(20deg) brightness(1.1)}}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.b1{width:500px;height:500px;background:rgba(168,85,247,.18);top:-120px;left:-120px;animation:bm1 14s ease-in-out infinite}
+.b2{width:380px;height:380px;background:rgba(255,110,199,.13);bottom:-80px;right:-80px;animation:bm2 11s ease-in-out infinite}
+.b3{width:320px;height:320px;background:rgba(204,0,0,.12);top:40%;left:55%;animation:bm3 16s ease-in-out infinite}
+.b4{width:220px;height:220px;background:rgba(212,168,67,.09);top:20%;right:20%;animation:bm4 9s ease-in-out infinite}
+@keyframes bm1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.1)}66%{transform:translate(-30px,70px) scale(.95)}}
+@keyframes bm2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-50px,-40px) scale(1.15)}}
+@keyframes bm3{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(40px,-60px) scale(1.2)}80%{transform:translate(-40px,30px) scale(.9)}}
+@keyframes bm4{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,50px)}}
+
+#particles{position:fixed;inset:0;z-index:1;pointer-events:none}
+.confetti-wrap{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.c-piece{position:absolute;top:-14px;opacity:0;animation:cfAll linear infinite}
+@keyframes cfAll{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(108vh) rotate(800deg);opacity:0}}
+.sparkle{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;animation:spPop .7s ease forwards}
+@keyframes spPop{0%{transform:scale(0);opacity:1}100%{transform:scale(2) translateY(-22px);opacity:0}}
+section{position:relative;z-index:5}
+
+/* ════════════ HERO ════════════ */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;overflow:hidden}
+
+/* ── Insta Stories row ── */
+.stories-row{display:flex;gap:14px;margin-bottom:2.4rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeDown .9s ease .2s forwards}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:none}}
+.story-bub{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:none}
+.story-ring{width:66px;height:66px;border-radius:50%;padding:3px;animation:sRingPulse 2.5s ease-in-out infinite}
+.story-ring.active{background:var(--insta)}
+.story-ring.rcb{background:linear-gradient(45deg,#cc0000,#d4a843,#cc0000)}
+.story-ring.seen{background:rgba(255,255,255,.18)}
+.story-inner{width:100%;height:100%;border-radius:50%;background:#14002a;display:flex;align-items:center;justify-content:center;font-size:1.75rem;border:2.5px solid #080015;transition:transform .3s}
+.story-bub:hover .story-inner{transform:scale(1.1)}
+.story-name{font-size:.6rem;color:rgba(255,255,255,.5);max-width:68px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@keyframes sRingPulse{0%,100%{box-shadow:0 0 0 0 rgba(220,39,67,.35)}70%{box-shadow:0 0 0 7px rgba(220,39,67,0)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(14px);border-radius:100px;padding:8px 22px;font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;color:#e2b4ff;margin-bottom:1.6rem;opacity:0;animation:badgeDrop .9s cubic-bezier(.34,1.56,.64,1) .5s forwards}
+@keyframes badgeDrop{0%{opacity:0;transform:translateY(-24px) scale(.8)}100%{opacity:1;transform:none}}
+
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,10vw,8.5rem);font-weight:700;line-height:1.05;background:linear-gradient(135deg,#ff9de2,#c084fc,#818cf8,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 80px rgba(192,132,252,.45));display:flex;flex-wrap:wrap;justify-content:center;gap:0 .08em}
+.hero-title .char{display:inline-block;opacity:0;animation:charPop .6s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes charPop{0%{opacity:0;transform:translateY(60px) rotate(-8deg) scale(.5)}60%{transform:translateY(-8px) rotate(2deg) scale(1.1)}100%{opacity:1;transform:none}}
+
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.7rem);color:rgba(255,255,255,.5);margin-top:.5rem;opacity:0;animation:fadeUp 1s ease 1.8s forwards}
+.hero-name{font-family:'Dancing Script',cursive;font-size:clamp(2.4rem,7vw,5.5rem);background:linear-gradient(90deg,#ff6ec7,#a855f7,#cc0000,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:400%;margin-top:.3rem;opacity:0;animation:fadeUp 1s ease 2s forwards,shimmer 5s linear 3s infinite}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:400% 50%}}
+
+.rcb-hero-tag{margin-top:1.2rem;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(204,0,0,.22),rgba(212,168,67,.12));border:1px solid rgba(204,0,0,.38);backdrop-filter:blur(12px);border-radius:100px;padding:7px 20px;font-size:.76rem;letter-spacing:.1em;color:#d4a843;opacity:0;animation:fadeUp .8s ease 2.2s forwards}
+.rcb-dot{width:8px;height:8px;border-radius:50%;background:#cc0000;animation:rcbP 1.5s ease-in-out infinite}
+@keyframes rcbP{0%,100%{box-shadow:0 0 0 0 rgba(204,0,0,.6)}70%{box-shadow:0 0 0 8px rgba(204,0,0,0)}}
+
+.emoji-ring{position:relative;width:240px;height:55px;margin-top:1.8rem;opacity:0;animation:fadeUp .8s ease 2.4s forwards}
+.emoji-ring span{position:absolute;font-size:1.9rem;animation:eFloat ease-in-out infinite}
+.emoji-ring span:nth-child(1){left:0;animation-duration:2s}
+.emoji-ring span:nth-child(2){left:48px;animation-duration:2.2s;animation-delay:.2s}
+.emoji-ring span:nth-child(3){left:96px;animation-duration:1.9s;animation-delay:.4s}
+.emoji-ring span:nth-child(4){left:144px;animation-duration:2.4s;animation-delay:.6s}
+.emoji-ring span:nth-child(5){left:192px;animation-duration:2.1s;animation-delay:.8s}
+@keyframes eFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+
+.hero-ribbon{margin-top:2rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.26);opacity:0;animation:fadeUp .8s ease 2.6s forwards}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.27);font-size:.7rem;letter-spacing:.1em;animation:fadeIn 2s ease 3s both}
+.scroll-dot{width:22px;height:36px;border:1.5px solid rgba(255,255,255,.18);border-radius:100px;display:flex;justify-content:center;padding-top:5px}
+.scroll-dot::after{content:'';width:4px;height:7px;background:var(--pink);border-radius:100px;animation:sDot 1.6s ease-in-out infinite}
+@keyframes sDot{0%,100%{transform:translateY(0);opacity:1}80%{transform:translateY(14px);opacity:0}}
+
+/* ════════════ SECTION SHARED ════════════ */
+.section-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#c084fc;display:flex;align-items:center;gap:14px}
+.section-label::before,.section-label::after{content:'';height:1px;width:60px}
+.section-label::before{background:linear-gradient(90deg,transparent,#c084fc)}
+.section-label::after{background:linear-gradient(90deg,#c084fc,transparent)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);text-align:center;background:linear-gradient(135deg,#fff,#e2b4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ════════════ BIGG BOSS ORIGIN ════════════ */
+#origin{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.origin-card{max-width:700px;width:100%;background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(24px);border-radius:32px;padding:3rem 2.5rem;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.origin-card::before{content:'';position:absolute;inset:0;border-radius:32px;background:radial-gradient(ellipse at 0% 0%,rgba(212,168,67,.08),transparent 50%),radial-gradient(ellipse at 100% 100%,rgba(204,0,0,.08),transparent 50%);pointer-events:none}
+.origin-timeline{display:flex;flex-direction:column;gap:1.8rem;position:relative}
+.origin-timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--rcb-gold),var(--rcb-red),var(--purple),var(--blue))}
+.origin-step{display:flex;gap:1.5rem;align-items:flex-start;padding-left:.5rem}
+.step-dot{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:relative;z-index:2;animation:stepPop .5s cubic-bezier(.34,1.56,.64,1) both}
+.step-dot.s1{background:linear-gradient(135deg,#d4a843,#f59e0b);box-shadow:0 0 16px rgba(212,168,67,.5);animation-delay:.1s}
+.step-dot.s2{background:linear-gradient(135deg,#cc0000,#ef4444);box-shadow:0 0 16px rgba(204,0,0,.5);animation-delay:.3s}
+.step-dot.s3{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 0 16px rgba(168,85,247,.5);animation-delay:.5s}
+.step-dot.s4{background:linear-gradient(135deg,#60a5fa,#3b82f6);box-shadow:0 0 16px rgba(96,165,250,.5);animation-delay:.7s}
+@keyframes stepPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.step-content{padding-top:.3rem}
+.step-title{font-weight:500;font-size:.95rem;color:#fff;margin-bottom:.3rem}
+.step-desc{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.7}
+
+/* ════════════ INSTAGRAM PHONE ════════════ */
+#insta-section{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.insta-phone{width:340px;max-width:92vw;background:#0a0a0a;border-radius:36px;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(168,85,247,.12),inset 0 1px 0 rgba(255,255,255,.07);overflow:hidden;animation:phoneFloat 4s ease-in-out infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(1deg)}}
+.insta-sb{height:28px;background:#0a0a0a;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:.62rem;color:rgba(255,255,255,.55)}
+.insta-tb{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.insta-logo{font-family:'Dancing Script',cursive;font-size:1.3rem;flex:1;background:var(--insta);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.insta-icons{display:flex;gap:12px;font-size:1.05rem}
+.ph-stories{display:flex;gap:10px;padding:12px 14px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid rgba(255,255,255,.06)}
+.ph-stories::-webkit-scrollbar{display:none}
+.ph-story{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}
+.ph-sr{width:50px;height:50px;border-radius:50%;padding:2px;background:var(--insta)}
+.ph-sr.rcb-s{background:linear-gradient(45deg,#cc0000,#d4a843)}
+.ph-si{width:100%;height:100%;border-radius:50%;background:#1a0a2a;display:flex;align-items:center;justify-content:center;font-size:1.2rem;border:2px solid #0a0a0a}
+.ph-sn{font-size:.5rem;color:rgba(255,255,255,.45);max-width:50px;text-align:center}
+.post-hdr{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.post-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#cc0000,#d4a843);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;box-shadow:0 0 10px rgba(204,0,0,.45)}
+.post-uname{font-size:.78rem;font-weight:500;color:#fff}
+.post-loc{font-size:.62rem;color:rgba(255,255,255,.38)}
+.post-more{margin-left:auto;color:rgba(255,255,255,.45);font-size:1.1rem}
+.post-img{width:100%;aspect-ratio:1;background:linear-gradient(135deg,#1a0000,#2d0000 30%,#1a0533 60%,#0a0a2e);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:none}
+.post-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(204,0,0,.3),transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(212,168,67,.18),transparent 60%)}
+.post-big{font-size:4.5rem;animation:postFloat 3s ease-in-out infinite;position:relative;z-index:2}
+@keyframes postFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-9px) scale(1.05)}}
+.post-cap-img{position:absolute;bottom:0;left:0;right:0;padding:14px;background:linear-gradient(transparent,rgba(0,0,0,.85));font-family:'Dancing Script',cursive;font-size:1.25rem;color:#d4a843;z-index:2}
+.post-badge{position:absolute;top:11px;right:11px;background:rgba(204,0,0,.88);border:1px solid #d4a843;border-radius:8px;padding:4px 9px;font-size:.62rem;font-weight:500;color:#d4a843;z-index:2;letter-spacing:.05em}
+.post-acts{display:flex;align-items:center;gap:13px;padding:10px 14px 5px}
+.pact{font-size:1.25rem;cursor:none;transition:transform .2s}
+.pact:hover{transform:scale(1.2)}
+.pact-save{margin-left:auto}
+.post-likes{padding:0 14px;font-size:.76rem;font-weight:500}
+.post-likes span{color:var(--pink)}
+.post-cap{padding:5px 14px 3px;font-size:.73rem;line-height:1.5;color:rgba(255,255,255,.78)}
+.post-cap strong{color:#fff}
+.post-tags{padding:2px 14px 7px;font-size:.68rem;color:#60a5fa;line-height:1.7}
+.post-cmt-btn{padding:3px 14px 12px;font-size:.68rem;color:rgba(255,255,255,.32)}
+.post-cmts{padding:0 14px 14px;display:flex;flex-direction:column;gap:5px}
+.post-cmts div{font-size:.7rem}
+
+/* ════════════ COUNTDOWN ════════════ */
+#countdown{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.cdgrid{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.cd-card{background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(24px);border-radius:24px;padding:2rem 1.6rem;min-width:118px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;animation:cdEntry .7s cubic-bezier(.34,1.56,.64,1) both}
+.cd-card:nth-child(1){animation-delay:.1s}.cd-card:nth-child(2){animation-delay:.2s}.cd-card:nth-child(3){animation-delay:.3s}.cd-card:nth-child(4){animation-delay:.4s}
+@keyframes cdEntry{0%{opacity:0;transform:translateY(40px) scale(.8)}100%{opacity:1;transform:none}}
+.cd-card::after{content:'';position:absolute;inset:-1px;border-radius:25px;background:conic-gradient(from var(--a,0deg),#cc0000,#d4a843,#a855f7,#60a5fa,#cc0000);opacity:.38;animation:spinR 4s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spinR{to{--a:360deg}}
+.cd-card:hover{transform:translateY(-8px) scale(1.06);box-shadow:0 0 50px rgba(204,0,0,.3),0 20px 60px rgba(0,0,0,.4)}
+.cd-num{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;background:linear-gradient(135deg,#ff9de2,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.cd-num.flip{animation:nFlip .3s ease}
+@keyframes nFlip{0%{transform:rotateX(90deg);opacity:0}100%{transform:none;opacity:1}}
+.cd-label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:.5rem}
+
+/* ════════════ CHAT ════════════ */
+#squad{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.chat-win{background:rgba(8,0,18,.88);border:1px solid rgba(255,255,255,.09);backdrop-filter:blur(24px);border-radius:32px;padding:2rem;max-width:680px;width:100%;box-shadow:0 20px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.05);position:relative;overflow:hidden}
+.chat-win::before{content:'';position:absolute;inset:0;border-radius:32px;background:linear-gradient(135deg,rgba(204,0,0,.04),rgba(212,168,67,.03));pointer-events:none}
+.chat-hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.8rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.cdots{display:flex;gap:6px}.cdots span{width:11px;height:11px;border-radius:50%}.cdots span:nth-child(1){background:#ff5f57}.cdots span:nth-child(2){background:#fabb2c}.cdots span:nth-child(3){background:#2ac840}
+.ctitle{font-size:.8rem;color:rgba(255,255,255,.35);letter-spacing:.06em;flex:1;text-align:center}
+.conline{font-size:.66rem;color:#2dd4bf;display:flex;align-items:center;gap:5px}
+.conline::before{content:'';width:6px;height:6px;border-radius:50%;background:#2dd4bf;animation:onP 1.5s ease-in-out infinite}
+@keyframes onP{0%,100%{box-shadow:0 0 0 0 rgba(45,212,191,.7)}70%{box-shadow:0 0 0 7px rgba(45,212,191,0)}}
+.cbody{display:flex;flex-direction:column;gap:1rem;min-height:280px}
+.mrow{display:flex;align-items:flex-end;gap:10px;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
+.mrow.visible{opacity:1;transform:none}
+.mrow.right{flex-direction:row-reverse}
+.mav{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;animation:avBob 3s ease-in-out infinite}
+.av1{background:linear-gradient(135deg,#ff6ec7,#f472b6);box-shadow:0 0 12px rgba(255,110,199,.5)}
+.av2{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 0 12px rgba(168,85,247,.5);animation-delay:.5s}
+.av3{background:linear-gradient(135deg,#60a5fa,#3b82f6);box-shadow:0 0 12px rgba(96,165,250,.5);animation-delay:1s}
+.av4{background:linear-gradient(135deg,#cc0000,#d4a843);box-shadow:0 0 12px rgba(204,0,0,.5);animation-delay:1.5s}
+@keyframes avBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.mbub{max-width:76%;padding:.75rem 1.1rem;border-radius:18px;font-size:.85rem;line-height:1.6}
+.mrow:not(.right) .mbub{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.09);border-bottom-left-radius:4px}
+.mrow.right .mbub{background:linear-gradient(135deg,rgba(204,0,0,.22),rgba(212,168,67,.14));border:1px solid rgba(204,0,0,.22);border-bottom-right-radius:4px}
+.mname{font-size:.64rem;color:rgba(255,255,255,.32);margin-bottom:.2rem;letter-spacing:.04em}
+.mtime{font-size:.6rem;color:rgba(255,255,255,.2);text-align:right;margin-top:.25rem}
+.mtyping{display:flex;gap:4px;align-items:center;padding:.5rem .8rem}
+.mtyping span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);animation:tDot 1.2s ease-in-out infinite}
+.mtyping span:nth-child(2){animation-delay:.2s}.mtyping span:nth-child(3){animation-delay:.4s}
+@keyframes tDot{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-6px);opacity:1}}
+
+/* ════════════ PLAYER CARDS ════════════ */
+#players{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+
+.players-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem;max-width:1100px;width:100%}
+
+.player-card{border-radius:28px;overflow:hidden;position:relative;cursor:default;transition:transform .5s cubic-bezier(.17,.67,.45,1.3),box-shadow .5s;animation:pcEntry .8s cubic-bezier(.34,1.2,.64,1) both}
+.player-card:nth-child(1){animation-delay:.05s}.player-card:nth-child(2){animation-delay:.15s}
+.player-card:nth-child(3){animation-delay:.25s}.player-card:nth-child(4){animation-delay:.35s}
+.player-card:nth-child(5){animation-delay:.45s}
+@keyframes pcEntry{0%{opacity:0;transform:translateY(50px) scale(.85)}100%{opacity:1;transform:none}}
+.player-card:hover{transform:translateY(-12px) scale(1.03)}
+
+/* Virat – special gold */
+.pc-virat{background:linear-gradient(160deg,#1a0000,#2a0000,#1a0533);border:1px solid rgba(212,168,67,.4);box-shadow:0 8px 32px rgba(212,168,67,.15)}
+.pc-virat:hover{box-shadow:0 30px 70px rgba(212,168,67,.35)}
+
+/* RCB red */
+.pc-rcb{background:linear-gradient(160deg,#1a0000,#2d0000,#0a0a0a);border:1px solid rgba(204,0,0,.35);box-shadow:0 8px 32px rgba(204,0,0,.12)}
+.pc-rcb:hover{box-shadow:0 30px 70px rgba(204,0,0,.3)}
+
+/* SRH orange */
+.pc-srh{background:linear-gradient(160deg,#1a0800,#2a1000,#0a0a0a);border:1px solid rgba(249,115,22,.35);box-shadow:0 8px 32px rgba(249,115,22,.12)}
+.pc-srh:hover{box-shadow:0 30px 70px rgba(249,115,22,.3)}
+
+/* ---- Card glow top bar ---- */
+.pc-bar{height:4px;width:100%;position:relative}
+.pc-virat .pc-bar{background:linear-gradient(90deg,#cc0000,#d4a843,#cc0000)}
+.pc-rcb .pc-bar{background:linear-gradient(90deg,#cc0000,#d4a843)}
+.pc-srh .pc-bar{background:linear-gradient(90deg,#f97316,#fb923c)}
+
+.pc-body{padding:1.8rem 1.6rem}
+
+/* big emoji avatar */
+.pc-avatar{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1.1rem;position:relative;animation:avBob 3s ease-in-out infinite}
+.pc-virat .pc-avatar{background:linear-gradient(135deg,#cc0000,#d4a843);box-shadow:0 0 28px rgba(212,168,67,.55)}
+.pc-rcb .pc-avatar{background:linear-gradient(135deg,#cc0000,#7c0000);box-shadow:0 0 22px rgba(204,0,0,.5)}
+.pc-srh .pc-avatar{background:linear-gradient(135deg,#f97316,#fb923c);box-shadow:0 0 22px rgba(249,115,22,.5)}
+
+.pc-team-badge{position:absolute;top:-4px;right:-4px;font-size:.6rem;background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:2px 7px;letter-spacing:.05em;white-space:nowrap}
+
+.pc-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.pc-role{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem}
+.pc-virat .pc-role{color:#d4a843}
+.pc-rcb .pc-role{color:rgba(204,0,0,.9)}
+.pc-srh .pc-role{color:#f97316}
+
+.pc-stat-row{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:.9rem}
+.pc-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:5px 10px;text-align:center}
+.pc-stat-val{font-size:.9rem;font-weight:500;color:#fff}
+.pc-stat-lbl{font-size:.56rem;color:rgba(255,255,255,.38);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+
+.pc-quote{font-size:.8rem;font-style:italic;color:rgba(255,255,255,.6);line-height:1.65;border-left:2px solid;padding-left:.8rem}
+.pc-virat .pc-quote{border-color:#d4a843}
+.pc-rcb .pc-quote{border-color:#cc0000}
+.pc-srh .pc-quote{border-color:#f97316}
+
+.pc-hearts{margin-top:.9rem;font-size:1.1rem;letter-spacing:.15em}
+
+/* "Her faves" banner */
+.faves-banner{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(204,0,0,.15),rgba(212,168,67,.1));border:1px solid rgba(204,0,0,.25);border-radius:16px;padding:12px 20px;max-width:680px;width:100%;font-size:.85rem;color:rgba(255,255,255,.7)}
+.faves-banner span{font-size:1.2rem}
+
+/* ════════════ WISH CARDS ════════════ */
+#wishes{padding:7rem 2rem;display:flex;flex-direction:column;align-items:center;gap:3rem}
+.wishes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.8rem;max-width:1100px;width:100%}
+.wish-card{background:var(--glass);border:1px solid var(--glass-b);backdrop-filter:blur(22px);border-radius:28px;padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:transform .5s cubic-bezier(.17,.67,.45,1.3),box-shadow .5s;animation:wcEntry .8s cubic-bezier(.34,1.2,.64,1) both}
+.wish-card:nth-child(1){animation-delay:.1s}.wish-card:nth-child(2){animation-delay:.25s}
+.wish-card:nth-child(3){animation-delay:.4s}.wish-card:nth-child(4){animation-delay:.55s}
+@keyframes wcEntry{0%{opacity:0;transform:translateY(50px) scale(.85) rotate(-3deg)}100%{opacity:1;transform:none}}
+.wish-card::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);transition:left .6s;pointer-events:none}
+.wish-card:hover::before{left:150%}
+.wc1{box-shadow:0 8px 32px rgba(255,110,199,.1);border-color:rgba(255,110,199,.2)}.wc1:hover{transform:translateY(-12px) rotate(-1.5deg);box-shadow:0 30px 70px rgba(255,110,199,.25)}
+.wc2{box-shadow:0 8px 32px rgba(168,85,247,.1);border-color:rgba(168,85,247,.2)}.wc2:hover{transform:translateY(-12px) rotate(1.5deg);box-shadow:0 30px 70px rgba(168,85,247,.25)}
+.wc3{box-shadow:0 8px 32px rgba(96,165,250,.1);border-color:rgba(96,165,250,.2)}.wc3:hover{transform:translateY(-12px) rotate(-1deg);box-shadow:0 30px 70px rgba(96,165,250,.25)}
+.wc4{box-shadow:0 8px 32px rgba(204,0,0,.12);border-color:rgba(204,0,0,.22)}.wc4:hover{transform:translateY(-12px) rotate(1deg);box-shadow:0 30px 70px rgba(204,0,0,.25)}
+.insta-handle{font-size:.68rem;color:rgba(255,255,255,.32);letter-spacing:.04em;margin-bottom:.8rem;display:flex;align-items:center;gap:5px}
+.insta-handle::before{content:'📸';font-size:.8rem}
+.wish-av{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:1rem;animation:avBob 3s ease-in-out infinite}
+.wc1 .wish-av{background:linear-gradient(135deg,#ff6ec7,#f472b6);box-shadow:0 0 20px rgba(255,110,199,.5)}
+.wc2 .wish-av{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 0 20px rgba(168,85,247,.5);animation-delay:.5s}
+.wc3 .wish-av{background:linear-gradient(135deg,#60a5fa,#3b82f6);box-shadow:0 0 20px rgba(96,165,250,.5);animation-delay:1s}
+.wc4 .wish-av{background:linear-gradient(135deg,#cc0000,#d4a843);box-shadow:0 0 20px rgba(204,0,0,.5);animation-delay:1.5s}
+.wish-name{font-size:1.05rem;font-weight:500;color:#fff;margin-bottom:.2rem}
+.wish-role{font-size:.7rem;color:rgba(255,255,255,.33);letter-spacing:.1em;margin-bottom:.9rem}
+.wish-text{font-size:.87rem;line-height:1.75;color:rgba(255,255,255,.68);font-style:italic}
+.wish-hearts{margin-top:1.1rem;font-size:1.15rem;letter-spacing:.2em}
+
+/* ════════════ SURPRISE ════════════ */
+#surprise{padding:9rem 2rem;display:flex;flex-direction:column;align-items:center;gap:2.2rem;text-align:center}
+.surprise-desc{color:rgba(255,255,255,.42);max-width:460px;line-height:1.9;font-size:.92rem}
+.glow-btn{position:relative;padding:1.2rem 3.2rem;border:none;border-radius:100px;cursor:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#fff;letter-spacing:.06em;background:linear-gradient(135deg,#cc0000,#d4a843,#a855f7,#ff6ec7);background-size:300%;animation:btnG 4s ease infinite;box-shadow:0 0 40px rgba(204,0,0,.4),0 6px 24px rgba(0,0,0,.3);transition:transform .3s,box-shadow .3s;overflow:hidden}
+.glow-btn::before{content:'';position:absolute;inset:-3px;border-radius:100px;background:inherit;z-index:-1;filter:blur(20px);opacity:.7;animation:glP 2.5s ease-in-out infinite}
+.glow-btn::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:rgba(255,255,255,.14);transform:rotate(20deg);transition:left .5s}
+.glow-btn:hover{transform:scale(1.1);box-shadow:0 0 80px rgba(204,0,0,.7),0 10px 40px rgba(0,0,0,.4)}
+.glow-btn:hover::after{left:130%}
+@keyframes btnG{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes glP{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.surp-rev{display:none;flex-direction:column;align-items:center;gap:2rem;text-align:center;animation:revPop .7s cubic-bezier(.34,1.56,.64,1) both}
+.surp-rev.show{display:flex}
+@keyframes revPop{0%{opacity:0;transform:scale(.5) rotate(-10deg)}60%{transform:scale(1.08) rotate(2deg)}100%{opacity:1;transform:none}}
+.surp-cake{font-size:6rem;animation:cakB 1s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes cakB{0%{transform:scale(0) rotate(-20deg)}60%{transform:scale(1.2) rotate(5deg)}100%{transform:none}}
+.surp-msg{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.8rem);background:linear-gradient(135deg,#cc0000,#d4a843,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.surp-quote{max-width:540px;font-style:italic;color:rgba(255,255,255,.58);line-height:1.9;font-size:.93rem}
+.fw-grid{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;font-size:2.8rem}
+.fw-grid span{animation:fwP .5s cubic-bezier(.34,1.56,.64,1) both}
+.fw-grid span:nth-child(1){animation-delay:.1s}.fw-grid span:nth-child(2){animation-delay:.2s}
+.fw-grid span:nth-child(3){animation-delay:.3s}.fw-grid span:nth-child(4){animation-delay:.4s}
+.fw-grid span:nth-child(5){animation-delay:.5s}.fw-grid span:nth-child(6){animation-delay:.6s}
+@keyframes fwP{0%{opacity:0;transform:scale(0) translateY(30px)}100%{opacity:1;transform:none}}
+
+footer{position:relative;z-index:5;padding:3rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.22);font-size:.74rem;letter-spacing:.1em}
+footer span{color:var(--rcb-red)}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.25s}.rd3{transition-delay:.4s}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+@media(max-width:600px){
+  .cdgrid{gap:.9rem}.cd-card{min-width:76px;padding:1.2rem .8rem}
+  .wishes-grid,.players-grid{grid-template-columns:1fr}
+  .stories-row{gap:9px}.story-ring{width:56px;height:56px}
+  .chat-win{padding:1.2rem}.insta-phone{width:300px}
+  .origin-card{padding:2rem 1.5rem}
+}
+</style>
 </head>
-
 <body>
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
-  <div class="bg-wrap"></div>
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div class="blob b3"></div>
-  <div class="blob b4"></div>
-  <canvas id="particles"></canvas>
-  <div class="confetti-wrap" id="confetti"></div>
+<div id="cursor"></div><div id="cursor-ring"></div>
+<div class="bg-wrap"></div>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+<canvas id="particles"></canvas>
+<div class="confetti-wrap" id="confetti"></div>
 
-  <!-- ══════════ HERO ══════════ -->
-  <section id="hero">
-    <div class="stories-row">
-      <div class="story-bub">
-        <div class="story-ring active">
-          <div class="story-inner">🌺</div>
-        </div>
-        <div class="story-name">priya.✨</div>
-      </div>
-      <div class="story-bub">
-        <div class="story-ring active">
-          <div class="story-inner">🦋</div>
-        </div>
-        <div class="story-name">meera🦋</div>
-      </div>
-      <div class="story-bub">
-        <div class="story-ring active">
-          <div class="story-inner">🌙</div>
-        </div>
-        <div class="story-name">zara.moon</div>
-      </div>
-      <div class="story-bub">
-        <div class="story-ring rcb">
-          <div class="story-inner">⭐</div>
-        </div>
-        <div class="story-name">riya_rcb</div>
-      </div>
-      <div class="story-bub">
-        <div class="story-ring seen">
-          <div class="story-inner">🎂</div>
-        </div>
-        <div class="story-name">Swastika 🎂</div>
-      </div>
-    </div>
-    <div class="hero-badge">📸 Instagram Squad · Bigg Boss GC · IPL Bestie Era 💕</div>
-    <h1 class="hero-title" id="heroTitle"></h1>
-    <p class="hero-sub">to the most passionate RCB girl we know 🏏❤️</p>
-    <div class="hero-name">Swastika ✨</div>
-    <div class="rcb-hero-tag"><span class="rcb-dot"></span>🏏 RCB 2025 Champions · Kohli Army · Die-Heart Fan</div>
-    <div class="emoji-ring">
-      <span>🎂</span><span>🏏</span><span>🎉</span><span>❤️</span><span>🏆</span>
-    </div>
-    <div class="hero-ribbon">BIGG BOSS GC → IPL CHATS → BESTIES FOREVER · FOUR GIRLS · ZERO DISTANCE</div>
-    <div class="scroll-hint">
-      <div class="scroll-dot"></div>SCROLL
-    </div>
-  </section>
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="stories-row">
+    <div class="story-bub"><div class="story-ring active"><div class="story-inner">🌺</div></div><div class="story-name">kanika.✨</div></div>
+    <div class="story-bub"><div class="story-ring active"><div class="story-inner">🦋</div></div><div class="story-name">shruti🦋</div></div>
+    <div class="story-bub"><div class="story-ring active"><div class="story-inner">🌙</div></div><div class="story-name">aashi</div></div>
+    <div class="story-bub"><div class="story-ring seen"><div class="story-inner">🎂</div></div><div class="story-name">swastika 🎂</div></div>
+  </div>
+  <div class="hero-badge">📸 Instagram Squad · Bigg Boss GC · IPL Bestie Era 💕</div>
+  <h1 class="hero-title" id="heroTitle"></h1>
+  <p class="hero-sub">to the most passionate RCB girl we know 🏏❤️</p>
+  <div class="hero-name">Aanya ✨</div>
+  <div class="rcb-hero-tag"><span class="rcb-dot"></span>🏏 RCB 2025 Champions · Kohli Army · Die-Heart Fan</div>
+  <div class="emoji-ring">
+    <span>🎂</span><span>🏏</span><span>🎉</span><span>❤️</span><span>🏆</span>
+  </div>
+  <div class="hero-ribbon">BIGG BOSS GC → IPL CHATS → BESTIES FOREVER · FOUR GIRLS · ZERO DISTANCE</div>
+  <div class="scroll-hint"><div class="scroll-dot"></div>SCROLL</div>
+</section>
 
-  <!-- ══════════ ORIGIN STORY ══════════ -->
-  <section id="origin">
-    <div class="section-label reveal">HOW IT ALL STARTED</div>
-    <h2 class="section-title reveal rd1">From a Bigg Boss GC to Forever 💬🏠</h2>
-    <p class="reveal rd2"
-      style="color:rgba(255,255,255,.4);max-width:480px;text-align:center;line-height:1.8;font-size:.9rem">Nobody warned
-      us that a random group chat would turn into the most real friendship we've ever had. Here's how it happened ↓</p>
-    <div class="origin-card reveal rd3">
-      <div class="origin-timeline">
-        <div class="origin-step">
-          <div class="step-dot s1">📺</div>
-          <div class="step-content">
-            <div class="step-title">The Bigg Boss Group Chat</div>
-            <div class="step-desc">It started in a Bigg Boss fan GC — chaotic opinions, hot takes, fights over
-              evictions. That's where four random cricket girls somehow found each other amidst the drama 🎭</div>
-          </div>
+<!-- ══════════ ORIGIN STORY ══════════ -->
+<section id="origin">
+  <div class="section-label reveal">HOW IT ALL STARTED</div>
+  <h2 class="section-title reveal rd1">From a Bigg Boss GC to Forever 💬🏠</h2>
+  <p class="reveal rd2" style="color:rgba(255,255,255,.4);max-width:480px;text-align:center;line-height:1.8;font-size:.9rem">Nobody warned us that a random group chat would turn into the most real friendship we've ever had. Here's how it happened ↓</p>
+  <div class="origin-card reveal rd3">
+    <div class="origin-timeline">
+      <div class="origin-step">
+        <div class="step-dot s1">📺</div>
+        <div class="step-content">
+          <div class="step-title">The Bigg Boss Group Chat</div>
+          <div class="step-desc">It started in a Bigg Boss fan GC — chaotic opinions, hot takes, fights over evictions. That's where four random cricket girls somehow found each other amidst the drama 🎭</div>
         </div>
-        <div class="origin-step">
-          <div class="step-dot s2">🏏</div>
-          <div class="step-content">
-            <div class="step-title">IPL Brought Us Closer</div>
-            <div class="step-desc">Then IPL season hit and the conversations shifted. Different teams, same love for
-              cricket. One passionate RCB girl defending Virat Kohli at every turn — and three of us arguing back while
-              secretly respecting the passion 🔴</div>
-          </div>
+      </div>
+      <div class="origin-step">
+        <div class="step-dot s2">🏏</div>
+        <div class="step-content">
+          <div class="step-title">IPL Brought Us Closer</div>
+          <div class="step-desc">Then IPL season hit and the conversations shifted. Different teams, same love for cricket. One passionate RCB girl defending Virat Kohli at every turn — and three of us arguing back while secretly respecting the passion 🔴</div>
         </div>
-        <div class="origin-step">
-          <div class="step-dot s3">📱</div>
-          <div class="step-content">
-            <div class="step-title">Instagram DMs & Voice Notes</div>
-            <div class="step-desc">The GC moved to Instagram. The cricket debates turned into life talks. 3am voice
-              notes, reel sharing, fangirling together over players — and one special someone became irreplaceable 💜
-            </div>
-          </div>
+      </div>
+      <div class="origin-step">
+        <div class="step-dot s3">📱</div>
+        <div class="step-content">
+          <div class="step-title">Instagram DMs & Voice Notes</div>
+          <div class="step-desc">The GC moved to Instagram. The cricket debates turned into life talks. 3am voice notes, reel sharing, fangirling together over players — and one special someone became irreplaceable 💜</div>
         </div>
-        <div class="origin-step">
-          <div class="step-dot s4">💕</div>
-          <div class="step-content">
-            <div class="step-title">Never Met. Always There.</div>
-            <div class="step-desc">We still haven't met IRL. But we've been through more together than most real-life
-              friendships. And one day — Chinnaswamy Stadium, all four of us, watching RCB live. That's the plan 🏟️✨
-            </div>
-          </div>
+      </div>
+      <div class="origin-step">
+        <div class="step-dot s4">💕</div>
+        <div class="step-content">
+          <div class="step-title">Never Met. Always There.</div>
+          <div class="step-desc">We still haven't met IRL. But we've been through more together than most real-life friendships. And one day — Chinnaswamy Stadium, all four of us, watching RCB live. That's the plan 🏟️✨</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══════════ INSTAGRAM PHONE ══════════ -->
-  <section id="insta-section">
-    <div class="section-label reveal">AS SEEN ON</div>
-    <h2 class="section-title reveal rd1">The Post We'd Tag You In 📸</h2>
-    <div class="insta-phone reveal rd2">
-      <div class="insta-sb"><span>9:41</span><span>📶 🔋</span></div>
-      <div class="insta-tb">
-        <div class="insta-logo">Instagram</div>
-        <div class="insta-icons"><span>❤️</span><span>✈️</span></div>
+<!-- ══════════ INSTAGRAM PHONE ══════════ -->
+<section id="insta-section">
+  <div class="section-label reveal">AS SEEN ON</div>
+  <h2 class="section-title reveal rd1">The Post We'd Tag You In 📸</h2>
+  <div class="insta-phone reveal rd2">
+    <div class="insta-sb"><span>9:41</span><span>📶 🔋</span></div>
+    <div class="insta-tb"><div class="insta-logo">Instagram</div><div class="insta-icons"><span>❤️</span><span>✈️</span></div></div>
+    <div class="ph-stories">
+      <div class="ph-story"><div class="ph-sr"><div class="ph-si">🌺</div></div><div class="ph-sn">kanika.✨</div></div>
+      <div class="ph-story"><div class="ph-sr"><div class="ph-si">🦋</div></div><div class="ph-sn">shruti🦋</div></div>
+      <div class="ph-story"><div class="ph-sr"><div class="ph-si">🌙</div></div><div class="ph-sn">aashi</div></div>
+    </div>
+    <div>
+      <div class="post-hdr">
+        <div class="post-av">🏏</div>
+        <div><div class="post-uname">rcb_birthday_squad 🏏</div><div class="post-loc">📍 Chinnaswamy Stadium (one day) 🌸</div></div>
+        <div class="post-more">···</div>
       </div>
-      <div class="ph-stories">
-        <div class="ph-story">
-          <div class="ph-sr">
-            <div class="ph-si">🌺</div>
-          </div>
-          <div class="ph-sn">priya.✨</div>
-        </div>
-        <div class="ph-story">
-          <div class="ph-sr">
-            <div class="ph-si">🦋</div>
-          </div>
-          <div class="ph-sn">meera🦋</div>
-        </div>
-        <div class="ph-story">
-          <div class="ph-sr">
-            <div class="ph-si">🌙</div>
-          </div>
-          <div class="ph-sn">zara.moon</div>
-        </div>
-        <div class="ph-story">
-          <div class="ph-sr rcb-s">
-            <div class="ph-si">⭐</div>
-          </div>
-          <div class="ph-sn">riya_rcb</div>
-        </div>
+      <div class="post-img" id="postImg" onclick="tapLike(event)">
+        <div class="post-badge">🏆 IPL 2025 CHAMPIONS</div>
+        <div class="post-big">🎂🏏🏆</div>
+        <div class="post-cap-img">Happy Birthday Aanya! Ee sala cup namde! 🔴</div>
       </div>
-      <div>
-        <div class="post-hdr">
-          <div class="post-av">🏏</div>
-          <div>
-            <div class="post-uname">rcb_birthday_squad 🏏</div>
-            <div class="post-loc">📍 Chinnaswamy Stadium (one day) 🌸</div>
-          </div>
-          <div class="post-more">···</div>
-        </div>
-        <div class="post-img" id="postImg" onclick="tapLike(event)">
-          <div class="post-badge">🏆 IPL 2025 CHAMPIONS</div>
-          <div class="post-big">🎂🏏🏆</div>
-          <div class="post-cap-img">Happy Birthday Swastika! Ee sala cup namde! 🔴</div>
-        </div>
-        <div class="post-acts">
-          <span class="pact" id="likeBtn" onclick="toggleLike(event)">🤍</span>
-          <span class="pact">💬</span>
-          <span class="pact">📤</span>
-          <span class="pact pact-save">🔖</span>
-        </div>
-        <div class="post-likes"><span id="likeCount">1,18,086</span> likes</div>
-        <div class="post-cap"><strong>rcb_birthday_squad</strong> RCB CHAMPIONS 2025 🏆 and it's your birthday. The
-          universe planned this perfectly for you 🎂❤️ Kohli's runs, Patidar's cover drives, Tim David's sixes — all for
-          you today bestie! Scroll for your surprise 👇</div>
-        <div class="post-tags">#HappyBirthdaySwastika #RCBChampions2025 #KohliArmy #EeSalaCupNamde #RCBForever #OnlineSquad
-          #BiggBossGC #IPLGirls #NeverMetAlwaysThere 🏏🔴🏆</div>
-        <div class="post-cmt-btn">View all 2,025 comments 🎉</div>
-        <div class="post-cmts">
-          <div><strong style="color:#fff">priya.✨</strong> <span style="color:rgba(255,255,255,.65)">RCB WON AND IT'S
-              HER BIRTHDAY. THE UNIVERSE 😭🏆❤️</span></div>
-          <div><strong style="color:#fff">meera🦋</strong> <span style="color:rgba(255,255,255,.65)">Patidar lifted the
-              trophy for you bestie 🔴🏆🦋</span></div>
-          <div><strong style="color:#fff">zara.moon</strong> <span style="color:rgba(255,255,255,.65)">One day
-              Chinnaswamy, all four of us 🌙🏟️✨</span></div>
-          <div style="color:rgba(255,255,255,.25);font-size:.62rem">24 May · 12:00 AM</div>
-        </div>
+      <div class="post-acts">
+        <span class="pact" id="likeBtn" onclick="toggleLike(event)">🤍</span>
+        <span class="pact">💬</span>
+        <span class="pact">📤</span>
+        <span class="pact pact-save">🔖</span>
+      </div>
+      <div class="post-likes"><span id="likeCount">1,18,086</span> likes</div>
+      <div class="post-cap"><strong>rcb_birthday_squad</strong> RCB CHAMPIONS 2025 🏆 and it's your birthday. The universe planned this perfectly for you 🎂❤️ Kohli's runs, Patidar's cover drives, Tim David's sixes — all for you today bestie! Scroll for your surprise 👇</div>
+      <div class="post-tags">#HappyBirthdayAanya #RCBChampions2025 #KohliArmy #EeSalaCupNamde #RCBForever #OnlineSquad #BiggBossGC #IPLGirls #NeverMetAlwaysThere 🏏🔴🏆</div>
+      <div class="post-cmt-btn">View all 2,025 comments 🎉</div>
+      <div class="post-cmts">
+        <div><strong style="color:#fff">kanika.✨</strong> <span style="color:rgba(255,255,255,.65)">RCB WON AND IT'S HER BIRTHDAY. THE UNIVERSE 😭🏆❤️</span></div>
+        <div><strong style="color:#fff">shruti🦋</strong> <span style="color:rgba(255,255,255,.65)">Patidar lifted the trophy for you bestie 🔴🏆🦋</span></div>
+        <div><strong style="color:#fff">aashi</strong> <span style="color:rgba(255,255,255,.65)">One day Chinnaswamy, all four of us 🌙🏟️✨</span></div>
+        <div style="color:rgba(255,255,255,.25);font-size:.62rem">24 May · 12:00 AM</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══════════ COUNTDOWN ══════════ -->
-  <section id="countdown">
-    <div class="section-label reveal">COUNTING EVERY SECOND</div>
-    <h2 class="section-title reveal rd1">Until Your Special Day 🎈</h2>
-    <div class="cdgrid reveal rd2">
-      <div class="cd-card">
-        <div class="cd-num" id="cd-days">00</div>
-        <div class="cd-label">Days</div>
-      </div>
-      <div class="cd-card">
-        <div class="cd-num" id="cd-hours">00</div>
-        <div class="cd-label">Hours</div>
-      </div>
-      <div class="cd-card">
-        <div class="cd-num" id="cd-mins">00</div>
-        <div class="cd-label">Minutes</div>
-      </div>
-      <div class="cd-card">
-        <div class="cd-num" id="cd-secs">00</div>
-        <div class="cd-label">Seconds</div>
-      </div>
+<!-- ══════════ COUNTDOWN ══════════ -->
+<section id="countdown">
+  <div class="section-label reveal">COUNTING EVERY SECOND</div>
+  <h2 class="section-title reveal rd1">Until Your Special Day 🎈</h2>
+  <div class="cdgrid reveal rd2">
+    <div class="cd-card"><div class="cd-num" id="cd-days">00</div><div class="cd-label">Days</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">Minutes</div></div>
+    <div class="cd-card"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">Seconds</div></div>
+  </div>
+  <div id="bday-msg" style="display:none;font-family:'Playfair Display',serif;font-size:1.8rem;color:#ff9de2;text-align:center;animation:fadeUp 1s ease">🏆 RCB WON FOR YOU! Happy Birthday! 🎂🔴</div>
+</section>
+
+<!-- ══════════ SQUAD CHAT ══════════ -->
+<section id="squad">
+  <div class="section-label reveal">FROM THE GROUP CHAT</div>
+  <h2 class="section-title reveal rd1">The Bigg Boss GC That Changed Everything 💬</h2>
+  <div class="chat-win reveal rd3">
+    <div class="chat-hdr">
+      <div class="cdots"><span></span><span></span><span></span></div>
+      <div class="ctitle">📺 BB GC → 🏏 IPL Gang · 4 Members</div>
+      <div class="conline">4 online</div>
     </div>
-    <div id="bday-msg"
-      style="display:none;font-family:'Playfair Display',serif;font-size:1.8rem;color:#ff9de2;text-align:center;animation:fadeUp 1s ease">
-      🏆 RCB WON FOR YOU! Happy Birthday! 🎂🔴</div>
-  </section>
+    <div class="cbody" id="chatBody"></div>
+  </div>
+</section>
 
-  <!-- ══════════ SQUAD CHAT ══════════ -->
-  <section id="squad">
-    <div class="section-label reveal">FROM THE GROUP CHAT</div>
-    <h2 class="section-title reveal rd1">The Bigg Boss GC That Changed Everything 💬</h2>
-    <div class="chat-win reveal rd3">
-      <div class="chat-hdr">
-        <div class="cdots"><span></span><span></span><span></span></div>
-        <div class="ctitle">📺 BB GC → 🏏 IPL Gang · 4 Members</div>
-        <div class="conline">4 online</div>
-      </div>
-      <div class="cbody" id="chatBody"></div>
-    </div>
-  </section>
+<!-- ══════════ PLAYER CARDS ══════════ -->
+<section id="players">
+  <div class="section-label reveal">YOUR WHOLE HEART</div>
+  <h2 class="section-title reveal rd1">Her Favourite Players 🏏❤️</h2>
+  <div class="faves-banner reveal rd2">
+    <span>🔴</span>
+    <span>She doesn't just watch cricket — she <em>lives</em> it. Here are the players who live rent-free in her head (and heart) 💕</span>
+  </div>
 
-  <!-- ══════════ PLAYER CARDS ══════════ -->
-  <section id="players">
-    <div class="section-label reveal">YOUR WHOLE HEART</div>
-    <h2 class="section-title reveal rd1">Her Favourite Players 🏏❤️</h2>
-    <div class="faves-banner reveal rd2">
-      <span>🔴</span>
-      <span>She doesn't just watch cricket — she <em>lives</em> it. Here are the players who live rent-free in her head
-        (and heart) 💕</span>
-    </div>
+  <div class="players-grid">
 
-    <div class="players-grid">
-
-      <!-- VIRAT KOHLI -->
-      <div class="player-card pc-virat reveal rd1">
-        <div class="pc-bar"></div>
-        <div class="pc-body">
-          <div class="pc-avatar" style="animation-delay:0s">
-            👑
-            <div class="pc-team-badge">🔴 RCB · India</div>
-          </div>
-          <div class="pc-name">Virat Kohli</div>
-          <div class="pc-role">The King · #18 · Her Absolute Favourite</div>
-          <div class="pc-stat-row">
-            <div class="pc-stat">
-              <div class="pc-stat-val">542</div>
-              <div class="pc-stat-lbl">IPL '26 runs</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">8000+</div>
-              <div class="pc-stat-lbl">IPL runs ever</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">👑</div>
-              <div class="pc-stat-lbl">GOAT</div>
-            </div>
-          </div>
-          <div class="pc-quote">"She defends this man in every argument and honestly? Can't even blame her. The King
-            stays the King. 🔴✨"</div>
-          <div class="pc-hearts">❤️ 👑 🔴</div>
+    <!-- VIRAT KOHLI -->
+    <div class="player-card pc-virat reveal rd1">
+      <div class="pc-bar"></div>
+      <div class="pc-body">
+        <div class="pc-avatar" style="animation-delay:0s">
+          👑
+          <div class="pc-team-badge">🔴 RCB · India</div>
         </div>
-      </div>
-
-      <!-- RAJAT PATIDAR -->
-      <div class="player-card pc-rcb reveal rd2">
-        <div class="pc-bar"></div>
-        <div class="pc-body">
-          <div class="pc-avatar" style="animation-delay:.3s">
-            🏆
-            <div class="pc-team-badge">🔴 RCB Captain</div>
-          </div>
-          <div class="pc-name">Rajat Patidar</div>
-          <div class="pc-role">Title-Winning Captain · IPL 2025 Champion</div>
-          <div class="pc-stat-row">
-            <div class="pc-stat">
-              <div class="pc-stat-val">112*</div>
-              <div class="pc-stat-lbl">Playoff 100</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">186</div>
-              <div class="pc-stat-lbl">strike rate</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">🏆</div>
-              <div class="pc-stat-lbl">2025 trophy</div>
-            </div>
-          </div>
-          <div class="pc-quote">"He ended 18 years of pain. First RCB captain to lift the IPL trophy. She must've cried
-            happy tears. 🏆🔴"</div>
-          <div class="pc-hearts">🔴 🏆 🔴</div>
+        <div class="pc-name">Virat Kohli</div>
+        <div class="pc-role">The King · #18 · Her Absolute Favourite</div>
+        <div class="pc-stat-row">
+          <div class="pc-stat"><div class="pc-stat-val">542</div><div class="pc-stat-lbl">IPL '26 runs</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">8000+</div><div class="pc-stat-lbl">IPL runs ever</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">👑</div><div class="pc-stat-lbl">GOAT</div></div>
         </div>
-      </div>
-
-      <!-- TIM DAVID -->
-      <div class="player-card pc-rcb reveal rd3">
-        <div class="pc-bar"></div>
-        <div class="pc-body">
-          <div class="pc-avatar" style="animation-delay:.6s">
-            💥
-            <div class="pc-team-badge">🔴 RCB · Singapore</div>
-          </div>
-          <div class="pc-name">Tim David</div>
-          <div class="pc-role">The Finisher · Six Machine · Clutch King</div>
-          <div class="pc-stat-row">
-            <div class="pc-stat">
-              <div class="pc-stat-val">200+</div>
-              <div class="pc-stat-lbl">strike rate</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">💥</div>
-              <div class="pc-stat-lbl">death overs</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">🔴</div>
-              <div class="pc-stat-lbl">RCB 2025</div>
-            </div>
-          </div>
-          <div class="pc-quote">"When RCB need 30 off 12, Tim David enters the chat. The kind of chaos she thrives
-            watching 💥🔴"</div>
-          <div class="pc-hearts">💥 🔴 💥</div>
-        </div>
-      </div>
-
-      <!-- DEVDUTT PADIKKAL -->
-      <div class="player-card pc-rcb reveal" style="transition-delay:.35s">
-        <div class="pc-bar"></div>
-        <div class="pc-body">
-          <div class="pc-avatar" style="animation-delay:.9s">
-            🌟
-            <div class="pc-team-badge">🔴 RCB · India</div>
-          </div>
-          <div class="pc-name">Devdutt Padikkal</div>
-          <div class="pc-role">Left-Hand Elegance · Top Order Gem</div>
-          <div class="pc-stat-row">
-            <div class="pc-stat">
-              <div class="pc-stat-val">412</div>
-              <div class="pc-stat-lbl">IPL '26 runs</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">🌟</div>
-              <div class="pc-stat-lbl">elegant bat</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">🔴</div>
-              <div class="pc-stat-lbl">RCB hero</div>
-            </div>
-          </div>
-          <div class="pc-quote">"The smooth left-hander who makes batting look like poetry. RCB's quiet superstar — she
-            knew before everyone else 🌟"</div>
-          <div class="pc-hearts">🌟 🔴 🌟</div>
-        </div>
-      </div>
-
-      <!-- ABHISHEK SHARMA -->
-      <div class="player-card pc-srh reveal" style="transition-delay:.45s">
-        <div class="pc-bar"></div>
-        <div class="pc-body">
-          <div class="pc-avatar" style="animation-delay:1.2s">
-            ⚡
-            <div class="pc-team-badge">🟠 SRH · India</div>
-          </div>
-          <div class="pc-name">Abhishek Sharma</div>
-          <div class="pc-role">SRH Opener · 141 off 55 Balls · Run Machine</div>
-          <div class="pc-stat-row">
-            <div class="pc-stat">
-              <div class="pc-stat-val">141</div>
-              <div class="pc-stat-lbl">best score</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">507</div>
-              <div class="pc-stat-lbl">IPL '26 runs</div>
-            </div>
-            <div class="pc-stat">
-              <div class="pc-stat-val">⚡</div>
-              <div class="pc-stat-lbl">explosive</div>
-            </div>
-          </div>
-          <div class="pc-quote">"The only SRH player she'll root for (secretly). 141 off 55 balls — even RCB fans had to
-            clap 👏🟠⚡"</div>
-          <div class="pc-hearts">⚡ 🟠 ⚡</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════ WISHES ══════════ -->
-  <section id="wishes">
-    <div class="section-label reveal">WITH ALL OUR LOVE</div>
-    <h2 class="section-title reveal rd1">From Your Cricket Instagram Squad 💌🏏</h2>
-    <div class="wishes-grid">
-      <div class="wish-card wc1 reveal rd1">
-        <div class="insta-handle">@priya.✨ · CSK fan 💛</div>
-        <div class="wish-av">🌺</div>
-        <div class="wish-name">Priya</div>
-        <div class="wish-role">CSK Fan · Your most frequent voice note sender</div>
-        <div class="wish-text">"I'm a CSK fan and you're an RCB fan and somehow we still survived every IPL season
-          together 😭💛🔴 You defending Kohli against my Dhoni > any movie romance. HBD to my chaotic bestie! 🌸"</div>
-        <div class="wish-hearts">💗 🏏 💛</div>
-      </div>
-      <div class="wish-card wc2 reveal rd2">
-        <div class="insta-handle">@meera🦋 · MI fan 💙</div>
-        <div class="wish-av">🦋</div>
-        <div class="wish-name">Meera</div>
-        <div class="wish-role">MI Fan · Meme supplier · The unhinged one</div>
-        <div class="wish-text">"I'm an MI fan and you're an RCB fan and YES we fought every IPL but I'd pick you as my
-          best friend every single time 🔵🔴 RCB won 2025 and you somehow got even louder about it — and I LOVE that for
-          you 🏆💜"</div>
-        <div class="wish-hearts">💜 🏏 💙</div>
-      </div>
-      <div class="wish-card wc3 reveal rd3">
-        <div class="insta-handle">@zara.moon · KKR fan 💜</div>
-        <div class="wish-av">🌙</div>
-        <div class="wish-name">Zara</div>
-        <div class="wish-role">KKR Fan · 3am talker · The empath of the group</div>
-        <div class="wish-text">"KKR vs RCB debates will always be our thing 💜🔴 But you know what? I genuinely cheered
-          for RCB in the 2025 final because I knew how much it would mean to you. Happy Birthday to the most passionate
-          cricket girl I know 🌙✨"</div>
-        <div class="wish-hearts">💙 🌊 💜</div>
-      </div>
-      <div class="wish-card wc4 reveal" style="transition-delay:.5s">
-        <div class="insta-handle">@riya_rcb · Fellow RCB fan 🔴</div>
-        <div class="wish-av">⭐</div>
-        <div class="wish-name">Riya</div>
-        <div class="wish-role">RCB Fan · Fellow Kohli Army · Your cricket twin</div>
-        <div class="wish-text">"We are the only two in this group who don't have to justify loving Kohli 🔴👑 EE SALA
-          CUP NAMDE — AND EE SALA BIRTHDAY BHI NAMDE! You deserve every single run Virat has ever scored 🏆🎂"</div>
-        <div class="wish-hearts">❤️ 🏏 🏆</div>
+        <div class="pc-quote">"She defends this man in every argument and honestly? Can't even blame her. The King stays the King. 🔴✨"</div>
+        <div class="pc-hearts">❤️ 👑 🔴</div>
       </div>
     </div>
-  </section>
 
-  <!-- ══════════ SURPRISE ══════════ -->
-  <section id="surprise">
-    <div class="section-label reveal">ONE LAST THING</div>
-    <h2 class="section-title reveal rd1">Your Surprise Is Here 🎁</h2>
-    <p class="surprise-desc reveal rd2">From four girls — a CSK fan, an MI fan, a KKR fan, and an RCB fan — who all
-      somehow agree on one thing: you are irreplaceable 💕</p>
-    <button class="glow-btn reveal rd3" id="surpriseBtn" onclick="revealSurprise()">🏏 Open Your Birthday Gift
-      🎂</button>
-    <div class="surp-rev" id="surpriseReveal">
-      <div class="surp-cake">🎂🏆🔴</div>
-      <div class="surp-msg">Ee Sala Birthday Namde! 🏆</div>
-      <p class="surp-quote">"A Bigg Boss group chat. IPL arguments at midnight. Four girls with four different favourite
-        teams. That's where it started. But what it became — is something we'll carry forever. We've never shared the
-        same stadium, but we've shared every match, every heartbreak, every celebration. RCB won the 2025 IPL. And we
-        like to think the universe did it just for you. Happy Birthday Swastika. May every Kohli cover drive this season be
-        dedicated to you. 🌸🏏🔴🏆💕"</p>
-      <p style="color:rgba(255,255,255,.28);font-size:.76rem;letter-spacing:.1em">— Priya 💛, Meera 💙, Zara 💜 & Riya
-        🔴 · Your Instagram Cricket Squad 💌</p>
-      <div class="fw-grid"><span>🎉</span><span>🏆</span><span>🎂</span><span>🔴</span><span>👑</span><span>🌸</span>
+    <!-- RAJAT PATIDAR -->
+    <div class="player-card pc-rcb reveal rd2">
+      <div class="pc-bar"></div>
+      <div class="pc-body">
+        <div class="pc-avatar" style="animation-delay:.3s">
+          🏆
+          <div class="pc-team-badge">🔴 RCB Captain</div>
+        </div>
+        <div class="pc-name">Rajat Patidar</div>
+        <div class="pc-role">Title-Winning Captain · IPL 2025 Champion</div>
+        <div class="pc-stat-row">
+          <div class="pc-stat"><div class="pc-stat-val">112*</div><div class="pc-stat-lbl">Playoff 100</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">186</div><div class="pc-stat-lbl">strike rate</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">🏆</div><div class="pc-stat-lbl">2025 trophy</div></div>
+        </div>
+        <div class="pc-quote">"He ended 18 years of pain. First RCB captain to lift the IPL trophy. She must've cried happy tears. 🏆🔴"</div>
+        <div class="pc-hearts">🔴 🏆 🔴</div>
       </div>
     </div>
-  </section>
 
-  <footer>Made with <span>♥</span> &amp; cricket energy by your Bigg Boss → Instagram squad · 24 May 2026 🏏🏆</footer>
+    <!-- TIM DAVID -->
+    <div class="player-card pc-rcb reveal rd3">
+      <div class="pc-bar"></div>
+      <div class="pc-body">
+        <div class="pc-avatar" style="animation-delay:.6s">
+          💥
+          <div class="pc-team-badge">🔴 RCB · Singapore</div>
+        </div>
+        <div class="pc-name">Tim David</div>
+        <div class="pc-role">The Finisher · Six Machine · Clutch King</div>
+        <div class="pc-stat-row">
+          <div class="pc-stat"><div class="pc-stat-val">200+</div><div class="pc-stat-lbl">strike rate</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">💥</div><div class="pc-stat-lbl">death overs</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">🔴</div><div class="pc-stat-lbl">RCB 2025</div></div>
+        </div>
+        <div class="pc-quote">"When RCB need 30 off 12, Tim David enters the chat. The kind of chaos she thrives watching 💥🔴"</div>
+        <div class="pc-hearts">💥 🔴 💥</div>
+      </div>
+    </div>
 
-  <script>
-    /* ── CURSOR ── */
-    const cur = document.getElementById('cursor'), curR = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; spawnSparkle(mx, my) });
-    (function aR() { rx += (mx - rx) * .1; ry += (my - ry) * .1; curR.style.left = rx + 'px'; curR.style.top = ry + 'px'; requestAnimationFrame(aR) })();
-    const spC = ['#ff6ec7', '#a855f7', '#60a5fa', '#cc0000', '#d4a843', '#f9a8d4'];
-    let lastSp = 0;
-    function spawnSparkle(x, y) { const n = Date.now(); if (n - lastSp < 35 || Math.random() > .55) return; lastSp = n; const sp = document.createElement('div'); sp.className = 'sparkle'; const s = 4 + Math.random() * 8; sp.style.cssText = `left:${x - s / 2}px;top:${y - s / 2}px;width:${s}px;height:${s}px;background:${spC[Math.floor(Math.random() * spC.length)]}`; document.body.appendChild(sp); setTimeout(() => sp.remove(), 700) }
+    <!-- DEVDUTT PADIKKAL -->
+    <div class="player-card pc-rcb reveal" style="transition-delay:.35s">
+      <div class="pc-bar"></div>
+      <div class="pc-body">
+        <div class="pc-avatar" style="animation-delay:.9s">
+          🌟
+          <div class="pc-team-badge">🔴 RCB · India</div>
+        </div>
+        <div class="pc-name">Devdutt Padikkal</div>
+        <div class="pc-role">Left-Hand Elegance · Top Order Gem</div>
+        <div class="pc-stat-row">
+          <div class="pc-stat"><div class="pc-stat-val">412</div><div class="pc-stat-lbl">IPL '26 runs</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">🌟</div><div class="pc-stat-lbl">elegant bat</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">🔴</div><div class="pc-stat-lbl">RCB hero</div></div>
+        </div>
+        <div class="pc-quote">"The smooth left-hander who makes batting look like poetry. RCB's quiet superstar — she knew before everyone else 🌟"</div>
+        <div class="pc-hearts">🌟 🔴 🌟</div>
+      </div>
+    </div>
 
-    /* ── HERO TITLE ── */
-    const tEl = document.getElementById('heroTitle');
-    ['Happy', 'Birthday'].forEach((w, wi) => { const ws = document.createElement('span'); ws.style.cssText = 'display:inline-flex;gap:0'; if (wi === 1) ws.style.marginLeft = '.25em';[...w].forEach((c, ci) => { const s = document.createElement('span'); s.className = 'char'; s.textContent = c; s.style.animationDelay = (.8 + wi * .35 + ci * .07) + 's'; ws.appendChild(s) }); tEl.appendChild(ws) });
+    <!-- ABHISHEK SHARMA -->
+    <div class="player-card pc-srh reveal" style="transition-delay:.45s">
+      <div class="pc-bar"></div>
+      <div class="pc-body">
+        <div class="pc-avatar" style="animation-delay:1.2s">
+          ⚡
+          <div class="pc-team-badge">🟠 SRH · India</div>
+        </div>
+        <div class="pc-name">Abhishek Sharma</div>
+        <div class="pc-role">SRH Opener · 141 off 55 Balls · Run Machine</div>
+        <div class="pc-stat-row">
+          <div class="pc-stat"><div class="pc-stat-val">141</div><div class="pc-stat-lbl">best score</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">507</div><div class="pc-stat-lbl">IPL '26 runs</div></div>
+          <div class="pc-stat"><div class="pc-stat-val">⚡</div><div class="pc-stat-lbl">explosive</div></div>
+        </div>
+        <div class="pc-quote">"The only SRH player she'll root for (secretly). 141 off 55 balls — even RCB fans had to clap 👏🟠⚡"</div>
+        <div class="pc-hearts">⚡ 🟠 ⚡</div>
+      </div>
+    </div>
 
-    /* ── PARTICLES ── */
-    const cv = document.getElementById('particles'), ctx = cv.getContext('2d');
-    let W, H, pts = [];
-    function rsz() { W = cv.width = innerWidth; H = cv.height = innerHeight } rsz(); addEventListener('resize', rsz);
-    const pC = ['#ff6ec7', '#a855f7', '#60a5fa', '#cc0000', '#d4a843', '#f9a8d4', '#c084fc', '#fff'];
-    class P { reset() { this.x = Math.random() * W; this.y = Math.random() * H; this.r = Math.random() * 2.2 + .4; this.col = pC[Math.floor(Math.random() * pC.length)]; this.vx = (Math.random() - .5) * .5; this.vy = (Math.random() - .5) * .5; this.a = Math.random() * .7 + .15; this.t = Math.random() * Math.PI * 2; this.life = 0; this.ml = Math.random() * 350 + 150; this.star = Math.random() > .65 } constructor() { this.reset() } update() { this.x += this.vx; this.y += this.vy; this.t += .045; this.life++; if (this.life > this.ml || this.x < -5 || this.x > W + 5 || this.y < -5 || this.y > H + 5) this.reset() } draw() { const a = this.a * (0.4 + 0.6 * Math.sin(this.t)); ctx.save(); ctx.globalAlpha = a; ctx.fillStyle = this.col; if (this.star) dStar(this.x, this.y, 4, this.r * 2.5, this.r * .9); else { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fill() } ctx.restore() } }
-    function dStar(cx, cy, sp, oR, iR) { let r = (Math.PI / 2) * 3, st = Math.PI / sp; ctx.beginPath(); ctx.moveTo(cx, cy - oR); for (let i = 0; i < sp; i++) { ctx.lineTo(cx + Math.cos(r) * oR, cy + Math.sin(r) * oR); r += st; ctx.lineTo(cx + Math.cos(r) * iR, cy + Math.sin(r) * iR); r += st } ctx.closePath(); ctx.fill() }
-    for (let i = 0; i < 170; i++)pts.push(new P());
-    (function aP() { ctx.clearRect(0, 0, W, H); pts.forEach(p => { p.update(); p.draw() }); requestAnimationFrame(aP) })();
+  </div>
+</section>
 
-    /* ── CONFETTI ── */
-    const cW = document.getElementById('confetti');
-    const cC = ['#ff6ec7', '#a855f7', '#60a5fa', '#cc0000', '#d4a843', '#fbbf24', '#f472b6', '#818cf8'];
-    for (let i = 0; i < 80; i++) { const el = document.createElement('div'); el.className = 'c-piece'; const iC = Math.random() > .5; el.style.cssText = `left:${Math.random() * 100}%;background:${cC[Math.floor(Math.random() * cC.length)]};animation-duration:${5 + Math.random() * 8}s;animation-delay:${Math.random() * 12}s;width:${5 + Math.random() * 9}px;height:${iC ? 5 + Math.random() * 9 + 'px' : 9 + Math.random() * 14 + 'px'};border-radius:${iC ? '50%' : '3px'}`; cW.appendChild(el) }
+<!-- ══════════ WISHES ══════════ -->
+<section id="wishes">
+  <div class="section-label reveal">WITH ALL OUR LOVE</div>
+  <h2 class="section-title reveal rd1">From Your Cricket Instagram Squad 💌🏏</h2>
+  <div class="wishes-grid">
+    <div class="wish-card wc1 reveal rd1">
+      <div class="insta-handle">@kanika.✨ · CSK fan 💛</div>
+      <div class="wish-av">🌺</div>
+      <div class="wish-name">Kanika</div>
+      <div class="wish-role">RCB Fan · Fellow Kohli Army · Your cricket twin</div>
+      <div class="wish-text">"We are the only two in this group who don't have to justify loving Kohli 🔴👑 EE SALA CUP NAMDE
+        — AND EE SALA BIRTHDAY BHI NAMDE! You deserve every single run Virat has ever scored 🏆🎂"</div>
+      <div class="wish-hearts">❤️ 🏏 🏆</div>
+    </div>
+    <div class="wish-card wc2 reveal rd2">
+      <div class="insta-handle">@shruti🦋 · MI fan 💙</div>
+      <div class="wish-av">🦋</div>
+      <div class="wish-name">Shruti</div>
+      <div class="wish-role">MI Fan · Meme supplier · The unhinged one</div>
+      <div class="wish-text">"I'm an MI fan and you're an RCB fan and YES we fought every IPL but I'd pick you as my best friend every single time 🔵🔴 RCB won 2025 and you somehow got even louder about it — and I LOVE that for you 🏆💜"</div>
+      <div class="wish-hearts">💜 🏏 💙</div>
+    </div>
+    <div class="wish-card wc3 reveal rd3">
+      <div class="insta-handle">@aashi · KKR fan 💜</div>
+      <div class="wish-av">🌙</div>
+      <div class="wish-name">Aashi</div>
+      <div class="wish-role">KKR Fan · 3am talker · The empath of the group</div>
+      <div class="wish-text">"KKR vs RCB debates will always be our thing 💜🔴 But you know what? I genuinely cheered for RCB in the 2025 final because I knew how much it would mean to you. Happy Birthday to the most passionate cricket girl I know 🌙✨"</div>
+      <div class="wish-hearts">💙 🌊 💜</div>
+    </div>
+  </div>
+</section>
 
-    /* ── COUNTDOWN ── */
-    const pv = {};
-    function upC() { const diff = new Date('2026-05-24T00:00:00') - new Date(); if (diff <= 0) { document.querySelector('.cdgrid').style.display = 'none'; document.getElementById('bday-msg').style.display = 'block'; return } const v = { days: Math.floor(diff / 86400000), hours: Math.floor((diff % 86400000) / 3600000), mins: Math.floor((diff % 3600000) / 60000), secs: Math.floor((diff % 60000) / 1000) };['days', 'hours', 'mins', 'secs'].forEach(k => { const el = document.getElementById('cd-' + k), f = String(v[k]).padStart(2, '0'); if (f !== pv[k]) { el.textContent = f; pv[k] = f; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip') } }) }
-    upC(); setInterval(upC, 1000);
+<!-- ══════════ SURPRISE ══════════ -->
+<section id="surprise">
+  <div class="section-label reveal">ONE LAST THING</div>
+  <h2 class="section-title reveal rd1">Your Surprise Is Here 🎁</h2>
+  <p class="surprise-desc reveal rd2">From four girls — a CSK fan, an MI fan, a KKR fan, and an RCB fan — who all somehow agree on one thing: you are irreplaceable 💕</p>
+  <button class="glow-btn reveal rd3" id="surpriseBtn" onclick="revealSurprise()">🏏 Open Your Birthday Gift 🎂</button>
+  <div class="surp-rev" id="surpriseReveal">
+    <div class="surp-cake">🎂🏆🔴</div>
+    <div class="surp-msg">Ee Sala Birthday Namde! 🏆</div>
+    <p class="surp-quote">"A Bigg Boss group chat. IPL arguments at midnight. Four girls with four different favourite teams. That's where it started. But what it became — is something we'll carry forever. We've never shared the same stadium, but we've shared every match, every heartbreak, every celebration. RCB won the 2025 IPL. And we like to think the universe did it just for you. Happy Birthday Aanya. May every Kohli cover drive this season be dedicated to you. 🌸🏏🔴🏆💕"</p>
+    <p style="color:rgba(255,255,255,.28);font-size:.76rem;letter-spacing:.1em">— Kanika 🔴, Shruti 💙 & Aashi 💜· Your Instagram Cricket Squad 💌</p>
+    <div class="fw-grid"><span>🎉</span><span>🏆</span><span>🎂</span><span>🔴</span><span>👑</span><span>🌸</span></div>
+  </div>
+</section>
 
-    /* ── INSTAGRAM LIKE ── */
-    let liked = false, lc = 118086;
-    const likeS = document.createElement('style'); likeS.textContent = '@keyframes lkF{0%{transform:scale(0) translateY(0);opacity:1}50%{transform:scale(1.6) translateY(-30px)}100%{transform:scale(1) translateY(-60px);opacity:0}}'; document.head.appendChild(likeS);
-    function toggleLike(e) { liked = !liked; document.getElementById('likeBtn').textContent = liked ? '❤️' : '🤍'; lc += liked ? 1 : -1; document.getElementById('likeCount').textContent = lc.toLocaleString('en-IN'); if (liked) popHeart(e.clientX, e.clientY) }
-    function tapLike(e) { popHeart(e.clientX, e.clientY) }
-    function popHeart(x, y) { const el = document.createElement('div'); el.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:2.2rem;pointer-events:none;z-index:9999;animation:lkF .9s ease forwards`; el.textContent = '❤️'; document.body.appendChild(el); setTimeout(() => el.remove(), 900) }
+<footer>Made with <span>♥</span> &amp; cricket energy by your Bigg Boss → Instagram squad · 24 May 2026 🏏🏆</footer>
 
-    /* ── CHAT ── */
-    const msgs = [
-      { side: 'left', av: 'av1', name: 'Priya 🌺 (CSK)', text: 'omg omg OMG IT IS FINALLY HER BIRTHDAY 🎂🎂 also RCB won the cup last year I still can\'t believe this girl predicted it in our GC 😭😭', time: '11:56 PM' },
-      { side: 'left', av: 'av2', name: 'Meera 🦋 (MI)', text: 'I\'m an MI fan and I\'m still SO HAPPY FOR HER 😭 RCB champions and her birthday on the same month?? The universe is her fan 🏆❤️', time: '11:57 PM' },
-      { side: 'left', av: 'av3', name: 'Zara 🌙 (KKR)', text: 'from fighting in a Bigg Boss GC to making her a whole birthday website... character development 😭✨ HBD Swastika WE LOVE YOU SO MUCH', time: '11:58 PM' },
-      { side: 'right', av: 'av4', name: 'Riya ⭐ (RCB)', text: 'FELLOW RCB SOLDIER WE DID IT 🏆🔴 Patidar lifted the trophy FOR YOU. Kohli ran FOR YOU. HAPPY BIRTHDAY BESTIE!!', time: '11:59 PM' },
-      { side: 'left', av: 'av1', name: 'Priya 🌺', text: 'I\'m CSK forever but I screamed when RCB won 2025 because I knew how much she was gonna cry 😭💛🔴', time: '12:00 AM' },
-      { side: 'left', av: 'av2', name: 'Meera 🦋', text: 'one day — Chinnaswamy Stadium, all four of us, live RCB match. That\'s the plan. That\'s the VISION 🏟️✨', time: '12:00 AM' },
-      { side: 'left', av: 'av3', name: 'Zara 🌙', text: 'never met. always there. happy birthday to the most passionate cricket girl on the internet 🌙🏏💕', time: '12:01 AM' },
-    ];
-    const avE = { av1: '🌺', av2: '🦋', av3: '🌙', av4: '⭐' };
-    const cb = document.getElementById('chatBody'); let mi = 0;
-    function addTyping(av) { const r = document.createElement('div'); r.className = 'mrow'; r.id = 'trow'; r.innerHTML = `<div class="mav ${av}">${avE[av]}</div><div class="mbub"><div class="mtyping"><span></span><span></span><span></span></div></div>`; cb.appendChild(r); setTimeout(() => r.classList.add('visible'), 50) }
-    function addMsg(m) { const r = document.getElementById('trow'); if (r) r.remove(); const el = document.createElement('div'); el.className = `mrow ${m.side === 'right' ? 'right' : ''}`; el.innerHTML = `<div class="mav ${m.av}">${avE[m.av]}</div><div class="mbub"><div class="mname">${m.name}</div>${m.text}<div class="mtime">${m.time}</div></div>`; cb.appendChild(el); cb.scrollTop = cb.scrollHeight; setTimeout(() => el.classList.add('visible'), 50) }
-    function runChat() { if (mi >= msgs.length) return; const m = msgs[mi++]; addTyping(m.av); setTimeout(() => { addMsg(m); setTimeout(runChat, 1100 + Math.random() * 900) }, 1000 + Math.random() * 600) }
-    const cObs = new IntersectionObserver(e => { if (e[0].isIntersecting) { runChat(); cObs.disconnect() } }, { threshold: .25 });
-    cObs.observe(document.getElementById('squad'));
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cursor'),curR=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';spawnSparkle(mx,my)});
+(function aR(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(aR)})();
+const spC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#f9a8d4'];
+let lastSp=0;
+function spawnSparkle(x,y){const n=Date.now();if(n-lastSp<35||Math.random()>.55)return;lastSp=n;const sp=document.createElement('div');sp.className='sparkle';const s=4+Math.random()*8;sp.style.cssText=`left:${x-s/2}px;top:${y-s/2}px;width:${s}px;height:${s}px;background:${spC[Math.floor(Math.random()*spC.length)]}`;document.body.appendChild(sp);setTimeout(()=>sp.remove(),700)}
 
-    /* ── SURPRISE ── */
-    function revealSurprise() { document.getElementById('surpriseBtn').style.display = 'none'; document.getElementById('surpriseReveal').classList.add('show'); burstC() }
-    function burstC() { for (let i = 0; i < 80; i++) { setTimeout(() => { const el = document.createElement('div'); el.className = 'c-piece'; el.style.cssText = `left:${20 + Math.random() * 60}%;top:50%;background:${cC[Math.floor(Math.random() * cC.length)]};position:fixed;z-index:9999;width:${5 + Math.random() * 9}px;height:${8 + Math.random() * 14}px;border-radius:${Math.random() > .5 ? '50%' : '3px'};animation:cfAll ${1.5 + Math.random()}s ease forwards;opacity:1`; document.body.appendChild(el); setTimeout(() => el.remove(), 2500) }, i * 30) } }
+/* ── HERO TITLE ── */
+const tEl=document.getElementById('heroTitle');
+['Happy','Birthday'].forEach((w,wi)=>{const ws=document.createElement('span');ws.style.cssText='display:inline-flex;gap:0';if(wi===1)ws.style.marginLeft='.25em';[...w].forEach((c,ci)=>{const s=document.createElement('span');s.className='char';s.textContent=c;s.style.animationDelay=(.8+wi*.35+ci*.07)+'s';ws.appendChild(s)});tEl.appendChild(ws)});
 
-    /* ── SCROLL REVEAL ── */
-    const rO = new IntersectionObserver(e => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible') }) }, { threshold: .1 });
-    document.querySelectorAll('.reveal').forEach(el => rO.observe(el));
-  </script>
+/* ── PARTICLES ── */
+const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight}rsz();addEventListener('resize',rsz);
+const pC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#f9a8d4','#c084fc','#fff'];
+class P{reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2.2+.4;this.col=pC[Math.floor(Math.random()*pC.length)];this.vx=(Math.random()-.5)*.5;this.vy=(Math.random()-.5)*.5;this.a=Math.random()*.7+.15;this.t=Math.random()*Math.PI*2;this.life=0;this.ml=Math.random()*350+150;this.star=Math.random()>.65}constructor(){this.reset()}update(){this.x+=this.vx;this.y+=this.vy;this.t+=.045;this.life++;if(this.life>this.ml||this.x<-5||this.x>W+5||this.y<-5||this.y>H+5)this.reset()}draw(){const a=this.a*(0.4+0.6*Math.sin(this.t));ctx.save();ctx.globalAlpha=a;ctx.fillStyle=this.col;if(this.star)dStar(this.x,this.y,4,this.r*2.5,this.r*.9);else{ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}ctx.restore()}}
+function dStar(cx,cy,sp,oR,iR){let r=(Math.PI/2)*3,st=Math.PI/sp;ctx.beginPath();ctx.moveTo(cx,cy-oR);for(let i=0;i<sp;i++){ctx.lineTo(cx+Math.cos(r)*oR,cy+Math.sin(r)*oR);r+=st;ctx.lineTo(cx+Math.cos(r)*iR,cy+Math.sin(r)*iR);r+=st}ctx.closePath();ctx.fill()}
+for(let i=0;i<170;i++)pts.push(new P());
+(function aP(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.update();p.draw()});requestAnimationFrame(aP)})();
+
+/* ── CONFETTI ── */
+const cW=document.getElementById('confetti');
+const cC=['#ff6ec7','#a855f7','#60a5fa','#cc0000','#d4a843','#fbbf24','#f472b6','#818cf8'];
+for(let i=0;i<80;i++){const el=document.createElement('div');el.className='c-piece';const iC=Math.random()>.5;el.style.cssText=`left:${Math.random()*100}%;background:${cC[Math.floor(Math.random()*cC.length)]};animation-duration:${5+Math.random()*8}s;animation-delay:${Math.random()*12}s;width:${5+Math.random()*9}px;height:${iC?5+Math.random()*9+'px':9+Math.random()*14+'px'};border-radius:${iC?'50%':'3px'}`;cW.appendChild(el)}
+
+/* ── COUNTDOWN ── */
+const pv={};
+function upC(){const diff=new Date('2026-05-24T00:00:00')-new Date();if(diff<=0){document.querySelector('.cdgrid').style.display='none';document.getElementById('bday-msg').style.display='block';return}const v={days:Math.floor(diff/86400000),hours:Math.floor((diff%86400000)/3600000),mins:Math.floor((diff%3600000)/60000),secs:Math.floor((diff%60000)/1000)};['days','hours','mins','secs'].forEach(k=>{const el=document.getElementById('cd-'+k),f=String(v[k]).padStart(2,'0');if(f!==pv[k]){el.textContent=f;pv[k]=f;el.classList.remove('flip');void el.offsetWidth;el.classList.add('flip')}})}
+upC();setInterval(upC,1000);
+
+/* ── INSTAGRAM LIKE ── */
+let liked=false,lc=118086;
+const likeS=document.createElement('style');likeS.textContent='@keyframes lkF{0%{transform:scale(0) translateY(0);opacity:1}50%{transform:scale(1.6) translateY(-30px)}100%{transform:scale(1) translateY(-60px);opacity:0}}';document.head.appendChild(likeS);
+function toggleLike(e){liked=!liked;document.getElementById('likeBtn').textContent=liked?'❤️':'🤍';lc+=liked?1:-1;document.getElementById('likeCount').textContent=lc.toLocaleString('en-IN');if(liked)popHeart(e.clientX,e.clientY)}
+function tapLike(e){popHeart(e.clientX,e.clientY)}
+function popHeart(x,y){const el=document.createElement('div');el.style.cssText=`position:fixed;left:${x}px;top:${y}px;font-size:2.2rem;pointer-events:none;z-index:9999;animation:lkF .9s ease forwards`;el.textContent='❤️';document.body.appendChild(el);setTimeout(()=>el.remove(),900)}
+
+/* ── CHAT ── */
+const msgs=[
+  {side:'left',av:'av1',name:'Kanika 🔴 (CSK)',text:'omg omg OMG IT IS FINALLY HER BIRTHDAY 🎂🎂 also RCB won the cup last year I still can\'t believe this girl predicted it in our GC 😭😭',time:'11:56 PM'},
+  {side:'left',av:'av2',name:'Shruti 💙 (MI)',text:'I\'m an MI fan and I\'m still SO HAPPY FOR HER 😭 RCB champions and her birthday on the same month?? The universe is her fan 🏆❤️',time:'11:57 PM'},
+  {side:'left',av:'av3',name:'Aashi 💜 (KKR)',text:'from fighting in a Bigg Boss GC to making her a whole birthday website... character development 😭✨ HBD AANYA WE LOVE YOU SO MUCH',time:'11:58 PM'},
+ {side:'left',av:'av1',name:'Kanika 🔴',text:'I\'m CSK forever but I screamed when RCB won 2025 because I knew how much she was gonna cry 😭💛🔴',time:'12:00 AM'},
+  {side:'left',av:'av2',name:'Shruti 💙',text:'one day — Chinnaswamy Stadium, all four of us, live RCB match. That\'s the plan. That\'s the VISION 🏟️✨',time:'12:00 AM'},
+  {side:'left',av:'av3',name:'Aashi 💜',text:'never met. always there. happy birthday to the most passionate cricket girl on the internet 💜🏏💕',time:'12:01 AM'},
+];
+const avE={av1:'🌺',av2:'🦋',av3:'🌙',av4:'⭐'};
+const cb=document.getElementById('chatBody');let mi=0;
+function addTyping(av){const r=document.createElement('div');r.className='mrow';r.id='trow';r.innerHTML=`<div class="mav ${av}">${avE[av]}</div><div class="mbub"><div class="mtyping"><span></span><span></span><span></span></div></div>`;cb.appendChild(r);setTimeout(()=>r.classList.add('visible'),50)}
+function addMsg(m){const r=document.getElementById('trow');if(r)r.remove();const el=document.createElement('div');el.className=`mrow ${m.side==='right'?'right':''}`;el.innerHTML=`<div class="mav ${m.av}">${avE[m.av]}</div><div class="mbub"><div class="mname">${m.name}</div>${m.text}<div class="mtime">${m.time}</div></div>`;cb.appendChild(el);cb.scrollTop=cb.scrollHeight;setTimeout(()=>el.classList.add('visible'),50)}
+function runChat(){if(mi>=msgs.length)return;const m=msgs[mi++];addTyping(m.av);setTimeout(()=>{addMsg(m);setTimeout(runChat,1100+Math.random()*900)},1000+Math.random()*600)}
+const cObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){runChat();cObs.disconnect()}},{threshold:.25});
+cObs.observe(document.getElementById('squad'));
+
+/* ── SURPRISE ── */
+function revealSurprise(){document.getElementById('surpriseBtn').style.display='none';document.getElementById('surpriseReveal').classList.add('show');burstC()}
+function burstC(){for(let i=0;i<80;i++){setTimeout(()=>{const el=document.createElement('div');el.className='c-piece';el.style.cssText=`left:${20+Math.random()*60}%;top:50%;background:${cC[Math.floor(Math.random()*cC.length)]};position:fixed;z-index:9999;width:${5+Math.random()*9}px;height:${8+Math.random()*14}px;border-radius:${Math.random()>.5?'50%':'3px'};animation:cfAll ${1.5+Math.random()}s ease forwards;opacity:1`;document.body.appendChild(el);setTimeout(()=>el.remove(),2500)},i*30)}}
+
+/* ── SCROLL REVEAL ── */
+const rO=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>rO.observe(el));
+</script>
 </body>
-
 </html>
