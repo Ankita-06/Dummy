@@ -241,7 +241,7 @@
       z-index: 5
     }
 
-    /* ════ HERO ════ */
+    /* ═══ HERO ═══ */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -300,8 +300,9 @@
       animation: srP 2.5s ease-in-out infinite
     }
 
-    .story-ring.seen {
-      background: rgba(255, 255, 255, .18)
+    .story-ring.pbks-r {
+      background: linear-gradient(45deg, #d4001e, #8b0000, #d4001e);
+      animation: srP 2.5s ease-in-out infinite
     }
 
     .story-inner {
@@ -595,7 +596,7 @@
       }
     }
 
-    /* ════ SHARED ════ */
+    /* ═══ SHARED ═══ */
     .section-label {
       font-size: .7rem;
       letter-spacing: .25em;
@@ -631,7 +632,7 @@
       background-clip: text
     }
 
-    /* ════ ORIGIN STORY ════ */
+    /* ═══ ORIGIN ═══ */
     #origin {
       padding: 7rem 2rem;
       display: flex;
@@ -736,7 +737,7 @@
       line-height: 1.7
     }
 
-    /* ════ INSTA PHONE ════ */
+    /* ═══ INSTA PHONE ═══ */
     #insta-section {
       padding: 7rem 2rem;
       display: flex;
@@ -834,6 +835,10 @@
 
     .ph-sr.rcb-s {
       background: linear-gradient(45deg, #cc0000, #d4a843)
+    }
+
+    .ph-sr.pbks-s {
+      background: linear-gradient(45deg, #d4001e, #8b0000)
     }
 
     .ph-si {
@@ -1025,7 +1030,7 @@
       font-size: .7rem
     }
 
-    /* ════ COUNTDOWN ════ */
+    /* ═══ COUNTDOWN ═══ */
     #countdown {
       padding: 7rem 2rem;
       display: flex;
@@ -1150,7 +1155,7 @@
       margin-top: .5rem
     }
 
-    /* ════ CHAT ════ */
+    /* ═══ CHAT ═══ */
     #squad {
       padding: 7rem 2rem;
       display: flex;
@@ -1288,19 +1293,19 @@
     }
 
     .av1 {
-      background: linear-gradient(135deg, #ff6ec7, #f472b6);
-      box-shadow: 0 0 12px rgba(255, 110, 199, .5)
+      background: linear-gradient(135deg, #d4001e, #8b0000);
+      box-shadow: 0 0 12px rgba(212, 0, 30, .5)
     }
 
     .av2 {
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      box-shadow: 0 0 12px rgba(168, 85, 247, .5);
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      box-shadow: 0 0 12px rgba(59, 130, 246, .5);
       animation-delay: .5s
     }
 
     .av3 {
-      background: linear-gradient(135deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 12px rgba(96, 165, 250, .5);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      box-shadow: 0 0 12px rgba(168, 85, 247, .5);
       animation-delay: 1s
     }
 
@@ -1394,7 +1399,7 @@
       }
     }
 
-    /* ════ PLAYER CARDS ════ */
+    /* ═══ PLAYER CARDS ═══ */
     #players {
       padding: 7rem 2rem;
       display: flex;
@@ -1485,7 +1490,6 @@
       box-shadow: 0 30px 70px rgba(249, 115, 22, .35)
     }
 
-    /* shimmer sweep */
     .player-card::before {
       content: '';
       position: absolute;
@@ -1503,17 +1507,106 @@
       left: 150%
     }
 
-    /* SVG illustration area */
-    .pc-svg-area {
+    /* ── Player Illustrated Image Area ── */
+    .pc-img-area {
       width: 100%;
-      height: 180px;
+      height: 200px;
       position: relative;
-      overflow: hidden
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center
     }
 
-    .pc-svg-area svg {
+    .player-illustration {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative
+    }
+
+    /* Jersey illustration */
+    .jersey-wrap {
+      position: relative;
+      width: 130px;
+      height: 180px;
+      margin: 0 auto
+    }
+
+    .jersey-svg {
       width: 100%;
       height: 100%
+    }
+
+    .player-num {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      z-index: 2
+    }
+
+    .player-face {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      z-index: 3;
+      border: 3px solid rgba(255, 255, 255, .25)
+    }
+
+    .pc-glow-ring {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      z-index: 2;
+      animation: glRing 2.5s ease-in-out infinite
+    }
+
+    @keyframes glRing {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, .15)
+      }
+
+      50% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0)
+      }
+    }
+
+    .player-name-tag {
+      position: absolute;
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      z-index: 3;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600
     }
 
     .pc-body {
@@ -1632,7 +1725,6 @@
       color: #f97316
     }
 
-    /* IPL 2026 manifesting banner */
     .manifest-banner {
       max-width: 680px;
       width: 100%;
@@ -1680,7 +1772,7 @@
       color: #d4a843
     }
 
-    /* ════ WISH CARDS ════ */
+    /* ═══ WISH CARDS ═══ */
     #wishes {
       padding: 7rem 2rem;
       display: flex;
@@ -1755,33 +1847,33 @@
     }
 
     .wc1 {
-      box-shadow: 0 8px 32px rgba(255, 110, 199, .1);
-      border-color: rgba(255, 110, 199, .2)
+      box-shadow: 0 8px 32px rgba(212, 0, 30, .12);
+      border-color: rgba(212, 0, 30, .25)
     }
 
     .wc1:hover {
       transform: translateY(-12px) rotate(-1.5deg);
-      box-shadow: 0 30px 70px rgba(255, 110, 199, .25)
+      box-shadow: 0 30px 70px rgba(212, 0, 30, .25)
     }
 
     .wc2 {
-      box-shadow: 0 8px 32px rgba(168, 85, 247, .1);
-      border-color: rgba(168, 85, 247, .2)
+      box-shadow: 0 8px 32px rgba(30, 58, 138, .12);
+      border-color: rgba(59, 130, 246, .2)
     }
 
     .wc2:hover {
       transform: translateY(-12px) rotate(1.5deg);
-      box-shadow: 0 30px 70px rgba(168, 85, 247, .25)
+      box-shadow: 0 30px 70px rgba(59, 130, 246, .22)
     }
 
     .wc3 {
-      box-shadow: 0 8px 32px rgba(96, 165, 250, .1);
-      border-color: rgba(96, 165, 250, .2)
+      box-shadow: 0 8px 32px rgba(168, 85, 247, .1);
+      border-color: rgba(168, 85, 247, .2)
     }
 
     .wc3:hover {
       transform: translateY(-12px) rotate(-1deg);
-      box-shadow: 0 30px 70px rgba(96, 165, 250, .25)
+      box-shadow: 0 30px 70px rgba(168, 85, 247, .25)
     }
 
     .wc4 {
@@ -1822,19 +1914,19 @@
     }
 
     .wc1 .wish-av {
-      background: linear-gradient(135deg, #ff6ec7, #f472b6);
-      box-shadow: 0 0 20px rgba(255, 110, 199, .5)
+      background: linear-gradient(135deg, #d4001e, #8b0000);
+      box-shadow: 0 0 20px rgba(212, 0, 30, .5)
     }
 
     .wc2 .wish-av {
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      box-shadow: 0 0 20px rgba(168, 85, 247, .5);
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      box-shadow: 0 0 20px rgba(59, 130, 246, .5);
       animation-delay: .5s
     }
 
     .wc3 .wish-av {
-      background: linear-gradient(135deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 20px rgba(96, 165, 250, .5);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      box-shadow: 0 0 20px rgba(168, 85, 247, .5);
       animation-delay: 1s
     }
 
@@ -1871,7 +1963,7 @@
       letter-spacing: .2em
     }
 
-    /* ════ SURPRISE ════ */
+    /* ═══ SURPRISE ═══ */
     #surprise {
       padding: 9rem 2rem;
       display: flex;
@@ -2193,14 +2285,14 @@
   <section id="hero">
     <div class="stories-row">
       <div class="story-bub">
-        <div class="story-ring active">
-          <div class="story-inner">🌸</div>
+        <div class="story-ring pbks-r">
+          <div class="story-inner">🦁</div>
         </div>
         <div class="story-name">@kanika</div>
       </div>
       <div class="story-bub">
         <div class="story-ring active">
-          <div class="story-inner">🦋</div>
+          <div class="story-inner">💙</div>
         </div>
         <div class="story-name">@shruti</div>
       </div>
@@ -2217,13 +2309,13 @@
         <div class="story-name">@swastika</div>
       </div>
     </div>
-    <div class="hero-badge">📸 From Bigg Boss GC · IPL Debates · Forever Besties 💕</div>
+    <div class="hero-badge">📸 Met Jan/Feb 2026 · IPL Debates · Forever Besties 💕</div>
     <h1 class="hero-title" id="heroTitle"></h1>
     <p class="hero-sub">to the most passionate RCB girl we know 🏏❤️</p>
     <div class="hero-name">Swastika ✨</div>
     <div class="rcb-hero-tag"><span class="rcb-dot"></span>🏏 RCB Champions 2025 · Kohli Army · Die-Heart Fan 🏆</div>
     <div class="emoji-ring"><span>🎂</span><span>🏏</span><span>🎉</span><span>❤️</span><span>🏆</span></div>
-    <div class="hero-ribbon">BIGG BOSS GC → IPL CHATS → BESTIES FOREVER · FOUR GIRLS · ZERO DISTANCE</div>
+    <div class="hero-ribbon">PBKS 💛 · MI 💙 · NEUTRAL 🌙 — ALL UNITED FOR ONE GIRL · EE SALA CUP NAMDE</div>
     <div class="scroll-hint">
       <div class="scroll-dot"></div>SCROLL
     </div>
@@ -2232,43 +2324,46 @@
   <!-- ══ ORIGIN ══ -->
   <section id="origin">
     <div class="section-label reveal">HOW IT ALL STARTED</div>
-    <h2 class="section-title reveal rd1">From a Bigg Boss GC to Forever 💬🏠</h2>
+    <h2 class="section-title reveal rd1">From a January Group Chat to Forever 💬✨</h2>
     <p class="reveal rd2"
-      style="color:rgba(255,255,255,.4);max-width:480px;text-align:center;line-height:1.8;font-size:.9rem">Nobody warned
-      us that a random group chat would turn into the most real friendship we've ever had 🥺</p>
+      style="color:rgba(255,255,255,.4);max-width:480px;text-align:center;line-height:1.8;font-size:.9rem">Just a few
+      months ago, four girls found each other over cricket chaos — and now we can't imagine a match without each other
+      🥺</p>
     <div class="origin-card reveal rd3">
       <div class="origin-timeline">
         <div class="origin-step">
           <div class="step-dot s1">📺</div>
           <div class="step-content">
-            <div class="step-title">The Bigg Boss Group Chat</div>
-            <div class="step-desc">It all started in a Bigg Boss fan GC — hot takes, chaotic opinions, fights about
-              evictions. That's where four cricket-obsessed girls somehow found each other amidst all the drama 🎭</div>
+            <div class="step-title">January 2026 — The Group Chat Begins</div>
+            <div class="step-desc">It all started in a Bigg Boss fan GC in Jan/Feb 2026 — hot takes, chaotic opinions,
+              fights about evictions. That's where four cricket-obsessed girls somehow found each other amidst all the
+              drama 🎭</div>
           </div>
         </div>
         <div class="origin-step">
           <div class="step-dot s2">🏏</div>
           <div class="step-content">
-            <div class="step-title">IPL Season Brought Us Closer</div>
-            <div class="step-desc">Then IPL hit and everything changed. One girl defending RCB & Virat Kohli like her
-              life depended on it — three of us arguing back. That's when we realised we found our person 🔴</div>
+            <div class="step-title">IPL Debates Started Immediately</div>
+            <div class="step-desc">A PBKS fan, an MI fan, a neutral girl — all of us instantly connecting with the one
+              girl who bleeds RCB. One defending Virat Kohli like her life depended on it, the rest arguing back. That's
+              when we knew we found our person 🔴</div>
           </div>
         </div>
         <div class="origin-step">
           <div class="step-dot s3">📱</div>
           <div class="step-content">
             <div class="step-title">Instagram DMs & Voice Notes</div>
-            <div class="step-desc">The Bigg Boss GC moved to Instagram. Cricket debates turned into life talks. 3am
-              voice notes, reel sharing, manifesting RCB wins together 💜</div>
+            <div class="step-desc">The GC moved to Instagram. Cricket debates turned into life talks. Reel sharing, 3am
+              voice notes, manifesting RCB wins together — even Kanika (PBKS 💛) and Shruti (MI 💙) were secretly
+              rooting for RCB for her 😭</div>
           </div>
         </div>
         <div class="origin-step">
           <div class="step-dot s4">🏆</div>
           <div class="step-content">
             <div class="step-title">RCB Won. She Cried. We All Cried.</div>
-            <div class="step-desc">IPL 2025 — RCB finally lifted the trophy and we watched it all unfold over texts.
-              Never met IRL but that moment felt like the most real thing. One day — Chinnaswamy, all four of us live
-              🏟️✨</div>
+            <div class="step-desc">IPL 2025 — RCB finally lifted the trophy. Though we'd only known each other a few
+              months, it felt like we'd been friends forever. One day — Chinnaswamy, all four of us, live 🏟️✨</div>
           </div>
         </div>
       </div>
@@ -2287,14 +2382,14 @@
       </div>
       <div class="ph-stories">
         <div class="ph-story">
-          <div class="ph-sr">
-            <div class="ph-si">🌸</div>
+          <div class="ph-sr pbks-s">
+            <div class="ph-si">🦁</div>
           </div>
           <div class="ph-sn">@kanika</div>
         </div>
         <div class="ph-story">
           <div class="ph-sr">
-            <div class="ph-si">🦋</div>
+            <div class="ph-si">💙</div>
           </div>
           <div class="ph-sn">@shruti</div>
         </div>
@@ -2334,10 +2429,10 @@
           #RCBForever #BiggBossGC #IPLGirls #NeverMetAlwaysThere 🏏🔴🏆</div>
         <div class="post-cmt-btn">View all 2,025 comments 🎉</div>
         <div class="post-cmts">
-          <div><strong style="color:#fff">@kanika</strong> <span style="color:rgba(255,255,255,.65)">RCB WON AND IT'S
-              HER BIRTHDAY MONTH. THE UNIVERSE LOVES HER 😭🏆</span></div>
-          <div><strong style="color:#fff">@shruti</strong> <span style="color:rgba(255,255,255,.65)">Patidar lifted the
-              trophy FOR YOU bestie 🔴🏆🦋</span></div>
+          <div><strong style="color:#fff">@kanika</strong> <span style="color:rgba(255,255,255,.65)">PBKS fan but I'm
+              crying at RCB winning because of her 😭🦁🏆</span></div>
+          <div><strong style="color:#fff">@shruti</strong> <span style="color:rgba(255,255,255,.65)">MI fan secretly
+              screamed when Patidar lifted the trophy for you 💙🏆</span></div>
           <div><strong style="color:#fff">@aashi</strong> <span style="color:rgba(255,255,255,.65)">2026 cup is also
               yours. Already manifesting 🌙✨</span></div>
           <div style="color:rgba(255,255,255,.25);font-size:.62rem">24 May · 12:00 AM</div>
@@ -2402,38 +2497,53 @@
 
       <!-- VIRAT KOHLI -->
       <div class="player-card pc-rcb-gold reveal rd1">
-        <div class="pc-svg-area">
-          <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="vkbg" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stop-color="#3a0000" />
-                <stop offset="100%" stop-color="#1a0000" />
-              </radialGradient>
-            </defs>
-            <rect width="220" height="180" fill="url(#vkbg)" />
-            <!-- jersey body -->
-            <path d="M60 180 L60 90 Q60 75 75 72 L110 65 L145 72 Q160 75 160 90 L160 180 Z" fill="#cc0000"
-              opacity=".9" />
-            <!-- collar -->
-            <path d="M90 65 Q110 78 130 65 L125 58 Q110 68 95 58 Z" fill="#d4a843" />
-            <!-- jersey stripes -->
-            <path d="M60 100 L160 100" stroke="#d4a843" stroke-width="1.5" opacity=".5" />
-            <path d="M60 115 L160 115" stroke="#d4a843" stroke-width=".8" opacity=".3" />
-            <!-- #18 -->
-            <text x="110" y="148" text-anchor="middle" font-family="'Playfair Display',serif" font-size="40"
-              font-weight="700" fill="#d4a843" opacity=".8">18</text>
-            <!-- head circle -->
-            <circle cx="110" cy="46" r="24" fill="#cc0000" opacity=".85" />
-            <circle cx="110" cy="46" r="24" fill="none" stroke="#d4a843" stroke-width="1.5" />
-            <!-- crown -->
-            <text x="110" y="52" text-anchor="middle" font-size="20">👑</text>
-            <!-- glow -->
-            <circle cx="110" cy="46" r="28" fill="none" stroke="#d4a843" stroke-width=".5" opacity=".4" />
-            <!-- RCB badge top right -->
-            <rect x="160" y="8" width="52" height="18" rx="4" fill="#d4a843" opacity=".2" />
-            <text x="186" y="20" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#d4a843"
-              font-weight="700">RCB 🔴</text>
-          </svg>
+        <div class="pc-img-area" style="background:linear-gradient(160deg,#2a0000,#3a0000,#1a001a)">
+          <div class="player-illustration">
+            <div class="jersey-wrap">
+              <!-- glow ring behind head -->
+              <div class="pc-glow-ring" style="box-shadow:0 0 0 0 rgba(212,168,67,.4)"></div>
+              <!-- face circle -->
+              <div class="player-face"
+                style="background:linear-gradient(135deg,#d4a843,#f59e0b);box-shadow:0 0 20px rgba(212,168,67,.6)">👑
+              </div>
+              <!-- name tag -->
+              <div class="player-name-tag"
+                style="background:rgba(212,168,67,.2);color:#d4a843;border:1px solid rgba(212,168,67,.4)">KOHLI</div>
+              <svg class="jersey-svg" viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="vkj" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#cc0000" />
+                    <stop offset="50%" stop-color="#990000" />
+                    <stop offset="100%" stop-color="#cc0000" />
+                  </linearGradient>
+                  <filter id="vkshadow">
+                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.4" />
+                  </filter>
+                </defs>
+                <!-- Jersey body -->
+                <path d="M20 180 L20 95 Q18 82 30 78 L55 72 L65 80 L75 72 L100 78 Q112 82 110 95 L110 180 Z"
+                  fill="url(#vkj)" filter="url(#vkshadow)" />
+                <!-- Collar -->
+                <path d="M55 72 Q65 82 75 72 L72 66 Q65 74 58 66 Z" fill="#d4a843" />
+                <!-- Sleeve left -->
+                <path d="M20 95 L4 118 Q2 124 8 126 L26 115 L20 95Z" fill="#aa0000" />
+                <!-- Sleeve right -->
+                <path d="M110 95 L126 118 Q128 124 122 126 L104 115 L110 95Z" fill="#aa0000" />
+                <!-- Gold stripe across chest -->
+                <path d="M20 105 L110 105" stroke="#d4a843" stroke-width="2" opacity=".7" />
+                <path d="M20 110 L110 110" stroke="#d4a843" stroke-width=".8" opacity=".3" />
+                <!-- Number 18 -->
+                <text x="65" y="162" text-anchor="middle" font-family="'Playfair Display',serif" font-size="42"
+                  font-weight="700" fill="#d4a843" opacity=".9">18</text>
+                <!-- RCB badge on chest -->
+                <rect x="50" y="115" width="30" height="14" rx="4" fill="rgba(212,168,67,.15)" stroke="#d4a843"
+                  stroke-width=".5" />
+                <text x="65" y="125" text-anchor="middle" font-size="7" fill="#d4a843" font-family="sans-serif"
+                  font-weight="700">RCB 🔴</text>
+              </svg>
+              <div class="player-num" style="color:#d4a843;text-shadow:0 0 20px rgba(212,168,67,.7)"></div>
+            </div>
+          </div>
         </div>
         <div class="pc-body">
           <div class="pc-team-pill">🔴 RCB · India · #18</div>
@@ -2441,12 +2551,12 @@
           <div class="pc-role">The King · Her Absolute Favourite</div>
           <div class="pc-stat-row">
             <div class="pc-stat">
-              <div class="pc-stat-val">542</div>
-              <div class="pc-stat-lbl">IPL '26 runs</div>
+              <div class="pc-stat-val">8000+</div>
+              <div class="pc-stat-lbl">IPL runs</div>
             </div>
             <div class="pc-stat">
-              <div class="pc-stat-val">8000+</div>
-              <div class="pc-stat-lbl">career runs</div>
+              <div class="pc-stat-val">76</div>
+              <div class="pc-stat-lbl">Int'l 100s</div>
             </div>
             <div class="pc-stat">
               <div class="pc-stat-val">👑</div>
@@ -2461,32 +2571,42 @@
 
       <!-- RAJAT PATIDAR -->
       <div class="player-card pc-rcb-red reveal rd2">
-        <div class="pc-svg-area">
-          <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="rpbg" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stop-color="#2a0000" />
-                <stop offset="100%" stop-color="#140000" />
-              </radialGradient>
-            </defs>
-            <rect width="220" height="180" fill="url(#rpbg)" />
-            <path d="M60 180 L60 90 Q60 75 75 72 L110 65 L145 72 Q160 75 160 90 L160 180 Z" fill="#cc0000"
-              opacity=".9" />
-            <path d="M90 65 Q110 78 130 65 L125 58 Q110 68 95 58 Z" fill="#cc0000" stroke="#d4a843" stroke-width="1" />
-            <path d="M60 100 L160 100" stroke="rgba(255,255,255,.15)" stroke-width="1.5" />
-            <!-- trophy instead of number -->
-            <text x="110" y="152" text-anchor="middle" font-size="34">🏆</text>
-            <text x="110" y="130" text-anchor="middle" font-family="sans-serif" font-size="13"
-              fill="rgba(212,168,67,.7)" font-weight="700">CAPTAIN</text>
-            <!-- head -->
-            <circle cx="110" cy="46" r="24" fill="#cc0000" opacity=".85" />
-            <circle cx="110" cy="46" r="24" fill="none" stroke="#cc0000" stroke-width="1.5" />
-            <text x="110" y="52" text-anchor="middle" font-size="20">🏏</text>
-            <!-- IPL 2025 badge -->
-            <rect x="4" y="8" width="80" height="18" rx="4" fill="rgba(212,168,67,.15)" />
-            <text x="44" y="20" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a843"
-              font-weight="700">IPL 2025 CHAMP</text>
-          </svg>
+        <div class="pc-img-area" style="background:linear-gradient(160deg,#1a0000,#2d0000,#0a0010)">
+          <div class="player-illustration">
+            <div class="jersey-wrap">
+              <div class="pc-glow-ring"></div>
+              <div class="player-face"
+                style="background:linear-gradient(135deg,#cc0000,#ef4444);box-shadow:0 0 20px rgba(204,0,0,.6)">🏆</div>
+              <div class="player-name-tag"
+                style="background:rgba(204,0,0,.2);color:rgba(255,120,120,.9);border:1px solid rgba(204,0,0,.4)">PATIDAR
+              </div>
+              <svg class="jersey-svg" viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="rpj" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#cc0000" />
+                    <stop offset="50%" stop-color="#990000" />
+                    <stop offset="100%" stop-color="#cc0000" />
+                  </linearGradient>
+                </defs>
+                <path d="M20 180 L20 95 Q18 82 30 78 L55 72 L65 80 L75 72 L100 78 Q112 82 110 95 L110 180 Z"
+                  fill="url(#rpj)" />
+                <path d="M55 72 Q65 82 75 72 L72 66 Q65 74 58 66 Z" fill="#cc0000" stroke="#d4a843" stroke-width="1" />
+                <path d="M20 95 L4 118 Q2 124 8 126 L26 115 L20 95Z" fill="#aa0000" />
+                <path d="M110 95 L126 118 Q128 124 122 126 L104 115 L110 95Z" fill="#aa0000" />
+                <!-- Captain armband stripe -->
+                <path d="M20 108 L110 108" stroke="rgba(255,255,255,.2)" stroke-width="3" />
+                <!-- Trophy icon instead of number -->
+                <text x="65" y="158" text-anchor="middle" font-size="36">🏆</text>
+                <text x="65" y="122" text-anchor="middle" font-family="sans-serif" font-size="9"
+                  fill="rgba(255,200,200,.8)" font-weight="700" letter-spacing="1">CAPTAIN</text>
+                <!-- IPL 2025 badge -->
+                <rect x="40" y="127" width="50" height="13" rx="3" fill="rgba(212,168,67,.15)" stroke="#d4a843"
+                  stroke-width=".5" />
+                <text x="65" y="136.5" text-anchor="middle" font-size="6.5" fill="#d4a843" font-family="sans-serif"
+                  font-weight="700">IPL 2025 CHAMP</text>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="pc-body">
           <div class="pc-team-pill">🔴 RCB Captain · 2025 Trophy</div>
@@ -2495,7 +2615,7 @@
           <div class="pc-stat-row">
             <div class="pc-stat">
               <div class="pc-stat-val">112*</div>
-              <div class="pc-stat-lbl">playoff 100</div>
+              <div class="pc-stat-lbl">playoff best</div>
             </div>
             <div class="pc-stat">
               <div class="pc-stat-val">186</div>
@@ -2514,29 +2634,42 @@
 
       <!-- TIM DAVID -->
       <div class="player-card pc-rcb-red reveal rd3">
-        <div class="pc-svg-area">
-          <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="tdbg" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stop-color="#200010" />
-                <stop offset="100%" stop-color="#140000" />
-              </radialGradient>
-            </defs>
-            <rect width="220" height="180" fill="url(#tdbg)" />
-            <path d="M60 180 L60 90 Q60 75 75 72 L110 65 L145 72 Q160 75 160 90 L160 180 Z" fill="#cc0000"
-              opacity=".9" />
-            <path d="M90 65 Q110 78 130 65 L125 58 Q110 68 95 58 Z" fill="#1a0000" stroke="#cc0000" stroke-width="1" />
-            <!-- TD lightning bolt -->
-            <text x="110" y="152" text-anchor="middle" font-size="34">💥</text>
-            <text x="110" y="128" text-anchor="middle" font-family="sans-serif" font-size="12"
-              fill="rgba(255,120,120,.8)" font-weight="700">FINISHER</text>
-            <circle cx="110" cy="46" r="24" fill="#cc0000" opacity=".85" />
-            <text x="110" y="52" text-anchor="middle" font-size="20">💥</text>
-            <!-- SG flag hint -->
-            <rect x="165" y="8" width="46" height="18" rx="4" fill="rgba(204,0,0,.2)" />
-            <text x="188" y="20" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(255,100,100,.8)"
-              font-weight="700">SG 🇸🇬 RCB</text>
-          </svg>
+        <div class="pc-img-area" style="background:linear-gradient(160deg,#200010,#2a0000,#0a0a0a)">
+          <div class="player-illustration">
+            <div class="jersey-wrap">
+              <div class="pc-glow-ring"></div>
+              <div class="player-face"
+                style="background:linear-gradient(135deg,#991111,#cc3333);box-shadow:0 0 20px rgba(180,0,0,.6)">💥</div>
+              <div class="player-name-tag"
+                style="background:rgba(180,0,0,.2);color:rgba(255,120,120,.9);border:1px solid rgba(180,0,0,.4)">TIM
+                DAVID</div>
+              <svg class="jersey-svg" viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="tdj" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#bb0000" />
+                    <stop offset="50%" stop-color="#880000" />
+                    <stop offset="100%" stop-color="#bb0000" />
+                  </linearGradient>
+                </defs>
+                <path d="M20 180 L20 95 Q18 82 30 78 L55 72 L65 80 L75 72 L100 78 Q112 82 110 95 L110 180 Z"
+                  fill="url(#tdj)" />
+                <path d="M55 72 Q65 82 75 72 L72 66 Q65 74 58 66 Z" fill="#1a0000" stroke="#aa0000" stroke-width="1" />
+                <path d="M20 95 L4 118 Q2 124 8 126 L26 115 L20 95Z" fill="#880000" />
+                <path d="M110 95 L126 118 Q128 124 122 126 L104 115 L110 95Z" fill="#880000" />
+                <!-- Lightning bolt -->
+                <text x="65" y="158" text-anchor="middle" font-size="32">💥</text>
+                <text x="65" y="122" text-anchor="middle" font-family="sans-serif" font-size="9"
+                  fill="rgba(255,150,150,.8)" font-weight="700" letter-spacing="1">FINISHER</text>
+                <!-- SG flag -->
+                <rect x="152" y="8" width="46" height="18" rx="4" fill="rgba(180,0,0,.2)" />
+                <!-- 200+ SR badge -->
+                <rect x="42" y="128" width="46" height="12" rx="3" fill="rgba(255,100,100,.1)"
+                  stroke="rgba(255,100,100,.3)" stroke-width=".5" />
+                <text x="65" y="137" text-anchor="middle" font-size="6.5" fill="rgba(255,150,150,.8)"
+                  font-family="sans-serif" font-weight="700">SR 200+ 🇸🇬</text>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="pc-body">
           <div class="pc-team-pill">🔴 RCB · Singapore 🇸🇬</div>
@@ -2563,31 +2696,42 @@
 
       <!-- DEVDUTT PADIKKAL -->
       <div class="player-card pc-rcb-red reveal" style="transition-delay:.35s">
-        <div class="pc-svg-area">
-          <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="dpbg" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stop-color="#200020" />
-                <stop offset="100%" stop-color="#140000" />
-              </radialGradient>
-            </defs>
-            <rect width="220" height="180" fill="url(#dpbg)" />
-            <path d="M60 180 L60 90 Q60 75 75 72 L110 65 L145 72 Q160 75 160 90 L160 180 Z" fill="#cc0000"
-              opacity=".9" />
-            <path d="M90 65 Q110 78 130 65 L125 58 Q110 68 95 58 Z" fill="#d4a843" />
-            <!-- left-hand batting silhouette lines -->
-            <line x1="80" y1="130" x2="100" y2="105" stroke="rgba(255,255,255,.12)" stroke-width="8"
-              stroke-linecap="round" />
-            <text x="110" y="155" text-anchor="middle" font-size="28">🌟</text>
-            <text x="110" y="128" text-anchor="middle" font-family="sans-serif" font-size="10"
-              fill="rgba(255,200,200,.8)" font-weight="700">LHB ELEGANCE</text>
-            <circle cx="110" cy="46" r="24" fill="#cc0000" opacity=".85" />
-            <circle cx="110" cy="46" r="24" fill="none" stroke="rgba(212,168,67,.5)" stroke-width="1.5" />
-            <text x="110" y="52" text-anchor="middle" font-size="20">🌟</text>
-            <rect x="4" y="8" width="60" height="18" rx="4" fill="rgba(204,0,0,.2)" />
-            <text x="34" y="20" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(255,150,150,.9)"
-              font-weight="700">RCB · INDIA</text>
-          </svg>
+        <div class="pc-img-area" style="background:linear-gradient(160deg,#1a0020,#200030,#0a0020)">
+          <div class="player-illustration">
+            <div class="jersey-wrap">
+              <div class="pc-glow-ring"></div>
+              <div class="player-face"
+                style="background:linear-gradient(135deg,#cc0000,#880044);box-shadow:0 0 20px rgba(180,0,60,.6)">🌟
+              </div>
+              <div class="player-name-tag"
+                style="background:rgba(180,0,60,.2);color:rgba(255,150,180,.9);border:1px solid rgba(180,0,60,.4)">
+                PADIKKAL</div>
+              <svg class="jersey-svg" viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="dpj" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#cc0000" />
+                    <stop offset="50%" stop-color="#880022" />
+                    <stop offset="100%" stop-color="#cc0000" />
+                  </linearGradient>
+                </defs>
+                <path d="M20 180 L20 95 Q18 82 30 78 L55 72 L65 80 L75 72 L100 78 Q112 82 110 95 L110 180 Z"
+                  fill="url(#dpj)" />
+                <path d="M55 72 Q65 82 75 72 L72 66 Q65 74 58 66 Z" fill="#d4a843" />
+                <path d="M20 95 L4 118 Q2 124 8 126 L26 115 L20 95Z" fill="#aa0022" />
+                <path d="M110 95 L126 118 Q128 124 122 126 L104 115 L110 95Z" fill="#aa0022" />
+                <!-- LHB elegant stroke lines -->
+                <line x1="35" y1="145" x2="60" y2="115" stroke="rgba(255,255,255,.1)" stroke-width="7"
+                  stroke-linecap="round" />
+                <text x="65" y="158" text-anchor="middle" font-size="32">🌟</text>
+                <text x="65" y="122" text-anchor="middle" font-family="sans-serif" font-size="8.5"
+                  fill="rgba(255,200,210,.8)" font-weight="700" letter-spacing="1">LHB ELEGANCE</text>
+                <rect x="42" y="128" width="46" height="12" rx="3" fill="rgba(212,168,67,.1)"
+                  stroke="rgba(212,168,67,.3)" stroke-width=".5" />
+                <text x="65" y="137" text-anchor="middle" font-size="6.5" fill="rgba(212,168,67,.8)"
+                  font-family="sans-serif" font-weight="700">RCB · INDIA</text>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="pc-body">
           <div class="pc-team-pill">🔴 RCB · India</div>
@@ -2615,30 +2759,43 @@
 
       <!-- ABHISHEK SHARMA -->
       <div class="player-card pc-srh reveal" style="transition-delay:.45s">
-        <div class="pc-svg-area">
-          <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="asbg" cx="50%" cy="50%" r="70%">
-                <stop offset="0%" stop-color="#1a0800" />
-                <stop offset="100%" stop-color="#0a0400" />
-              </radialGradient>
-            </defs>
-            <rect width="220" height="180" fill="url(#asbg)" />
-            <path d="M60 180 L60 90 Q60 75 75 72 L110 65 L145 72 Q160 75 160 90 L160 180 Z" fill="#f97316"
-              opacity=".9" />
-            <path d="M90 65 Q110 78 130 65 L125 58 Q110 68 95 58 Z" fill="#1a0800" stroke="#f97316" stroke-width="1" />
-            <!-- 141 off 55 stat line -->
-            <text x="110" y="148" text-anchor="middle" font-family="'Playfair Display',serif" font-size="26"
-              font-weight="700" fill="rgba(249,115,22,.7)">141</text>
-            <text x="110" y="165" text-anchor="middle" font-family="sans-serif" font-size="10"
-              fill="rgba(249,115,22,.6)">off 55 balls ⚡</text>
-            <circle cx="110" cy="46" r="24" fill="#f97316" opacity=".85" />
-            <circle cx="110" cy="46" r="24" fill="none" stroke="rgba(249,115,22,.5)" stroke-width="1.5" />
-            <text x="110" y="52" text-anchor="middle" font-size="20">⚡</text>
-            <rect x="162" y="8" width="50" height="18" rx="4" fill="rgba(249,115,22,.15)" />
-            <text x="187" y="20" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#f97316"
-              font-weight="700">SRH 🟠 INDIA</text>
-          </svg>
+        <div class="pc-img-area" style="background:linear-gradient(160deg,#1a0800,#2a1200,#0a0500)">
+          <div class="player-illustration">
+            <div class="jersey-wrap">
+              <div class="pc-glow-ring" style="box-shadow:0 0 0 0 rgba(249,115,22,.4)"></div>
+              <div class="player-face"
+                style="background:linear-gradient(135deg,#f97316,#ea580c);box-shadow:0 0 20px rgba(249,115,22,.6)">⚡
+              </div>
+              <div class="player-name-tag"
+                style="background:rgba(249,115,22,.2);color:#fb923c;border:1px solid rgba(249,115,22,.4)">ABH. SHARMA
+              </div>
+              <svg class="jersey-svg" viewBox="0 0 130 180" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="asj" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f97316" />
+                    <stop offset="50%" stop-color="#c2410c" />
+                    <stop offset="100%" stop-color="#f97316" />
+                  </linearGradient>
+                </defs>
+                <path d="M20 180 L20 95 Q18 82 30 78 L55 72 L65 80 L75 72 L100 78 Q112 82 110 95 L110 180 Z"
+                  fill="url(#asj)" />
+                <path d="M55 72 Q65 82 75 72 L72 66 Q65 74 58 66 Z" fill="#1a0800" stroke="#f97316" stroke-width="1" />
+                <path d="M20 95 L4 118 Q2 124 8 126 L26 115 L20 95Z" fill="#c2410c" />
+                <path d="M110 95 L126 118 Q128 124 122 126 L104 115 L110 95Z" fill="#c2410c" />
+                <!-- 141 score -->
+                <text x="65" y="152" text-anchor="middle" font-family="'Playfair Display',serif" font-size="32"
+                  font-weight="700" fill="rgba(255,237,213,.85)">141</text>
+                <text x="65" y="167" text-anchor="middle" font-family="sans-serif" font-size="8"
+                  fill="rgba(251,146,60,.7)">off 55 balls ⚡</text>
+                <text x="65" y="118" text-anchor="middle" font-family="sans-serif" font-size="9"
+                  fill="rgba(255,237,213,.8)" font-weight="700" letter-spacing="1">SRH 🟠</text>
+                <rect x="42" y="122" width="46" height="12" rx="3" fill="rgba(249,115,22,.12)"
+                  stroke="rgba(249,115,22,.3)" stroke-width=".5" />
+                <text x="65" y="131" text-anchor="middle" font-size="6.5" fill="#fb923c" font-family="sans-serif"
+                  font-weight="700">OPENER · INDIA</text>
+              </svg>
+            </div>
+          </div>
         </div>
         <div class="pc-body">
           <div class="pc-team-pill">🟠 SRH · India</div>
@@ -2658,8 +2815,8 @@
               <div class="pc-stat-lbl">explosive</div>
             </div>
           </div>
-          <div class="pc-quote">"The only SRH player she secretly roots for. 141 off 55 — even RCB fans had to clap
-            👏🟠"</div>
+          <div class="pc-quote">"The one SRH player she secretly roots for. 141 off 55 — even RCB fans had to clap 👏🟠"
+          </div>
           <div class="pc-hearts">⚡ 🟠 ⚡</div>
         </div>
       </div>
@@ -2674,46 +2831,46 @@
     <div class="wishes-grid">
 
       <div class="wish-card wc1 reveal rd1">
-        <div class="insta-handle">@kanika · CSK fan 💛</div>
-        <div class="wish-av">🌸</div>
+        <div class="insta-handle">@kanika · PBKS fan 🦁💛</div>
+        <div class="wish-av">🦁</div>
         <div class="wish-name">Kanika</div>
-        <div class="wish-role">CSK fan · Loudest voice noter · Your ride-or-die</div>
-        <div class="wish-text">"I'm a CSK fan and you're an RCB fan and somehow we survived every IPL season AND a whole
-          Bigg Boss season together 😭💛🔴 The universe really said 'let these two chaotic girls be best friends'.
-          Happiest birthday Swastika! 🌸"</div>
-        <div class="wish-hearts">💗 🏏 💛</div>
+        <div class="wish-role">PBKS fan 🦁 · Voice note queen · Your ride-or-die since Jan 2026</div>
+        <div class="wish-text">"I'm a Punjab Kings fan and you're an RCB fan and we started talking just a few months
+          ago and I already can't imagine IPL season without you 😭💛🔴 The universe said 'let these two chaotic girls
+          be best friends'. Happiest birthday Swastika! 🦁"</div>
+        <div class="wish-hearts">💗 🏏 🦁</div>
       </div>
 
       <div class="wish-card wc2 reveal rd2">
         <div class="insta-handle">@shruti · MI fan 💙</div>
-        <div class="wish-av">🦋</div>
+        <div class="wish-av">💙</div>
         <div class="wish-name">Shruti</div>
-        <div class="wish-role">MI fan · Meme queen · The unhinged one</div>
-        <div class="wish-text">"MI vs RCB debates were UNHINGED but I'd pick you as my best friend every single time
-          🔵🔴 RCB won 2025 and you got even louder about it and I LOVE that for you 🏆💜 Manifesting 2026 with you
-          bestie!"</div>
-        <div class="wish-hearts">💜 🏏 💙</div>
+        <div class="wish-role">MI fan 💙 · Meme queen · The unhinged one</div>
+        <div class="wish-text">"MI vs RCB debates were UNHINGED and we'd only just started talking 😭💙🔴 But I'd pick
+          you as my best friend every single time. RCB won 2025 and you got even louder about it and I LOVE that for you
+          🏆 Manifesting 2026 together bestie!"</div>
+        <div class="wish-hearts">💙 🏏 💙</div>
       </div>
 
       <div class="wish-card wc3 reveal rd3">
-        <div class="insta-handle">@aashi · KKR fan 💜</div>
+        <div class="insta-handle">@aashi · Neutral but RCB 💜</div>
         <div class="wish-av">🌙</div>
         <div class="wish-name">Aashi</div>
-        <div class="wish-role">KKR fan · 3am talker · The empath</div>
-        <div class="wish-text">"KKR vs RCB will always be our thing 💜🔴 But you know what — I genuinely screamed when
-          RCB won 2025 because I knew how much you'd cry. And I cried WITH you. That's friendship. Happy Birthday
-          Swastika 🌙✨"</div>
-        <div class="wish-hearts">💙 🌙 💜</div>
+        <div class="wish-role">Neutral fan 🌙 · RCB x Virat supporter · The empath</div>
+        <div class="wish-text">"I don't have one fixed team but I have ONE fixed favourite player — Virat Kohli. And
+          you're the reason my heart beats for RCB too now 🌙🔴 I genuinely screamed when they won 2025. That's your
+          magic. Happy Birthday Swastika ✨"</div>
+        <div class="wish-hearts">💜 🌙 ❤️</div>
       </div>
 
       <div class="wish-card wc4 reveal" style="transition-delay:.5s">
-        <div class="insta-handle">Fellow RCB sister 🔴</div>
+        <div class="insta-handle">All three of us 🔴💛💙🌙</div>
         <div class="wish-av">⭐</div>
         <div class="wish-name">All Three of Us</div>
-        <div class="wish-role">Your Bigg Boss GC turned IPL besties forever</div>
-        <div class="wish-text">"From a chaotic Bigg Boss GC to the most real friendship we've ever had — never met IRL,
-          always there in the ways that matter most. One day — all four of us, Chinnaswamy Stadium, watching RCB defend
-          the title 🏟️🔴 Ee sala birthday namde! 🎂🏆"</div>
+        <div class="wish-role">Your Bigg Boss GC turned IPL besties — since Jan/Feb 2026</div>
+        <div class="wish-text">"Just a few months. January, February — that's all it took for this GC to become the best
+          thing. A PBKS fan, an MI fan, and a neutral who loves Kohli — all of us here for you today. One day —
+          Chinnaswamy, all four of us, live RCB match. 🏟️🔴 Ee sala birthday namde! 🎂🏆"</div>
         <div class="wish-hearts">❤️ 🏏 🏆</div>
       </div>
 
@@ -2724,29 +2881,31 @@
   <section id="surprise">
     <div class="section-label reveal">ONE LAST THING</div>
     <h2 class="section-title reveal rd1">Your Surprise Is Here 🎁</h2>
-    <p class="surprise-desc reveal rd2">From a CSK fan, an MI fan, a KKR fan — who all somehow agree on one thing: you
-      are irreplaceable, Swastika 💕</p>
+    <p class="surprise-desc reveal rd2">From a PBKS fan, an MI fan, and a girl who loves Virat like you do — who all
+      somehow agree on one thing: you are irreplaceable, Swastika 💕</p>
     <button class="glow-btn reveal rd3" id="surpriseBtn" onclick="revealSurprise()">🏏 Open Your Birthday Gift
       🎂</button>
     <div class="surp-rev" id="surpriseReveal">
       <div class="surp-cake">🎂🏆🔴</div>
       <div class="surp-msg">Ee sala cup namde — dobara! 🏆</div>
-      <p class="surp-quote">"A Bigg Boss group chat. IPL arguments at midnight. Four girls with four different favourite
-        teams. That's where it started. But what it became — is something we'll carry forever. RCB won IPL 2025 after 18
-        years. And we're manifesting 2026 together. We've never shared the same stadium, but we've shared every match,
-        every heartbreak, every celebration. Happy Birthday Swastika. May every Kohli cover drive this season, every
-        Patidar six, every Tim David finish — be dedicated to you. 🌸🏏🔴🏆💕"</p>
-      <p style="color:rgba(255,255,255,.28);font-size:.76rem;letter-spacing:.1em">— Kanika 💛 (@kanika), Shruti 💙
-        (@shruti) & Aashi 💜 (@aashi) · Your Instagram Cricket Squad 💌</p>
+      <p class="surp-quote">"A Bigg Boss group chat in January 2026. IPL arguments at midnight. A Punjab Kings fan, an
+        MI fan, and a girl who loves Virat as fiercely as you do. That's where it started. But what it became in just a
+        few months — is something we'll carry forever. RCB won IPL 2025 after 18 years. And we're manifesting 2026
+        together. We've never shared the same stadium, but we've shared every match, every heartbreak, every
+        celebration. Happy Birthday Swastika. May every Kohli cover drive, every Patidar six, every Tim David finish —
+        be dedicated to you. 🌸🏏🔴🏆💕"</p>
+      <p style="color:rgba(255,255,255,.28);font-size:.76rem;letter-spacing:.1em">— Kanika 🦁 (@kanika · PBKS), Shruti
+        💙 (@shruti · MI) & Aashi 🌙 (@aashi · Kohli fan) · Your Instagram Cricket Squad 💌</p>
       <div class="fw-grid"><span>🎉</span><span>🏆</span><span>🎂</span><span>🔴</span><span>👑</span><span>🌸</span>
       </div>
     </div>
   </section>
 
-  <footer>Made with <span>♥</span> &amp; cricket energy · @kanika @shruti @aashi for @swastika · 24 May 2026 🏏🏆
-  </footer>
+  <footer>Made with <span>♥</span> &amp; cricket energy · @kanika (PBKS 🦁) @shruti (MI 💙) @aashi (Kohli fan 🌙) for
+    @swastika · 24 May 2026 🏏🏆</footer>
 
   <script>
+    // Custom cursor
     const cur = document.getElementById('cursor'), curR = document.getElementById('cursor-ring');
     let mx = 0, my = 0, rx = 0, ry = 0;
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; spawnSparkle(mx, my) });
@@ -2755,9 +2914,11 @@
     let lastSp = 0;
     function spawnSparkle(x, y) { const n = Date.now(); if (n - lastSp < 35 || Math.random() > .55) return; lastSp = n; const sp = document.createElement('div'); sp.className = 'sparkle'; const s = 4 + Math.random() * 8; sp.style.cssText = `left:${x - s / 2}px;top:${y - s / 2}px;width:${s}px;height:${s}px;background:${spC[Math.floor(Math.random() * spC.length)]}`; document.body.appendChild(sp); setTimeout(() => sp.remove(), 700) }
 
+    // Hero title
     const tEl = document.getElementById('heroTitle');
     ['Happy', 'Birthday'].forEach((w, wi) => { const ws = document.createElement('span'); ws.style.cssText = 'display:inline-flex;gap:0'; if (wi === 1) ws.style.marginLeft = '.25em';[...w].forEach((c, ci) => { const s = document.createElement('span'); s.className = 'char'; s.textContent = c; s.style.animationDelay = (.8 + wi * .35 + ci * .07) + 's'; ws.appendChild(s) }); tEl.appendChild(ws) });
 
+    // Particles
     const cv = document.getElementById('particles'), ctx = cv.getContext('2d');
     let W, H, pts = [];
     function rsz() { W = cv.width = innerWidth; H = cv.height = innerHeight } rsz(); addEventListener('resize', rsz);
@@ -2767,30 +2928,34 @@
     for (let i = 0; i < 170; i++)pts.push(new P());
     (function aP() { ctx.clearRect(0, 0, W, H); pts.forEach(p => { p.update(); p.draw() }); requestAnimationFrame(aP) })();
 
+    // Confetti
     const cW = document.getElementById('confetti');
     const cC = ['#ff6ec7', '#a855f7', '#60a5fa', '#cc0000', '#d4a843', '#fbbf24', '#f472b6', '#818cf8'];
     for (let i = 0; i < 80; i++) { const el = document.createElement('div'); el.className = 'c-piece'; const iC = Math.random() > .5; el.style.cssText = `left:${Math.random() * 100}%;background:${cC[Math.floor(Math.random() * cC.length)]};animation-duration:${5 + Math.random() * 8}s;animation-delay:${Math.random() * 12}s;width:${5 + Math.random() * 9}px;height:${iC ? 5 + Math.random() * 9 + 'px' : 9 + Math.random() * 14 + 'px'};border-radius:${iC ? '50%' : '3px'}`; cW.appendChild(el) }
 
+    // Countdown
     const pv = {};
     function upC() { const diff = new Date('2026-05-24T00:00:00') - new Date(); if (diff <= 0) { document.querySelector('.cdgrid').style.display = 'none'; document.getElementById('bday-msg').style.display = 'block'; return } const v = { days: Math.floor(diff / 86400000), hours: Math.floor((diff % 86400000) / 3600000), mins: Math.floor((diff % 3600000) / 60000), secs: Math.floor((diff % 60000) / 1000) };['days', 'hours', 'mins', 'secs'].forEach(k => { const el = document.getElementById('cd-' + k), f = String(v[k]).padStart(2, '0'); if (f !== pv[k]) { el.textContent = f; pv[k] = f; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip') } }) }
     upC(); setInterval(upC, 1000);
 
+    // Like button
     let liked = false, lc = 118086;
     const lkS = document.createElement('style'); lkS.textContent = '@keyframes lkF{0%{transform:scale(0) translateY(0);opacity:1}50%{transform:scale(1.6) translateY(-30px)}100%{transform:scale(1) translateY(-60px);opacity:0}}'; document.head.appendChild(lkS);
     function toggleLike(e) { liked = !liked; document.getElementById('likeBtn').textContent = liked ? '❤️' : '🤍'; lc += liked ? 1 : -1; document.getElementById('likeCount').textContent = lc.toLocaleString('en-IN'); if (liked) popHeart(e.clientX, e.clientY) }
     function tapLike(e) { popHeart(e.clientX, e.clientY) }
     function popHeart(x, y) { const el = document.createElement('div'); el.style.cssText = `position:fixed;left:${x}px;top:${y}px;font-size:2.2rem;pointer-events:none;z-index:9999;animation:lkF .9s ease forwards`; el.textContent = '❤️'; document.body.appendChild(el); setTimeout(() => el.remove(), 900) }
 
+    // Chat messages
     const msgs = [
-      { side: 'left', av: 'av1', name: 'Kanika 🌸 (@kanika · CSK)', text: 'OMG OMG OMG it is FINALLY Swastika\'s birthday 🎂🎂 and also RCB won the cup last year I still can\'t believe she was manifesting this in our BB GC all along 😭', time: '11:56 PM' },
-      { side: 'left', av: 'av2', name: 'Shruti 🦋 (@shruti · MI)', text: 'MI fan here and I\'m FULLY celebrating her today 😭💙 RCB champions + her birthday = the universe is her personal fan 🏆❤️', time: '11:57 PM' },
-      { side: 'left', av: 'av3', name: 'Aashi 🌙 (@aashi · KKR)', text: 'From the Bigg Boss GC to making her a whole website 😭✨ character development UNLOCKED. HBD Swastika we love you SO much', time: '11:58 PM' },
-      { side: 'right', av: 'av4', name: 'Swastika 🎂 (the birthday girl)', text: 'wait are you all online at midnight for me?? 😭😭😭 you three are INSANE I love you so much ❤️🔴', time: '11:59 PM' },
-      { side: 'left', av: 'av1', name: 'Kanika 🌸', text: 'CSK fan but I literally screamed when Patidar lifted that trophy because I knew how much you\'d cry 😭💛🏆', time: '12:00 AM' },
-      { side: 'left', av: 'av2', name: 'Shruti 🦋', text: 'EE SALA 2026 NAMDE DOBARA 🔴🔴 we are MANIFESTING another title for you birthday girl 🏏🙏', time: '12:00 AM' },
-      { side: 'left', av: 'av3', name: 'Aashi 🌙', text: 'one day — Chinnaswamy, all four of us, live RCB match. That is NOT a dream that is THE PLAN 🏟️🌙✨', time: '12:01 AM' },
+      { side: 'left', av: 'av1', name: 'Kanika 🦁 (@kanika · PBKS)', text: 'OMG OMG OMG it is FINALLY Swastika\'s birthday 🎂🎂 can\'t believe we only started talking in January and I already can\'t imagine IPL without her 😭🦁', time: '11:56 PM' },
+      { side: 'left', av: 'av2', name: 'Shruti 💙 (@shruti · MI)', text: 'MI fan here and I\'m FULLY celebrating her today 😭💙 RCB champions + her birthday = the universe is literally her biggest fan 🏆❤️', time: '11:57 PM' },
+      { side: 'left', av: 'av3', name: 'Aashi 🌙 (@aashi · Kohli fan)', text: 'From a Bigg Boss GC in January to making her a whole birthday website in May 😭✨ that\'s the fastest friendship unlock ever. HBD Swastika we love you SO much', time: '11:58 PM' },
+      { side: 'right', av: 'av4', name: 'Swastika 🎂 (the birthday girl)', text: 'wait are you all online at midnight for me?? 😭😭😭 we\'ve known each other literally a few months and you\'re doing THIS?? I love you three so much ❤️🔴', time: '11:59 PM' },
+      { side: 'left', av: 'av1', name: 'Kanika 🦁', text: 'PBKS fan but I literally screamed when Patidar lifted that trophy because I knew how much you\'d cry 😭💛🏆 you deserve every win girl', time: '12:00 AM' },
+      { side: 'left', av: 'av2', name: 'Shruti 💙', text: 'EE SALA 2026 NAMDE DOBARA 🔴🔴 we are MANIFESTING another title for you birthday girl 🏏🙏💙', time: '12:00 AM' },
+      { side: 'left', av: 'av3', name: 'Aashi 🌙', text: 'one day — Chinnaswamy, all four of us, live RCB match. Kohli hitting a century. That is THE PLAN not a dream 🏟️🌙✨', time: '12:01 AM' },
     ];
-    const avE = { av1: '🌸', av2: '🦋', av3: '🌙', av4: '🎂' };
+    const avE = { av1: '🦁', av2: '💙', av3: '🌙', av4: '🎂' };
     const cb = document.getElementById('chatBody'); let mi = 0;
     function addTyping(av) { const r = document.createElement('div'); r.className = 'mrow'; r.id = 'trow'; r.innerHTML = `<div class="mav ${av}">${avE[av]}</div><div class="mbub"><div class="mtyping"><span></span><span></span><span></span></div></div>`; cb.appendChild(r); setTimeout(() => r.classList.add('visible'), 50) }
     function addMsg(m) { const r = document.getElementById('trow'); if (r) r.remove(); const el = document.createElement('div'); el.className = `mrow ${m.side === 'right' ? 'right' : ''}`; el.innerHTML = `<div class="mav ${m.av}">${avE[m.av]}</div><div class="mbub"><div class="mname">${m.name}</div>${m.text}<div class="mtime">${m.time}</div></div>`; cb.appendChild(el); cb.scrollTop = cb.scrollHeight; setTimeout(() => el.classList.add('visible'), 50) }
@@ -2798,9 +2963,11 @@
     const cObs = new IntersectionObserver(e => { if (e[0].isIntersecting) { runChat(); cObs.disconnect() } }, { threshold: .25 });
     cObs.observe(document.getElementById('squad'));
 
+    // Surprise
     function revealSurprise() { document.getElementById('surpriseBtn').style.display = 'none'; document.getElementById('surpriseReveal').classList.add('show'); burstC() }
     function burstC() { for (let i = 0; i < 80; i++) { setTimeout(() => { const el = document.createElement('div'); el.className = 'c-piece'; el.style.cssText = `left:${20 + Math.random() * 60}%;top:50%;background:${cC[Math.floor(Math.random() * cC.length)]};position:fixed;z-index:9999;width:${5 + Math.random() * 9}px;height:${8 + Math.random() * 14}px;border-radius:${Math.random() > .5 ? '50%' : '3px'};animation:cfAll ${1.5 + Math.random()}s ease forwards;opacity:1`; document.body.appendChild(el); setTimeout(() => el.remove(), 2500) }, i * 30) } }
 
+    // Scroll reveal
     const rO = new IntersectionObserver(e => { e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible') }) }, { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(el => rO.observe(el));
   </script>
