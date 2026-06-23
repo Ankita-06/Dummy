@@ -855,11 +855,12 @@
       transform: translateX(-50%) scale(.6);
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 28px;
       white-space: nowrap;
       opacity: 0;
       transition: opacity .35s, transform .35s;
       pointer-events: none;
+      color: #a78bfa(--lav);
     }
 
     .bword.show {
@@ -1245,7 +1246,7 @@
     .cakehb {
       font-family: 'Playfair Display', serif;
       font-size: clamp(22px, 6vw, 32px);
-      color: var(--ink);
+      color: var(--lav);;
       font-weight: 700;
       display: none;
       animation: fuA .6s ease;
@@ -1445,12 +1446,12 @@
       <div class="bscene">
 
         <!-- word strip pinned at top — starts blank, fills in as balloons pop -->
-        <div class="word-strip" id="wordStrip">
+        <!-- <div class="word-strip" id="wordStrip">
           <span class="word-slot" id="wslot0">You</span>
           <span class="word-slot" id="wslot1">are</span>
           <span class="word-slot" id="wslot2">so</span>
           <span class="word-slot" id="wslot3">special</span>
-        </div>
+        </div> -->
 
         <div class="btag">LET'S CELEBRATE</div>
         <div class="btitle">Pop a balloon 🎈</div>
@@ -1459,33 +1460,33 @@
         <div class="bgrid" id="bgrid">
           <div class="bwrap" style="animation-duration:3.1s;animation-delay:0s" data-idx="0"
             onclick="popBalloon(0,this)">
-            <div class="bword" id="bword0">You</div>
+            <div class="bword" id="bword0" style="color: #d6477e;">You</div>
             <div class="b3d" id="bb0" style="background:radial-gradient(circle at 32% 28%,#ffd9e8,#ff6b9d 70%);">
-              <div class="bnumber">1</div>
+              <div class="bnumber"></div>
             </div>
             <div class="bstring"></div>
           </div>
           <div class="bwrap" style="animation-duration:2.7s;animation-delay:.3s" data-idx="1"
             onclick="popBalloon(1,this)">
-            <div class="bword" id="bword1">are</div>
+            <div class="bword" id="bword1" style="color: #c89a1f;">are</div>
             <div class="b3d" id="bb1" style="background:radial-gradient(circle at 32% 28%,#fff4cf,#ffd166 70%);">
-              <div class="bnumber">2</div>
+              <div class="bnumber"></div>
             </div>
             <div class="bstring"></div>
           </div>
           <div class="bwrap" style="animation-duration:3.4s;animation-delay:.15s" data-idx="2"
             onclick="popBalloon(2,this)">
-            <div class="bword" id="bword2">so</div>
+            <div class="bword" id="bword2" style="color: #2696ab;">so</div>
             <div class="b3d" id="bb2" style="background:radial-gradient(circle at 32% 28%,#d6f7ff,#7ee8fa 70%);">
-              <div class="bnumber">3</div>
+              <div class="bnumber"></div>
             </div>
             <div class="bstring"></div>
           </div>
           <div class="bwrap" style="animation-duration:2.9s;animation-delay:.45s" data-idx="3"
             onclick="popBalloon(3,this)">
-            <div class="bword" id="bword3">special</div>
+            <div class="bword" id="bword3" style="color: var(--lav);">special</div>
             <div class="b3d" id="bb3" style="background:radial-gradient(circle at 32% 28%,#ece3ff,#a78bfa 70%);">
-              <div class="bnumber">4</div>
+              <div class="bnumber"></div>
             </div>
             <div class="bstring"></div>
           </div>
@@ -1672,7 +1673,7 @@
       const slot = document.getElementById('wslot' + idx);
       if (slot) { slot.textContent = slot.dataset.word; slot.classList.add('lit'); }
 
-      setTimeout(() => { wrap.style.visibility = 'hidden'; }, 650);
+      //setTimeout(() => { wrap.style.visibility = 'hidden'; }, 650);
 
       poppedCount++;
       if (poppedCount === 1) balloonHint.textContent = 'nice! keep going 🎈';
