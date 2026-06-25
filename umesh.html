@@ -1,0 +1,3024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Happy 29th Birthday 💖</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;600;700;800;900&family=Caveat:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --p1: #F48FB1;
+            --p2: #f9c4d4;
+            --p3: #fde8ef;
+            --v1: #B39DDB;
+            --v2: #d4c5f9;
+            --v3: #ede7f6;
+            --g1: #FFD54F;
+            --g2: #fff3b0;
+            --ink: #3d2550;
+            --ink2: #7b5ea7;
+            --ink3: #b09cc5;
+            --card: rgba(255, 255, 255, .72);
+            --sh: 0 20px 60px rgba(120, 80, 180, .16), 0 4px 16px rgba(0, 0, 0, .06);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--ink);
+        }
+
+        /* BG */
+        #bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            transition: background 1s ease;
+        }
+
+        #bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 65% 55% at 25% 20%, rgba(255, 255, 255, .5), transparent),
+                radial-gradient(ellipse 55% 45% at 80% 80%, rgba(255, 200, 230, .35), transparent);
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: .32;
+            animation: orbD 14s ease-in-out infinite;
+        }
+
+        @keyframes orbD {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            40% {
+                transform: translate(28px, -18px);
+            }
+
+            70% {
+                transform: translate(-18px, 14px);
+            }
+        }
+
+        /* PARTICLES */
+        #pts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .pt {
+            position: absolute;
+            opacity: 0;
+            animation: ptF linear infinite;
+        }
+
+        @keyframes ptF {
+            0% {
+                opacity: 0;
+                transform: translateY(0)
+            }
+
+            10% {
+                opacity: .2
+            }
+
+            90% {
+                opacity: .07
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-90px)
+            }
+        }
+
+        /* SLIDES */
+        #slides {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 18px 16px 88px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: sIn .5s cubic-bezier(.22, 1, .36, 1) forwards;
+        }
+
+        .slide.exit {
+            animation: sOut .4s cubic-bezier(.55, 0, 1, .45) forwards;
+            pointer-events: none;
+        }
+
+        @keyframes sIn {
+            from {
+                opacity: 0;
+                transform: translateX(52px) scale(.97)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes sOut {
+            from {
+                opacity: 1;
+                transform: none
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(-52px) scale(.97)
+            }
+        }
+
+        .sinner {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            padding-top: 10px;
+        }
+
+        /* CARD */
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(24px) saturate(1.3);
+            -webkit-backdrop-filter: blur(24px) saturate(1.3);
+            border-radius: 26px;
+            box-shadow: var(--sh);
+            border: 1.5px solid rgba(255, 255, 255, .85);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .tbar {
+            padding: 11px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .4), rgba(255, 255, 255, .15));
+            border-bottom: 1px solid rgba(255, 255, 255, .5);
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+        }
+
+        .dot.r {
+            background: #FF6058;
+        }
+
+        .dot.y {
+            background: #FFBD2E;
+        }
+
+        .dot.g {
+            background: #28C840;
+        }
+
+        .tbar-lbl {
+            font-size: 11px;
+            letter-spacing: 3.5px;
+            font-weight: 800;
+            color: var(--ink2);
+            flex: 1;
+            text-align: center;
+            margin-right: 40px;
+        }
+
+        .cbody {
+            padding: 22px 20px 26px;
+        }
+
+        /* NEXT ROW */
+        .nrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, .65);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 15px 18px;
+            cursor: pointer;
+            border: 1.5px solid rgba(255, 255, 255, .88);
+            box-shadow: 0 8px 28px rgba(120, 80, 180, .1);
+            transition: transform .25s, box-shadow .25s, background .25s;
+            width: 100%;
+        }
+
+        .nrow:hover,
+        .nrow:active {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px rgba(120, 80, 180, .18);
+            background: rgba(255, 255, 255, .88);
+        }
+
+        .nrl .nl-tag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--ink3);
+            font-weight: 800;
+        }
+
+        .nrl .nl-txt {
+            font-family: 'Caveat', cursive;
+            font-size: 20px;
+            color: var(--ink2);
+            margin-top: 1px;
+        }
+
+        .narr {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--p1), var(--v1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(180, 130, 200, .35);
+            transition: transform .25s;
+        }
+
+        .nrow:hover .narr {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* TOP BAR + DOTS */
+        #topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            z-index: 300;
+            background: rgba(255, 255, 255, .2);
+        }
+
+        #tbfill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--p1), var(--v1), var(--g1));
+            transition: width .5s ease;
+            border-radius: 0 2px 2px 0;
+        }
+
+        #pdots {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 300;
+        }
+
+        .pd {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(160, 120, 200, .22);
+            transition: all .3s;
+            cursor: pointer;
+        }
+
+        .pd.on {
+            background: var(--v1);
+            transform: scale(1.55);
+        }
+
+        .pd.done {
+            background: var(--p2);
+        }
+
+        /* stagger */
+        .sg>* {
+            opacity: 0;
+            animation: fuA .5s ease forwards;
+        }
+
+        .sg>*:nth-child(1) {
+            animation-delay: .04s
+        }
+
+        .sg>*:nth-child(2) {
+            animation-delay: .1s
+        }
+
+        .sg>*:nth-child(3) {
+            animation-delay: .16s
+        }
+
+        .sg>*:nth-child(4) {
+            animation-delay: .22s
+        }
+
+        .sg>*:nth-child(5) {
+            animation-delay: .28s
+        }
+
+        @keyframes fuA {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        /* ══ S0 WELCOME ══ */
+        .wphoto {
+            width: 146px;
+            height: 146px;
+            border-radius: 24px;
+            margin: 0 auto 14px;
+            background: linear-gradient(135deg, var(--p3), var(--v3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 54px;
+            box-shadow: 0 8px 32px rgba(244, 143, 177, .25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .wphoto::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(255, 255, 255, .3), transparent);
+        }
+
+        .plabel {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--ink3);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 7px;
+        }
+
+        .wheadline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 5vw, 27px);
+            text-align: center;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+
+        .wheadline em {
+            color: var(--p1);
+            font-style: italic;
+        }
+
+        .wheadline strong {
+            color: var(--v1);
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, .65);
+            border: 1px solid rgba(255, 255, 255, .88);
+            border-radius: 50px;
+            padding: 7px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--ink2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 10px rgba(180, 130, 200, .1);
+        }
+
+        /* ══ S1 GALLERY ══ */
+        #s1 {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gallslide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 14px 0 76px;
+        }
+
+        .galltbar {
+            padding: 0 14px;
+            flex-shrink: 0;
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .galltbarcard {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(120, 80, 180, .1);
+        }
+
+        .gallhint {
+            font-family: 'Caveat', cursive;
+            font-size: 15px;
+            color: var(--ink3);
+            text-align: center;
+            padding: 5px 0 3px;
+            flex-shrink: 0;
+        }
+
+        .clcontainer {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 4px 8px 8px;
+        }
+
+        .clcontainer::-webkit-scrollbar {
+            display: none;
+        }
+
+        .clrow {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            gap: clamp(9px, 2.5vw, 22px);
+            padding: 28px 4px 18px;
+            flex-wrap: nowrap;
+        }
+
+        .clrow::before {
+            content: '';
+            position: absolute;
+            top: 11px;
+            left: 3%;
+            right: 3%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(180, 140, 100, .5) 10%, rgba(160, 120, 80, .6) 50%, rgba(180, 140, 100, .5) 90%, transparent);
+            border-radius: 2px;
+        }
+
+        .pol {
+            flex-shrink: 0;
+            width: clamp(106px, 24vw, 152px);
+            background: #fff;
+            padding: clamp(6px, 1.4vw, 9px) clamp(6px, 1.4vw, 9px) clamp(22px, 4.5vw, 32px);
+            border-radius: 3px;
+            box-shadow: 0 6px 28px rgba(0, 0, 0, .22), 0 1px 4px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            position: relative;
+            transform-origin: top center;
+            animation: polS 4s ease-in-out infinite;
+            z-index: 1;
+            transition: z-index 0s;
+        }
+
+        .pol:hover,
+        .pol.fl {
+            animation: none;
+            transform: scale(1.13) rotate(0deg) translateY(-9px) !important;
+            box-shadow: 0 18px 56px rgba(0, 0, 0, .3);
+            z-index: 20;
+        }
+
+        @keyframes polS {
+
+            0%,
+            100% {
+                transform: var(--t) translateY(0)
+            }
+
+            50% {
+                transform: var(--t) translateY(-3px)
+            }
+        }
+
+        .pol::before {
+            content: '';
+            position: absolute;
+            top: -19px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 21px;
+            background: linear-gradient(to bottom, #d4a96a, #a07840);
+            border-radius: 3px 3px 1px 1px;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, .28);
+        }
+
+        .pol::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7px;
+            height: 2.5px;
+            background: rgba(0, 0, 0, .18);
+            border-radius: 2px;
+        }
+
+        .polimg {
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--p3), var(--v3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            position: relative;
+        }
+
+        .polimg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polov {
+            position: absolute;
+            inset: 0;
+            background: rgba(70, 20, 90, .88);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 7px;
+            text-align: center;
+            gap: 4px;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .pol:hover .polov,
+        .pol.fl .polov {
+            opacity: 1;
+        }
+
+        .pdate {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: rgba(255, 210, 230, .75);
+            font-weight: 700;
+        }
+
+        .pstory {
+            font-family: 'Caveat', cursive;
+            font-size: 11px;
+            color: #fff;
+            line-height: 1.5;
+        }
+
+        .psecret {
+            font-family: 'Caveat', cursive;
+            font-size: 10px;
+            color: var(--g1);
+        }
+
+        .polcap {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: clamp(10px, 2vw, 13px);
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        .gallbot {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .gbtn {
+            padding: 11px 22px;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, .82);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            font-family: 'Nunito', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--ink2);
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(120, 80, 180, .1);
+            letter-spacing: .5px;
+            transition: all .25s;
+        }
+
+        .gbtn:hover {
+            transform: translateY(-2px);
+        }
+
+        .gbtn.pri {
+            background: linear-gradient(135deg, var(--p1), var(--v1));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 24px rgba(180, 130, 200, .3);
+        }
+
+        /* ══ S2 TIMELINE ══ */
+        .tlcard {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(24px);
+            border-radius: 26px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            overflow: hidden;
+        }
+
+        .tlscroll {
+            max-height: calc(100vh - 260px);
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        .tlscroll::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .tlscroll::-webkit-scrollbar-thumb {
+            background: var(--p2);
+            border-radius: 4px;
+        }
+
+        .tlyear {
+            display: flex;
+            gap: 0;
+            cursor: pointer;
+            transition: background .2s;
+            position: relative;
+        }
+
+        .tlyear:hover {
+            background: rgba(255, 255, 255, .5);
+        }
+
+        .tlline-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0 0;
+            width: 54px;
+            flex-shrink: 0;
+        }
+
+        .tldot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(180, 130, 200, .35);
+            transition: transform .3s;
+        }
+
+        .tlyear:hover .tldot,
+        .tlyear.open .tldot {
+            transform: scale(1.3);
+        }
+
+        .tlyearline {
+            flex: 1;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--p2), var(--v2));
+            margin-top: 4px;
+            min-height: 20px;
+        }
+
+        .tlyear:last-child .tlyearline {
+            display: none;
+        }
+
+        .tlyearbody {
+            padding: 14px 16px 6px 0;
+            flex: 1;
+        }
+
+        .tlynum {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--ink3);
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
+        .tlyevent {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .tlydesc {
+            font-size: 13px;
+            color: var(--ink3);
+            margin-top: 2px;
+            line-height: 1.5;
+        }
+
+        .tlyhidden {
+            display: none;
+            margin-top: 10px;
+            padding: 12px 14px;
+            background: rgba(249, 196, 212, .2);
+            border-radius: 12px;
+            font-family: 'Caveat', cursive;
+            font-size: 16px;
+            color: var(--ink2);
+            line-height: 1.65;
+            border-left: 3px solid var(--p1);
+        }
+
+        .tlyear.open .tlyhidden {
+            display: block;
+            animation: fuA .4s ease;
+        }
+
+        .tlyear.gold-yr .tldot {
+            background: var(--g1) !important;
+        }
+
+        .tlyear.gold-yr .tlynum {
+            color: var(--g1);
+        }
+
+        .tlyear.gold-yr .tlyhidden {
+            background: rgba(255, 213, 79, .12);
+            border-left-color: var(--g1);
+            color: #8a6800;
+        }
+
+        /* ══ S3 LOVE-STORY.EXE — unique folder UI ══ */
+        #s3 {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .lsx-wrap {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* top status bar */
+        .lsx-bar {
+            flex-shrink: 0;
+            padding: 14px 16px 10px;
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .lsx-barcard {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(120, 80, 180, .1);
+        }
+
+        .lsx-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: 800;
+            color: var(--ink2);
+            flex: 1;
+            text-align: center;
+            margin-right: 40px;
+        }
+
+        /* folder tabs row */
+        .lsx-tabs {
+            flex-shrink: 0;
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            padding: 0 16px;
+            max-width: 460px;
+            width: 100%;
+            margin: 8px auto 0;
+        }
+
+        .lsx-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .lsx-tab {
+            flex-shrink: 0;
+            padding: 8px 14px 12px;
+            border-radius: 12px 12px 0 0;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--ink3);
+            cursor: pointer;
+            background: rgba(255, 255, 255, .4);
+            border: 1.5px solid rgba(255, 255, 255, .6);
+            border-bottom: none;
+            transition: all .25s;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+            margin-right: 4px;
+        }
+
+        .lsx-tab.on {
+            background: rgba(255, 255, 255, .88);
+            color: var(--ink2);
+            border-color: rgba(255, 255, 255, .9);
+            z-index: 3;
+            box-shadow: 0 -4px 14px rgba(120, 80, 180, .08);
+        }
+
+        /* main content area */
+        .lsx-content {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* each chapter panel */
+        .lsx-panel {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            overflow-y: auto;
+            padding: 0 16px 16px;
+        }
+
+        .lsx-panel::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .lsx-panel::-webkit-scrollbar-thumb {
+            background: var(--p2);
+            border-radius: 4px;
+        }
+
+        .lsx-panel.vis {
+            opacity: 1;
+            pointer-events: all;
+            animation: fuA .4s ease forwards;
+        }
+
+        /* chapter content card */
+        .lsx-ccard {
+            background: rgba(255, 255, 255, .82);
+            backdrop-filter: blur(20px);
+            border-radius: 0 18px 18px 18px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            overflow: hidden;
+        }
+
+        .lsx-chead {
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid rgba(180, 130, 200, .1);
+        }
+
+        .lsx-ctag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--ink3);
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .lsx-ctitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 4.5vw, 24px);
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .lsx-items {
+            padding: 8px 0 4px;
+        }
+
+        .lsx-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 13px 20px;
+            border-bottom: 1px solid rgba(180, 130, 200, .07);
+            transition: background .2s;
+        }
+
+        .lsx-item:last-child {
+            border: none;
+        }
+
+        .lsx-item:hover {
+            background: rgba(255, 255, 255, .5);
+        }
+
+        .lsx-item.sp {
+            background: linear-gradient(135deg, rgba(249, 196, 212, .18), rgba(212, 197, 249, .12));
+            border-bottom: none;
+        }
+
+        .lsx-item.sp .lsx-t {
+            color: var(--ink2);
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .lsx-n {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: rgba(180, 130, 200, .25);
+            font-weight: 700;
+            min-width: 28px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .lsx-t {
+            font-size: 14px;
+            color: var(--ink);
+            line-height: 1.75;
+        }
+
+        .lsx-item.sp .lsx-n {
+            color: var(--p1);
+            opacity: .5;
+        }
+
+        /* nav row inside love story */
+        .lsx-navrow {
+            display: flex;
+            gap: 10px;
+            padding: 14px 16px 6px;
+            flex-shrink: 0;
+            max-width: 460px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .lsx-navbtn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1.5px solid rgba(255, 255, 255, .88);
+            font-family: 'Nunito', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--ink2);
+            cursor: pointer;
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: blur(12px);
+            transition: all .25s;
+            box-shadow: 0 4px 14px rgba(120, 80, 180, .08);
+        }
+
+        .lsx-navbtn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, .9);
+        }
+
+        .lsx-navbtn.pri {
+            background: linear-gradient(135deg, var(--p1), var(--v1));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 24px rgba(180, 130, 200, .3);
+        }
+
+        /* ══ S4 PROMISES ══ */
+        #s4 {
+            overflow: hidden;
+        }
+
+        .promwrap {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 16px 16px 80px;
+            overflow: hidden;
+        }
+
+        .promheader {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(20px);
+            border-radius: 22px;
+            padding: 16px 20px;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            flex-shrink: 0;
+            box-shadow: 0 6px 24px rgba(120, 80, 180, .1);
+            border: 1.5px solid rgba(255, 255, 255, .9);
+        }
+
+        .promtag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--v1);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .promtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 5vw, 26px);
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .promprog {
+            font-family: 'Caveat', cursive;
+            font-size: 15px;
+            color: var(--ink3);
+            margin-top: 4px;
+        }
+
+        .promcard-wrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promcard {
+            background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(253, 232, 239, .6));
+            border-radius: 28px;
+            padding: 36px 28px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: var(--sh);
+            border: 1.5px solid rgba(255, 255, 255, .92);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promcard::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(244, 143, 177, .18), transparent);
+            border-radius: 50%;
+        }
+
+        .promnum {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(244, 143, 177, .18);
+            margin-bottom: -10px;
+        }
+
+        .promemoji {
+            font-size: 40px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .promtext {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 5vw, 26px);
+            color: var(--ink);
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        .promtext.special {
+            color: var(--p1);
+            font-weight: 700;
+        }
+
+        .promnav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 14px;
+            flex-shrink: 0;
+            max-width: 440px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pnavbtn {
+            flex: 1;
+            padding: 13px;
+            border-radius: 18px;
+            border: 1.5px solid rgba(255, 255, 255, .88);
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--ink2);
+            cursor: pointer;
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: blur(12px);
+            transition: all .25s;
+            box-shadow: 0 4px 14px rgba(120, 80, 180, .08);
+        }
+
+        .pnavbtn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, .9);
+        }
+
+        .pnavbtn.pri {
+            background: linear-gradient(135deg, var(--p1), var(--v1));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 24px rgba(180, 130, 200, .3);
+        }
+
+        /* ══ S5 SCRATCH REASONS ══ */
+        #s5 {
+            overflow: hidden;
+        }
+
+        .reasheader {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(20px);
+            border-radius: 22px;
+            padding: 16px 20px;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto 12px;
+            flex-shrink: 0;
+            box-shadow: 0 6px 24px rgba(120, 80, 180, .1);
+            border: 1.5px solid rgba(255, 255, 255, .9);
+        }
+
+        .reastag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--p1);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .reastitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 5vw, 26px);
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .reashint {
+            font-family: 'Caveat', cursive;
+            font-size: 15px;
+            color: var(--ink3);
+            margin-top: 4px;
+        }
+
+        .reasscroll {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .reasscroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .reasgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 4px 16px 16px;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .rcard {
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 1.1;
+            box-shadow: 0 4px 20px rgba(120, 80, 180, .12);
+            transition: transform .3s;
+        }
+
+        .rcard:hover {
+            transform: scale(1.02);
+        }
+
+        .rcard.wide {
+            grid-column: span 2;
+            aspect-ratio: 2.2;
+        }
+
+        .rscratch {
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+            transition: opacity .45s ease, transform .45s ease;
+            z-index: 2;
+        }
+
+        .rscratch .si {
+            font-size: 28px;
+        }
+
+        .rscratch .st {
+            font-family: 'Caveat', cursive;
+            font-size: 14px;
+            color: rgba(255, 255, 255, .8);
+            letter-spacing: 1px;
+        }
+
+        .rreveal {
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .rreveal-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            opacity: .12;
+            position: absolute;
+            top: 8px;
+            right: 12px;
+        }
+
+        .rreveal-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(14px, 3.5vw, 18px);
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        .rcard.scratched .rscratch {
+            opacity: 0;
+            transform: scale(1.08);
+            pointer-events: none;
+        }
+
+        .rpop {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            z-index: 3;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--g1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transform: scale(0);
+            transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+        }
+
+        .rcard.scratched .rpop {
+            transform: scale(1);
+        }
+
+        /* ══ S6 LESSONS ══ */
+        #s6 {
+            overflow: hidden;
+        }
+
+        .lesswrap {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 16px 16px 80px;
+            overflow: hidden;
+        }
+
+        .lessheader {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(20px);
+            border-radius: 22px;
+            padding: 16px 20px;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            flex-shrink: 0;
+            box-shadow: 0 6px 24px rgba(120, 80, 180, .1);
+            border: 1.5px solid rgba(255, 255, 255, .9);
+        }
+
+        .lesstag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--g1);
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-shadow: 0 1px 4px rgba(200, 160, 0, .3);
+        }
+
+        .lesstitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 4.5vw, 24px);
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .lessprog {
+            font-family: 'Caveat', cursive;
+            font-size: 14px;
+            color: var(--ink3);
+            margin-top: 3px;
+        }
+
+        .lesscardwrap {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lesscard {
+            border-radius: 28px;
+            padding: 32px 26px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: var(--sh);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background .6s ease;
+            background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(237, 231, 246, .6));
+            border: 1.5px solid rgba(255, 255, 255, .9);
+        }
+
+        .lesscard.golden {
+            background: linear-gradient(145deg, rgba(255, 243, 176, .95), rgba(255, 235, 100, .4)) !important;
+            border-color: rgba(255, 213, 79, .5) !important;
+        }
+
+        .lessn {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(179, 157, 219, .18);
+            margin-bottom: -14px;
+        }
+
+        .lesscard.golden .lessn {
+            color: rgba(255, 213, 79, .3);
+        }
+
+        .lesstext {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 4.5vw, 24px);
+            color: var(--ink);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .lesscard.golden .lesstext {
+            color: #6b4a00;
+            font-size: clamp(19px, 4.8vw, 26px);
+        }
+
+        .lessnav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 12px;
+            flex-shrink: 0;
+            max-width: 440px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ══ S7 DREAMS ══ */
+        .dreamcard {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(24px);
+            border-radius: 26px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            overflow: hidden;
+        }
+
+        .dreamscroll {
+            max-height: calc(100vh - 290px);
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        .dreamscroll::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .dreamscroll::-webkit-scrollbar-thumb {
+            background: var(--p2);
+            border-radius: 4px;
+        }
+
+        .ditem {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(180, 130, 200, .1);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity .5s ease, transform .5s ease;
+        }
+
+        .ditem.vis {
+            opacity: 1;
+            transform: none;
+        }
+
+        .ditem:last-child {
+            border: none;
+        }
+
+        .ditem-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .ditem-text {
+            font-size: 15px;
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .ditem-sp .ditem-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 17px;
+            color: var(--p1);
+            font-weight: 600;
+        }
+
+        .dreambtn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, .65);
+            border: 1.5px solid var(--p2);
+            border-radius: 50px;
+            padding: 11px 24px;
+            color: var(--p1);
+            font-family: 'Caveat', cursive;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all .25s;
+        }
+
+        .dreambtn:hover {
+            background: var(--p1);
+            color: #fff;
+            border-color: var(--p1);
+        }
+
+        .dreamrand {
+            display: none;
+            margin-top: 10px;
+            padding: 20px 22px;
+            background: rgba(249, 196, 212, .15);
+            border: 1.5px solid var(--p2);
+            border-radius: 18px;
+            font-family: 'Caveat', cursive;
+            font-size: 20px;
+            color: var(--ink2);
+            text-align: center;
+            line-height: 1.6;
+            animation: fuA .4s ease;
+        }
+
+        /* ══ S8 BALLOONS ══ */
+        #s8 {
+            padding-bottom: 10px;
+            overflow: hidden;
+        }
+
+        #bfield {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .balloon {
+            position: absolute;
+            cursor: pointer;
+            pointer-events: all;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bR linear forwards;
+        }
+
+        @keyframes bR {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1
+            }
+
+            85% {
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(-108vh) translateX(var(--sx));
+                opacity: 0
+            }
+        }
+
+        .bb {
+            width: clamp(52px, 12vw, 70px);
+            aspect-ratio: .78;
+            border-radius: 50% 50% 46% 46%/55% 55% 45% 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset -7px -7px 18px rgba(0, 0, 0, .13), inset 5px 5px 12px rgba(255, 255, 255, .45);
+            font-size: 18px;
+            transition: transform .1s;
+        }
+
+        .bb::before {
+            content: '';
+            position: absolute;
+            top: 14%;
+            left: 18%;
+            width: 24%;
+            height: 24%;
+            background: rgba(255, 255, 255, .55);
+            border-radius: 50%;
+            transform: rotate(-25deg);
+        }
+
+        .bstring {
+            width: 1.5px;
+            height: 24px;
+            background: rgba(140, 100, 180, .4);
+        }
+
+        .bnote {
+            position: absolute;
+            top: -54px;
+            left: 50%;
+            transform: translateX(-50%) translateY(5px);
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-family: 'Caveat', cursive;
+            font-size: 13px;
+            color: var(--ink2);
+            max-width: 180px;
+            text-align: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .12);
+            border: 1.5px solid var(--p2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s, transform .3s;
+            white-space: normal;
+        }
+
+        .balloon.pp .bnote {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .pburst {
+            position: fixed;
+            pointer-events: none;
+            font-size: 28px;
+            animation: pb .6s ease forwards;
+            z-index: 10;
+        }
+
+        @keyframes pb {
+            0% {
+                opacity: 1;
+                transform: scale(.5)
+            }
+
+            50% {
+                transform: scale(1.5)
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(.8)
+            }
+        }
+
+        .bheadcard {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(16px);
+            border-radius: 22px;
+            padding: 18px 20px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: 0 6px 24px rgba(120, 80, 180, .1);
+        }
+
+        .bhtag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--v1);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .bhtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(21px, 5.5vw, 28px);
+            color: var(--p1);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .spill {
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: 0 6px 24px rgba(120, 80, 180, .1);
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .spill .spi {
+            font-size: 26px;
+        }
+
+        .spill .spl {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--ink3);
+            font-weight: 800;
+        }
+
+        .spill .spv {
+            font-family: 'Caveat', cursive;
+            font-size: 26px;
+            color: var(--ink);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .botnext {
+            position: absolute;
+            bottom: 14px;
+            left: 16px;
+            right: 16px;
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: 0 8px 28px rgba(120, 80, 180, .12);
+            transition: transform .25s;
+            z-index: 10;
+        }
+
+        .botnext:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ══ S9 CAKE ══ */
+        .cakecard {
+            background: rgba(255, 255, 255, .75);
+            backdrop-filter: blur(24px);
+            border-radius: 26px;
+            padding: 22px 18px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            text-align: center;
+        }
+
+        .caketag {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--v2);
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .caketitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 5vw, 28px);
+            color: var(--ink);
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        .cakesub {
+            font-size: 13px;
+            color: var(--ink3);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-family: 'Caveat', cursive;
+            font-size: 16px;
+        }
+
+        .cakewrap {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .cakesvg {
+            width: min(210px, 55vw);
+            filter: drop-shadow(0 8px 24px rgba(180, 130, 200, .22));
+            transition: transform .3s;
+        }
+
+        .cakesvg:hover {
+            transform: scale(1.03);
+        }
+
+        .cglow {
+            animation: cg 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes cg {
+            from {
+                filter: drop-shadow(0 0 5px #FFD54F)
+            }
+
+            to {
+                filter: drop-shadow(0 0 16px #FF8F00)
+            }
+        }
+
+        .cndlrow {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .cbtn {
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all .3s;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+        }
+
+        .cbtn.pink {
+            background: linear-gradient(135deg, #ffd6e0, #ffb3c6);
+            color: #c0396b;
+        }
+
+        .cbtn.pur {
+            background: linear-gradient(135deg, #e8daff, #d4c5f9);
+            color: #7b5ea7;
+        }
+
+        .cbtn.gold {
+            background: linear-gradient(135deg, #fff3b0, #ffe566);
+            color: #8a6800;
+        }
+
+        .cbtn.lit {
+            opacity: .5;
+            cursor: default;
+        }
+
+        .cakehb {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(26px, 6.5vw, 38px);
+            color: var(--v1);
+            font-weight: 700;
+            display: none;
+            animation: fuA .6s ease;
+        }
+
+        .cakewish {
+            font-family: 'Caveat', cursive;
+            font-size: 18px;
+            color: var(--ink3);
+            display: none;
+            animation: fuA .7s ease;
+        }
+
+        /* ══ S10 QUESTION ══ */
+        #s10 {
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .qcard2 {
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(24px);
+            border-radius: 28px;
+            padding: 30px 24px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            text-align: center;
+        }
+
+        .qpre {
+            font-family: 'Caveat', cursive;
+            font-size: 16px;
+            color: var(--ink3);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .qquestion {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(21px, 5.5vw, 30px);
+            color: var(--ink);
+            margin-bottom: 26px;
+            line-height: 1.35;
+        }
+
+        .qbtns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .qyes {
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--p1), var(--v1));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 28px rgba(244, 143, 177, .38);
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .qyes:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 14px 40px rgba(244, 143, 177, .5);
+        }
+
+        .qno {
+            padding: 16px 28px;
+            background: rgba(255, 255, 255, .55);
+            color: var(--ink3);
+            border: 1.5px solid rgba(180, 130, 200, .2);
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            transition: color .2s;
+        }
+
+        .qans {
+            display: none;
+            text-align: center;
+            animation: fuA .7s ease;
+        }
+
+        .qah {
+            font-size: 28px;
+            letter-spacing: 6px;
+            margin-bottom: 14px;
+            animation: hb 1.4s infinite;
+        }
+
+        .qamain {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 6vw, 32px);
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .qasub {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(17px, 4vw, 21px);
+            color: var(--ink2);
+            line-height: 1.85;
+            margin-bottom: 14px;
+        }
+
+        .qasub em {
+            color: var(--p1);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .qatag {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--p1);
+        }
+
+        /* ══ S11 FINAL ══ */
+        #s11 {
+            padding-top: 18px;
+            justify-content: flex-start;
+        }
+
+        .finalcard {
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(24px);
+            border-radius: 26px;
+            width: 100%;
+            max-width: 440px;
+            border: 1.5px solid rgba(255, 255, 255, .9);
+            box-shadow: var(--sh);
+            overflow: hidden;
+        }
+
+        .finaltop {
+            padding: 20px 22px 16px;
+            background: linear-gradient(135deg, rgba(249, 196, 212, .4), rgba(212, 197, 249, .3));
+            border-bottom: 1px solid rgba(255, 255, 255, .5);
+        }
+
+        .finalbig {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 9vw, 56px);
+            font-weight: 700;
+            color: var(--v1);
+            line-height: .95;
+            letter-spacing: -1px;
+        }
+
+        .finalscroll {
+            max-height: calc(100vh - 280px);
+            overflow-y: auto;
+            padding: 18px 22px 28px;
+        }
+
+        .finalscroll::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .finalscroll::-webkit-scrollbar-thumb {
+            background: var(--p2);
+            border-radius: 4px;
+        }
+
+        .finalto {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--v3);
+            border-radius: 50px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink2);
+            margin-bottom: 16px;
+        }
+
+        .finalbody p {
+            font-size: 15px;
+            color: var(--ink);
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .finalbody p em {
+            color: var(--p1);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .finalsign {
+            font-family: 'Caveat', cursive;
+            font-size: 17px;
+            color: var(--ink3);
+            margin-bottom: 6px;
+        }
+
+        .finallove {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(22px, 5.5vw, 28px);
+            color: var(--p1);
+            font-weight: 700;
+        }
+
+        @keyframes hb {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.18)
+            }
+        }
+
+        @keyframes fuA {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        #cc {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <div class="orb"
+            style="width:300px;height:300px;top:-70px;left:-50px;background:rgba(249,196,212,.5);animation-delay:0s;">
+        </div>
+        <div class="orb"
+            style="width:250px;height:250px;bottom:-50px;right:-40px;background:rgba(212,197,249,.5);animation-delay:3.5s;">
+        </div>
+        <div class="orb"
+            style="width:170px;height:170px;top:45%;left:62%;background:rgba(255,210,180,.42);animation-delay:7s;">
+        </div>
+    </div>
+    <div id="pts"></div>
+    <canvas id="cc"></canvas>
+    <div id="topbar">
+        <div id="tbfill"></div>
+    </div>
+    <div id="pdots"></div>
+
+    <div id="slides">
+
+        <!-- S0 WELCOME -->
+        <div class="slide active" id="s0">
+            <div class="sinner sg">
+                <div class="card">
+                    <div class="tbar">
+                        <div class="dots">
+                            <div class="dot r"></div>
+                            <div class="dot y"></div>
+                            <div class="dot g"></div>
+                        </div>
+                        <div class="tbar-lbl">BIRTHDAY-SURPRISE.EXE</div>
+                    </div>
+                    <div class="cbody" style="text-align:center;">
+                        <div class="wphoto" id="wphoto">🌹</div>
+                        <div class="plabel">LITTLE MESSAGE</div>
+                        <div class="wheadline">Hey! It's your birthday and<br />I <em>had</em> to do something
+                            special…<br /><br />Happy <strong>29th</strong>, my love. ❤️<br />This one's all yours.
+                        </div>
+                    </div>
+                </div>
+                <div class="badges">
+                    <div class="badge">🎂 29th Birthday</div>
+                    <div class="badge">💖 10 Years Together</div>
+                    <div class="badge">💍 Forever to go</div>
+                </div>
+                <button class="nrow" onclick="goTo(1)">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">Our Photos 📸</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S1 GALLERY -->
+        <div class="slide" id="s1">
+            <div class="gallslide">
+                <div class="galltbar">
+                    <div class="galltbarcard">
+                        <div class="dots">
+                            <div class="dot r"></div>
+                            <div class="dot y"></div>
+                            <div class="dot g"></div>
+                        </div>
+                        <div class="tbar-lbl" style="margin-right:40px;">PHOTO-GALLERY.EXE</div>
+                    </div>
+                </div>
+                <p class="gallhint">Tap a photo to read its story 💌</p>
+                <div class="clcontainer" id="gallcont"></div>
+                <div class="gallbot">
+                    <button class="gbtn" onclick="goTo(0)">← Back</button>
+                    <button class="gbtn pri" onclick="goTo(2)">Our Timeline →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- S2 TIMELINE -->
+        <div class="slide" id="s2">
+            <div class="sinner sg">
+                <div class="tlcard">
+                    <div class="tbar">
+                        <div class="dots">
+                            <div class="dot r"></div>
+                            <div class="dot y"></div>
+                            <div class="dot g"></div>
+                        </div>
+                        <div class="tbar-lbl">OUR-JOURNEY.EXE</div>
+                    </div>
+                    <div class="tlscroll" id="tlscroll"></div>
+                </div>
+                <button class="nrow" onclick="goTo(3)">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">Love Story 💫</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S3 LOVE-STORY.EXE — unique folder tab UI -->
+        <div class="slide" id="s3">
+            <div class="lsx-wrap">
+                <div class="lsx-bar">
+                    <div class="lsx-barcard">
+                        <div class="dots">
+                            <div class="dot r"></div>
+                            <div class="dot y"></div>
+                            <div class="dot g"></div>
+                        </div>
+                        <div class="lsx-title">LOVE-STORY.EXE</div>
+                    </div>
+                </div>
+                <!-- tabs -->
+                <div class="lsx-tabs" id="lsxTabs"></div>
+                <!-- panels -->
+                <div class="lsx-content" id="lsxContent"></div>
+                <!-- nav -->
+                <div class="lsx-navrow">
+                    <button class="lsx-navbtn" id="lsxPrev" onclick="lsxNav(-1)">← Prev</button>
+                    <button class="lsx-navbtn pri" id="lsxNext" onclick="lsxNav(1)">Next →</button>
+                </div>
+                <div style="max-width:460px;width:100%;margin:8px auto 0;padding:0 16px;">
+                    <button class="nrow" id="lsxDone" onclick="goTo(4)" style="display:none;">
+                        <div class="nrl">
+                            <div class="nl-tag">READY FOR NEXT</div>
+                            <div class="nl-txt">11 Promises 💍</div>
+                        </div>
+                        <div class="narr">›</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- S4 PROMISES -->
+        <div class="slide" id="s4">
+            <div class="promwrap">
+                <div class="promheader" style="max-width:440px;">
+                    <div class="promtag">PROMISES.EXE</div>
+                    <div class="promtitle">11 Promises For Our Married Life</div>
+                    <div class="promprog" id="promprog">Promise 1 of 11</div>
+                </div>
+                <div class="promcard-wrap">
+                    <div class="promcard" id="promcard">
+                        <div class="promnum" id="promnum">01</div>
+                        <span class="promemoji" id="promemoji">🌸</span>
+                        <div class="promtext" id="promtext">I promise to choose us even on the difficult days —
+                            especially on the difficult days.</div>
+                    </div>
+                </div>
+                <div class="promnav">
+                    <button class="pnavbtn" id="pprev" onclick="promNav(-1)">← Prev</button>
+                    <button class="pnavbtn pri" id="pnext" onclick="promNav(1)">Next →</button>
+                </div>
+                <button class="nrow" id="promnext" onclick="goTo(5)"
+                    style="display:none;margin-top:10px;max-width:440px;">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">Reasons I Love You 💖</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S5 REASONS SCRATCH -->
+        <div class="slide" id="s5">
+            <div class="sinner" style="height:100%;display:flex;flex-direction:column;gap:11px;">
+                <div class="reasheader">
+                    <div class="reastag">REASONS.EXE</div>
+                    <div class="reastitle">Reasons I Love You</div>
+                    <div class="reashint" id="reashint">Tap each card to scratch & reveal ✨ (0 / 11)</div>
+                </div>
+                <div class="reasscroll">
+                    <div class="reasgrid" id="reasgrid"></div>
+                </div>
+                <button class="nrow" id="reasdonebtn" onclick="goTo(6)" style="display:none;">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">29 Lessons 📖</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S6 LESSONS -->
+        <div class="slide" id="s6">
+            <div class="lesswrap">
+                <div class="lessheader">
+                    <div class="lesstag">29 LESSONS.EXE</div>
+                    <div class="lesstitle">29 Lessons You Taught Me Before 29</div>
+                    <div class="lessprog" id="lessprog">Lesson 1 of 29</div>
+                </div>
+                <div class="lesscardwrap">
+                    <div class="lesscard" id="lesscard">
+                        <div class="lessn" id="lessn">01</div>
+                        <div class="lesstext" id="lesstext">You taught me that loyalty still exists.</div>
+                    </div>
+                </div>
+                <div class="lessnav">
+                    <button class="pnavbtn" id="lprev" onclick="lessNav(-1)">← Prev</button>
+                    <button class="pnavbtn pri" id="lnext" onclick="lessNav(1)">Next →</button>
+                </div>
+                <button class="nrow" id="lessdonebtn" onclick="goTo(7)"
+                    style="display:none;margin-top:10px;max-width:440px;">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">Dreams With You 🌸</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S7 DREAMS -->
+        <div class="slide" id="s7">
+            <div class="sinner sg">
+                <div class="dreamcard">
+                    <div class="tbar">
+                        <div class="dots">
+                            <div class="dot r"></div>
+                            <div class="dot y"></div>
+                            <div class="dot g"></div>
+                        </div>
+                        <div class="tbar-lbl">DREAMS.EXE</div>
+                    </div>
+                    <div class="cbody" style="padding-bottom:0;">
+                        <div
+                            style="font-size:10px;letter-spacing:3px;color:var(--v1);font-weight:800;margin-bottom:6px;">
+                            THINGS I CAN'T WAIT FOR</div>
+                        <div
+                            style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4.5vw,24px);color:var(--ink);margin-bottom:4px;">
+                            Ordinary moments — with you.</div>
+                    </div>
+                    <div class="dreamscroll" id="dreamscroll"></div>
+                    <div
+                        style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+                        <button class="dreambtn" onclick="showRandDream()">✦ Surprise me with one</button>
+                        <div class="dreamrand" id="dreamrand"></div>
+                    </div>
+                </div>
+                <button class="nrow" onclick="goTo(8)">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">Pop Some Balloons 🎈</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S8 BALLOONS -->
+        <div class="slide" id="s8">
+            <div id="bfield"></div>
+            <div class="sinner sg" style="position:relative;z-index:5;">
+                <div class="bheadcard">
+                    <div class="bhtag">BALLOON-ROOM.EXE</div>
+                    <div class="bhtitle">Let's see how many<br />balloons you can pop! 🎈</div>
+                </div>
+                <div class="spill">
+                    <div class="spi">💖</div>
+                    <div>
+                        <div class="spl">YOUR SCORE</div>
+                        <div class="spv" id="bscore">0 love notes found</div>
+                    </div>
+                </div>
+            </div>
+            <div class="botnext" id="bnext" onclick="goTo(9)" style="display:none;">
+                <div>
+                    <div style="font-size:10px;letter-spacing:3px;color:var(--ink3);font-weight:800;">READY FOR NEXT
+                    </div>
+                    <div style="font-family:'Caveat',cursive;font-size:20px;color:var(--ink2);">Continue to Cake 🎂
+                    </div>
+                </div>
+                <div class="narr">›</div>
+            </div>
+        </div>
+
+        <!-- S9 CAKE -->
+        <div class="slide" id="s9">
+            <div class="sinner sg">
+                <div class="cakecard">
+                    <div class="caketag">CAKE CEREMONY.EXE</div>
+                    <div class="caketitle" id="caketitle">Light the candles, then tap the cake ✨</div>
+                    <div class="cakesub" id="cakesub">Tap each candle button below to light it.</div>
+                    <div class="cakewrap" onclick="cutCake()">
+                        <svg class="cakesvg" id="cakesvg" viewBox="0 0 240 212" xmlns="http://www.w3.org/2000/svg">
+                            <g id="cf1" opacity="0">
+                                <ellipse cx="68" cy="25" rx="7" ry="10" fill="#FFD54F" />
+                                <ellipse cx="68" cy="29" rx="4" ry="6" fill="#FF8F00" />
+                            </g>
+                            <rect x="64" y="35" width="8" height="26" rx="2" fill="#FFD54F" />
+                            <g id="cf2" opacity="0">
+                                <ellipse cx="120" cy="15" rx="7" ry="10" fill="#FFD54F" />
+                                <ellipse cx="120" cy="19" rx="4" ry="6" fill="#FF8F00" />
+                            </g>
+                            <rect x="116" y="25" width="8" height="26" rx="2" fill="#CE93D8" />
+                            <g id="cf3" opacity="0">
+                                <ellipse cx="172" cy="25" rx="7" ry="10" fill="#FFD54F" />
+                                <ellipse cx="172" cy="29" rx="4" ry="6" fill="#FF8F00" />
+                            </g>
+                            <rect x="168" y="35" width="8" height="26" rx="2" fill="#F48FB1" />
+                            <rect x="72" y="61" width="96" height="34" rx="8" fill="#FFCDD2" />
+                            <ellipse cx="87" cy="95" rx="7" ry="7" fill="#fff" />
+                            <ellipse cx="107" cy="95" rx="7" ry="7" fill="#fff" />
+                            <ellipse cx="127" cy="95" rx="7" ry="7" fill="#fff" />
+                            <ellipse cx="147" cy="95" rx="7" ry="7" fill="#fff" />
+                            <ellipse cx="163" cy="95" rx="7" ry="7" fill="#fff" />
+                            <rect x="44" y="95" width="152" height="40" rx="8" fill="#CE93D8" />
+                            <ellipse cx="60" cy="135" rx="8" ry="8" fill="#fff" />
+                            <ellipse cx="84" cy="135" rx="8" ry="8" fill="#fff" />
+                            <ellipse cx="108" cy="135" rx="8" ry="8" fill="#fff" />
+                            <ellipse cx="132" cy="135" rx="8" ry="8" fill="#fff" />
+                            <ellipse cx="156" cy="135" rx="8" ry="8" fill="#fff" />
+                            <ellipse cx="180" cy="135" rx="8" ry="8" fill="#fff" />
+                            <rect x="18" y="135" width="204" height="52" rx="10" fill="#F48FB1" />
+                            <ellipse cx="36" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="60" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="84" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="108" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="132" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="156" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="180" cy="187" rx="9" ry="9" fill="#fff" />
+                            <ellipse cx="204" cy="187" rx="9" ry="9" fill="#fff" />
+                            <line id="cutline" x1="120" y1="61" x2="120" y2="187" stroke="white" stroke-width="2.5"
+                                stroke-dasharray="7,5" opacity="0" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="cndlrow" id="cndlrow">
+                        <button class="cbtn pink" onclick="lightC(1,this)">🕯 Light</button>
+                        <button class="cbtn pur" onclick="lightC(2,this)">🕯 Light</button>
+                        <button class="cbtn gold" onclick="lightC(3,this)">🕯 Light</button>
+                    </div>
+                    <div class="cakehb" id="cakehb">Happy Birthday! 🎉</div>
+                    <div class="cakewish" id="cakewish">Close your eyes & make a wish ✨</div>
+                </div>
+                <button class="nrow" id="cakenext" onclick="goTo(10)" style="display:none;">
+                    <div class="nrl">
+                        <div class="nl-tag">READY FOR NEXT</div>
+                        <div class="nl-txt">The Big Question 💖</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S10 QUESTION -->
+        <div class="slide" id="s10">
+            <div class="sinner sg" style="justify-content:center;min-height:80vh;padding-top:16px;">
+                <div class="qcard2">
+                    <div class="qpre" id="qpre">Thank you for every lesson.<br />Thank you for every memory.<br />Thank
+                        you for every time you stayed.<br />Thank you for 10 beautiful years. ❤️</div>
+                    <div class="qquestion">Will you marry me and keep choosing me every single day?</div>
+                    <div class="qbtns" id="qbtns">
+                        <button class="qyes" onclick="sayYes()">Yes, definitely ❤️</button>
+                        <button class="qno" id="qno" onmouseover="runAway(this)" ontouchstart="runAway(this)">Not a
+                            choice 😏</button>
+                    </div>
+                    <div class="qans" id="qans">
+                        <div class="qah">❤️ ❤️ ❤️</div>
+                        <div class="qamain">Of course you said yes. 😊</div>
+                        <div class="qasub">Because you and I — we were never really a question.<br />We were always the
+                            <em>answer</em>.<br /><br />We are going to be <em>so happy</em> together.</div>
+                        <div class="qatag">Forever starts now. ❤️</div>
+                    </div>
+                </div>
+                <button class="nrow" id="qnext" onclick="goTo(11)" style="display:none;">
+                    <div class="nrl">
+                        <div class="nl-tag">ONE LAST THING</div>
+                        <div class="nl-txt">A Letter For You 💌</div>
+                    </div>
+                    <div class="narr">›</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- S11 FINAL -->
+        <div class="slide" id="s11">
+            <div class="sinner sg">
+                <div class="finalcard">
+                    <div class="finaltop">
+                        <div class="finalbig">HAPPY<br />BIRTH<br />DAY</div>
+                    </div>
+                    <div class="finalscroll">
+                        <div class="finalto">📌 To my favorite person,</div>
+                        <div class="finalbody">
+                            <p>Thanks for being fun, genuine, and unforgettable. Every moment feels a little better with
+                                you around.</p>
+                            <p>For 10 years you showed up — not dramatically, not with grand gestures — just
+                                consistently, quietly, <em>every single day</em>. And I realised: this is what love
+                                actually feels like.</p>
+                            <p>You stayed when staying was hard. You chose me when choosing was a decision, not just a
+                                feeling. You never made me feel like a burden — even on the days I was one.</p>
+                            <p>I want to grow old making chai with you in the morning. I want to argue about small
+                                things and make up easily. I want to watch you become everything you're meant to be and
+                                be standing right there when it happens.</p>
+                            <p>I want the ordinary life — <em>with you</em>. That's the dream. Happy 29th Birthday.
+                                Thank you for 10 years of choosing me. I love you more than this letter can hold. More
+                                than anything.</p>
+                        </div>
+                        <div class="finalsign">with love, always</div>
+                        <div class="finallove">With lots of love 💖</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /slides -->
+    <script>
+        /* ══ BG THEMES ══ */
+        const bgs = ['linear-gradient(145deg,#fce4ec,#ede7f6,#e8eaf6)', 'linear-gradient(145deg,#fff8f0,#fce4ec,#ede7f6)', 'linear-gradient(145deg,#e8eaf6,#ede7f6,#fce4ec)', 'linear-gradient(145deg,#1a0a14,#28103e,#1a0a1e)', 'linear-gradient(145deg,#fce4ec,#e8f4f8,#fde8ef)', 'linear-gradient(145deg,#fde8ef,#fff0f8,#ede7f6)', 'linear-gradient(145deg,#fff3e0,#fce4ec,#ede7f6)', 'linear-gradient(145deg,#fce4ec,#ede7f6)', 'linear-gradient(145deg,#fde8ef,#ede7f6,#e8eaf6)', 'linear-gradient(145deg,#ede7f6,#fce4ec,#fff3e0)', 'linear-gradient(145deg,#fce4ec,#ede7f6)', 'linear-gradient(145deg,#fff8f4,#fce4ec,#ede7f6)'];
+
+        /* ══ SLIDE ENGINE ══ */
+        const TOTAL = 12; let cur = 0;
+        function goTo(idx) {
+            const p = document.getElementById('s' + cur), n = document.getElementById('s' + idx);
+            if (!n || idx === cur) return;
+            p.classList.remove('active'); p.classList.add('exit');
+            setTimeout(() => p.classList.remove('exit'), 420);
+            n.classList.add('active'); cur = idx;
+            document.getElementById('bg').style.background = bgs[idx] || bgs[1];
+            updateUI(); onEnter(idx);
+            let nb = document.getElementById('qno'); if (nb) { noFix = false; noN = 0; nb.style.cssText = ''; nb.textContent = 'Not a choice 😏'; }
+        }
+        function updateUI() {
+            const pct = (cur / (TOTAL - 1)) * 100;
+            document.getElementById('tbfill').style.width = pct + '%';
+            document.querySelectorAll('.pd').forEach((d, i) => { d.classList.toggle('on', i === cur); d.classList.toggle('done', i < cur); });
+        }
+        const pd = document.getElementById('pdots');
+        for (let i = 0; i < TOTAL; i++) { const d = document.createElement('div'); d.className = 'pd' + (i === 0 ? ' on' : ''); d.onclick = () => goTo(i); pd.appendChild(d); }
+
+        /* ══ PARTICLES ══ */
+        const pt = document.getElementById('pts');
+        ['♡', '❤', '✦', '·', '♡'].forEach((c, i) => { for (let j = 0; j < 4; j++) { const e = document.createElement('div'); e.className = 'pt'; e.textContent = c; e.style.left = Math.random() * 100 + '%'; e.style.top = 10 + Math.random() * 85 + '%'; e.style.animationDuration = (9 + Math.random() * 9) + 's'; e.style.animationDelay = Math.random() * 12 + 's'; e.style.fontSize = (7 + Math.random() * 9) + 'px'; e.style.color = `hsl(${300 + Math.random() * 60},65%,75%)`; pt.appendChild(e); } });
+
+        /* ══ ENTER HOOKS ══ */
+        function onEnter(i) {
+            if (i === 1) buildGallery();
+            if (i === 2) buildTimeline();
+            if (i === 3) buildLSX();
+            if (i === 5) buildReasons();
+            if (i === 6) showLesson(0);
+            if (i === 7) buildDreams();
+            if (i === 8) startBalloons();
+        }
+
+        /* ══ GALLERY ══ */
+        const gallData = [
+            { date: '2015 · Year 1', caption: 'Where it all started', emoji: '📸', story: 'The very beginning. Add your story here.', secret: '💌 I had no idea this person would become my husband.' },
+            { date: '2025 · Now', caption: 'Look how far we\'ve come', emoji: '💕', story: 'Ten years later. Still us. Still choosing each other.', secret: '💌 I\'d choose you again in every lifetime.' },
+            { date: 'A Trip Together', caption: 'Just the two of us', emoji: '✈️', story: 'Add a travel memory here.', secret: '💌 My favourite trips are with you.' },
+            { date: 'Another Adventure', caption: 'Somewhere beautiful', emoji: '🌄', story: 'Add another travel memory here.', secret: '💌 Hidden memory' },
+            { date: 'His Birthday', caption: 'Your special day', emoji: '🎂', story: 'Add a birthday memory here.', secret: '💌 Hidden memory' },
+            { date: 'Anniversary', caption: 'Another year of us', emoji: '🎉', story: 'Add an anniversary memory here.', secret: '💌 Hidden memory' },
+            { date: 'A Random Day', caption: 'Just us being us', emoji: '🥰', story: 'The ordinary days are the best ones.', secret: '💌 I love you most on the ordinary days.' },
+            { date: 'Candid & real', caption: 'My favourite person', emoji: '💖', story: 'Add a favourite random moment here.', secret: '💌 Hidden memory' },
+            { date: 'Us, always', caption: 'No caption needed', emoji: '🌸', story: 'Add another favourite moment here.', secret: '💌 Hidden memory' },
+        ];
+        const tilts = [-4, -2, -5, 3, 2, -3, 4, -2, 3];
+        function buildGallery() {
+            const c = document.getElementById('gallcont'); c.innerHTML = '';
+            [[0, 1, 2], [3, 4, 5], [6, 7, 8]].forEach(idxs => {
+                const row = document.createElement('div'); row.className = 'clrow';
+                idxs.forEach(gi => {
+                    const g = gallData[gi]; const tilt = tilts[gi % tilts.length];
+                    const card = document.createElement('div'); card.className = 'pol';
+                    card.style.setProperty('--t', `rotate(${tilt}deg)`);
+                    card.style.transform = `rotate(${tilt}deg)`;
+                    card.style.animationDelay = gi * .12 + 's';
+                    card.innerHTML = `<div class="polimg">${g.emoji}<div class="polov"><div class="pdate">${g.date}</div><div class="pstory">${g.story}</div><div class="psecret">${g.secret}</div></div></div><div class="polcap">${g.caption}</div>`;
+                    card.addEventListener('click', () => card.classList.toggle('fl'));
+                    row.appendChild(card);
+                });
+                c.appendChild(row);
+            });
+        }
+
+        /* ══ TIMELINE ══ */
+        const tlData = [
+            { year: 'Year 1 · 2015', event: 'The First Meeting', desc: 'How it all began.', note: '📝 Add your Year 1 memory here.', gold: false },
+            { year: 'Year 2 · 2016', event: 'The First Trip Together', desc: 'Something important happened.', note: '📝 Add your Year 2 memory here.', gold: false },
+            { year: 'Year 3 · 2017', event: 'A Story We Still Laugh About', desc: 'The funny year.', note: '📝 Add your Year 3 memory here.', gold: false },
+            { year: 'Year 4 · 2018', event: 'When We Got Serious', desc: 'The year things changed.', note: '📝 Add your Year 4 memory here.', gold: false },
+            { year: 'Year 5 · 2019', event: 'Our First Difficult Year', desc: 'We grew stronger through it.', note: '📝 Add your Year 5 memory here.', gold: false },
+            { year: 'Year 6 · 2020', event: 'The Year The World Stopped', desc: 'We found a way to stay close.', note: '📝 Add your 2020 memory here.', gold: false },
+            { year: 'Year 7 · 2021', event: 'A New Beginning', desc: 'Something shifted for the better.', note: '📝 Add your Year 7 memory here.', gold: false },
+            { year: 'Year 8 · 2022', event: 'The Year We Made Big Plans', desc: 'The future started feeling real.', note: '📝 Add your Year 8 memory here.', gold: false },
+            { year: 'Year 9 · 2023', event: 'The Best Year Yet', desc: 'We came so far from where we started.', note: '📝 Add your Year 9 memory here.', gold: false },
+            { year: 'Year 10 · 2024–25 ✦', event: 'The Year We Said Yes ❤️', desc: 'Engagement. The most beautiful countdown.', note: '💍 Add your engagement story here.', gold: true },
+        ];
+        const dotCols = ['#F48FB1', '#B39DDB', '#FFD54F', '#80CBC4', '#FFAB91', '#F48FB1', '#CE93D8', '#80CBC4', '#FFD54F', '#F6C90E'];
+        function buildTimeline() {
+            const sc = document.getElementById('tlscroll'); sc.innerHTML = '';
+            tlData.forEach((t, i) => {
+                const div = document.createElement('div');
+                div.className = 'tlyear' + (t.gold ? ' gold-yr' : '');
+                div.innerHTML = `
+      <div class="tlline-col">
+        <div class="tldot" style="background:${dotCols[i]};"></div>
+        <div class="tlyearline"></div>
+      </div>
+      <div class="tlyearbody">
+        <div class="tlynum">${t.year}</div>
+        <div class="tlyevent">${t.event}</div>
+        <div class="tlydesc">${t.desc}</div>
+        <div class="tlyhidden">${t.note}</div>
+      </div>`;
+                div.addEventListener('click', () => {
+                    const open = div.classList.contains('open');
+                    document.querySelectorAll('.tlyear').forEach(x => x.classList.remove('open'));
+                    if (!open) div.classList.add('open');
+                });
+                sc.appendChild(div);
+            });
+        }
+
+        /* ══ LOVE-STORY.EXE — unique folder tab UI ══ */
+        const lsxChapters = [
+            {
+                icon: '📖', label: 'How We Started', tag: 'CHAPTER ONE', title: 'How We Started',
+                items: [{ t: '📝 Add your story here — how you first met, where it was, what the day looked like, what he said, what you thought. Write it honestly. Write it with love.', sp: false }]
+            },
+            {
+                icon: '🗓', label: '10 Years', tag: 'CHAPTER TWO', title: 'Our Journey — 10 Years',
+                items: [
+                    { t: 'Year 1 — The First Meeting. Add your memory.', sp: false },
+                    { t: 'Year 2 — The First Trip Together. Add your memory.', sp: false },
+                    { t: 'Year 3 — A Funny Story We Still Laugh About.', sp: false },
+                    { t: 'Year 4 — When We Got Serious.', sp: false },
+                    { t: 'Year 5 — Our First Difficult Year.', sp: false },
+                    { t: 'Year 6 — The Year The World Stopped.', sp: false },
+                    { t: 'Year 7 — A New Beginning.', sp: false },
+                    { t: 'Year 8 — The Year We Made Big Plans.', sp: false },
+                    { t: 'Year 9 — The Best Year Yet.', sp: false },
+                    { t: 'Year 10 — The Year We Said Yes. ❤️ Add the engagement story.', sp: true },
+                ]
+            },
+            {
+                icon: '🎂', label: '29 Wishes', tag: 'CHAPTER THREE', title: '29 Birthday Wishes',
+                items: [
+                    { t: 'Happy Birthday to my favorite person.', sp: false },
+                    { t: 'Happy Birthday to my safe place.', sp: false },
+                    { t: 'Happy Birthday to the man who never gave up on us.', sp: false },
+                    { t: 'Happy Birthday to my future husband.', sp: false },
+                    { t: 'Happy Birthday to the person who makes everything feel okay.', sp: false },
+                    { t: 'Happy Birthday to the one who knows me better than I know myself.', sp: false },
+                    { t: 'Happy Birthday to my home — not a place, but a person.', sp: false },
+                    { t: 'Happy Birthday to the one who stays, always.', sp: false },
+                    { t: 'Happy Birthday to the one I choose every single day.', sp: false },
+                    { t: 'Happy Birthday to 10 years of us — and all the years ahead.', sp: false },
+                    { t: 'Happy Birthday to the love of my life. Today and always. ❤️', sp: true },
+                ]
+            },
+            {
+                icon: '😂', label: 'The Funny Side', tag: 'CHAPTER FOUR', title: 'The Funny Side Of Us',
+                items: [
+                    { t: '😂 The Most Ridiculous Fight — Add the most absurd fight you\'ve had.', sp: false },
+                    { t: '🤦 The Misunderstanding — A message read wrong, a plan gone sideways.', sp: false },
+                    { t: '🥰 Weird Nicknames — All the embarrassing things you call each other.', sp: false },
+                    { t: '🙈 Most Embarrassing Moment — You still can\'t tell it without going red.', sp: false },
+                    { t: '🤫 Inside Jokes — The things only you two understand.', sp: true },
+                ]
+            },
+        ];
+
+        let lsxCur = 0;
+        function buildLSX() {
+            const tabsEl = document.getElementById('lsxTabs');
+            const contentEl = document.getElementById('lsxContent');
+            if (tabsEl.children.length > 0) return; // already built
+            lsxChapters.forEach((ch, i) => {
+                // tab
+                const tab = document.createElement('div');
+                tab.className = 'lsx-tab' + (i === 0 ? ' on' : '');
+                tab.textContent = ch.icon + ' ' + ch.label;
+                tab.onclick = () => lsxGoTo(i);
+                tabsEl.appendChild(tab);
+                // panel
+                const panel = document.createElement('div');
+                panel.className = 'lsx-panel' + (i === 0 ? ' vis' : '');
+                let html = `<div class="lsx-ccard"><div class="lsx-chead"><div class="lsx-ctag">${ch.tag}</div><div class="lsx-ctitle">${ch.title}</div></div><div class="lsx-items">`;
+                ch.items.forEach((item, j) => {
+                    html += `<div class="lsx-item${item.sp ? ' sp' : ''}"><div class="lsx-n">${String(j + 1).padStart(2, '0')}</div><div class="lsx-t">${item.t}</div></div>`;
+                });
+                html += '</div></div>';
+                panel.innerHTML = html;
+                contentEl.appendChild(panel);
+            });
+            lsxCur = 0; updateLSX();
+        }
+        function lsxGoTo(i) {
+            document.querySelectorAll('.lsx-tab').forEach((t, ti) => t.classList.toggle('on', ti === i));
+            document.querySelectorAll('.lsx-panel').forEach((p, pi) => { p.classList.toggle('vis', pi === i); });
+            lsxCur = i; updateLSX();
+        }
+        function lsxNav(d) {
+            const next = Math.max(0, Math.min(lsxChapters.length - 1, lsxCur + d));
+            lsxGoTo(next);
+        }
+        function updateLSX() {
+            document.getElementById('lsxPrev').style.opacity = lsxCur === 0 ? '.35' : '1';
+            document.getElementById('lsxNext').style.display = lsxCur === lsxChapters.length - 1 ? 'none' : 'flex';
+            document.getElementById('lsxDone').style.display = lsxCur === lsxChapters.length - 1 ? 'flex' : 'none';
+        }
+
+        /* ══ PROMISES ══ */
+        const proms = [
+            { e: '🌸', t: 'I promise to choose us even on the difficult days — especially on the difficult days.' },
+            { e: '🌟', t: 'I promise to support your dreams, even when they scare me a little.' },
+            { e: '🤝', t: 'I promise to respect your decisions, even when I disagree.' },
+            { e: '📚', t: 'I promise to keep learning and growing with you, not just alongside you.' },
+            { e: '💬', t: 'I promise to apologize when I\'m wrong and to mean it.' },
+            { e: '🏡', t: 'I promise to make our home feel like peace, not just a place.' },
+            { e: '💎', t: 'I promise to never stop showing you how much you matter.' },
+            { e: '🛡', t: 'I promise to be your safe place, the way you\'ve always been mine.' },
+            { e: '😂', t: 'I promise to laugh with you — properly, until our eyes water.' },
+            { e: '✨', t: 'I promise to never take the ordinary moments for granted.' },
+            { e: '❤️', t: 'I promise to keep falling in love with you. Every day. For the rest of our lives.', sp: true },
+        ];
+        let pIdx = 0;
+        function showProm(i) {
+            pIdx = Math.max(0, Math.min(proms.length - 1, i));
+            const p = proms[pIdx];
+            const card = document.getElementById('promcard');
+            card.style.opacity = '0'; card.style.transform = 'scale(.95)';
+            setTimeout(() => {
+                document.getElementById('promnum').textContent = String(pIdx + 1).padStart(2, '0');
+                document.getElementById('promemoji').textContent = p.e;
+                const pt = document.getElementById('promtext');
+                pt.textContent = p.t; pt.className = 'promtext' + (p.sp ? ' special' : '');
+                document.getElementById('promprog').textContent = `Promise ${pIdx + 1} of ${proms.length}`;
+                document.getElementById('pprev').style.opacity = pIdx === 0 ? '.35' : '1';
+                document.getElementById('pnext').style.display = pIdx === proms.length - 1 ? 'none' : 'flex';
+                document.getElementById('promnext').style.display = pIdx === proms.length - 1 ? 'flex' : 'none';
+                card.style.opacity = '1'; card.style.transform = 'scale(1)'; card.style.transition = 'opacity .35s,transform .35s';
+                setTimeout(() => card.style.transition = '', 350);
+            }, 160);
+        }
+        function promNav(d) { showProm(pIdx + d); }
+        // init on first visit
+        document.addEventListener('DOMContentLoaded', () => showProm(0));
+
+        /* ══ REASONS SCRATCH ══ */
+        const reasons = [
+            { t: 'Because you are loyal — in a world that makes it easy not to be.', c: 'linear-gradient(135deg,#fde8ef,#fce4ec)', sc: 'linear-gradient(135deg,#F48FB1,#f9c4d4)' },
+            { t: 'Because you never gave up on us, even when I made it hard.', c: 'linear-gradient(135deg,#ede7f6,#dce8ff)', sc: 'linear-gradient(135deg,#B39DDB,#d4c5f9)' },
+            { t: 'Because you handle my tantrums with patience I don\'t deserve.', c: 'linear-gradient(135deg,#fff3e0,#fff8e1)', sc: 'linear-gradient(135deg,#FFD54F,#ffe566)' },
+            { t: 'Because you always say "we\'ll figure it out" — and then we do.', c: 'linear-gradient(135deg,#e8f5e9,#f1f8e9)', sc: 'linear-gradient(135deg,#80CBC4,#b2dfdb)' },
+            { t: 'Because you believe in me even when I stop believing in myself.', c: 'linear-gradient(135deg,#fde8ef,#ede7f6)', sc: 'linear-gradient(135deg,#CE93D8,#f9c4d4)' },
+            { t: 'Because you make me feel safe being exactly who I am.', c: 'linear-gradient(135deg,#fff3e0,#fde8ef)', sc: 'linear-gradient(135deg,#FFAB91,#ffccbc)' },
+            { t: 'Because you remember the small things — and the small things matter.', c: 'linear-gradient(135deg,#ede7f6,#fde8ef)', sc: 'linear-gradient(135deg,#F48FB1,#B39DDB)' },
+            { t: 'Because you\'re not perfect, but you\'re perfect for me.', c: 'linear-gradient(135deg,#e8f5e9,#ede7f6)', sc: 'linear-gradient(135deg,#80CBC4,#B39DDB)' },
+            { t: 'Because you stay. When things are hard, you stay.', c: 'linear-gradient(135deg,#fff3e0,#fde8ef)', sc: 'linear-gradient(135deg,#FFD54F,#FFAB91)' },
+            { t: 'Because ten years in, you still make me laugh every day.', c: 'linear-gradient(135deg,#fce4ec,#ede7f6)', sc: 'linear-gradient(135deg,#F48FB1,#CE93D8)' },
+            { t: 'Because you are home. Wherever you are, that\'s home.', c: 'linear-gradient(135deg,#fde8ef,#fff3e0)', sc: 'linear-gradient(135deg,var(--p1),var(--g1))', sp: true },
+        ];
+        let rScratched = 0;
+        function buildReasons() {
+            const g = document.getElementById('reasgrid'); g.innerHTML = ''; rScratched = 0;
+            document.getElementById('reashint').textContent = 'Tap each card to scratch & reveal ✨ (0 / 11)';
+            document.getElementById('reasdonebtn').style.display = 'none';
+            reasons.forEach((r, i) => {
+                const card = document.createElement('div');
+                card.className = 'rcard' + (r.sp ? ' wide' : '');
+                card.style.background = r.c;
+                card.innerHTML = `
+      <div class="rscratch" style="background:${r.sc};">
+        <div class="si">✨</div>
+        <div class="st">TAP TO REVEAL</div>
+      </div>
+      <div class="rreveal" style="background:${r.c};">
+        <div class="rreveal-num">${String(i + 1).padStart(2, '0')}</div>
+        <div class="rreveal-text" style="${r.sp ? 'color:var(--p1);font-weight:700;font-size:clamp(15px,4vw,19px);' : ''}">${r.t}</div>
+      </div>
+      <div class="rpop">✓</div>`;
+                card.addEventListener('click', () => {
+                    if (card.classList.contains('scratched')) return;
+                    card.classList.add('scratched'); rScratched++;
+                    document.getElementById('reashint').textContent = `Tap each card to scratch & reveal ✨ (${rScratched} / 11)`;
+                    if (rScratched === 11) { document.getElementById('reasdonebtn').style.display = 'flex'; }
+                });
+                g.appendChild(card);
+            });
+        }
+
+        /* ══ LESSONS ══ */
+        const lessons = [
+            'You taught me that loyalty still exists.',
+            'You taught me that patience is stronger than anger.',
+            'You taught me that problems are solved together, never alone.',
+            'You taught me to say sorry, and mean it.',
+            'You taught me that love is a choice, made every single day.',
+            'You taught me that being consistent is the most romantic thing a person can do.',
+            'You taught me that silence can be comfortable, not just awkward.',
+            'You taught me to slow down and notice the small things.',
+            'You taught me that home is a feeling, not a place.',
+            'You taught me how to fight fair.',
+            'You taught me that vulnerability isn\'t weakness — it\'s trust.',
+            'You taught me that commitment looks ordinary from the outside but feels extraordinary on the inside.',
+            'You taught me that some people are worth waiting for.',
+            'You taught me that love doesn\'t always shout — sometimes it just quietly shows up.',
+            'You taught me to dream bigger.',
+            'You taught me that it\'s okay to not have all the answers.',
+            'You taught me that a good person makes the people around them better.',
+            'You taught me that how you treat people when you\'re tired says everything about your character.',
+            'You taught me to hold on, even when I felt like letting go.',
+            'You taught me that ordinary days become extraordinary when shared with the right person.',
+            'You taught me that a sense of humor can get you through anything.',
+            'You taught me to be proud of who I am.',
+            'You taught me that love means knowing someone\'s flaws and staying anyway.',
+            'You taught me that growth takes time — and that\'s okay.',
+            'You taught me the meaning of showing up.',
+            'You taught me that trust, once built carefully, is the most beautiful thing.',
+            'You taught me that the best relationships feel like peace.',
+            'You taught me that 10 years is just the beginning.',
+            'You taught me what it feels like to have someone who never gave up on us — even on the days when I did.',
+        ];
+        let lIdx = 0;
+        function showLesson(i) {
+            lIdx = Math.max(0, Math.min(lessons.length - 1, i));
+            const card = document.getElementById('lesscard');
+            card.style.opacity = '0'; card.style.transform = 'scale(.95)';
+            setTimeout(() => {
+                const isLast = lIdx === lessons.length - 1;
+                document.getElementById('lessn').textContent = String(lIdx + 1).padStart(2, '0');
+                document.getElementById('lesstext').textContent = lessons[lIdx];
+                document.getElementById('lessprog').textContent = `Lesson ${lIdx + 1} of ${lessons.length}`;
+                card.classList.toggle('golden', isLast);
+                document.getElementById('lprev').style.opacity = lIdx === 0 ? '.35' : '1';
+                document.getElementById('lnext').style.display = isLast ? 'none' : 'flex';
+                document.getElementById('lessdonebtn').style.display = isLast ? 'flex' : 'none';
+                card.style.opacity = '1'; card.style.transform = 'scale(1)'; card.style.transition = 'opacity .35s,transform .35s,background .5s';
+                setTimeout(() => card.style.transition = '', 350);
+            }, 150);
+        }
+        function lessNav(d) { showLesson(lIdx + d); }
+
+        /* ══ DREAMS ══ */
+        const dreams = ['Our first grocery shopping trip — arguing over which chips to buy. 🛒', 'Decorating our home together, disagreeing about everything, and loving every second. 🏡', 'Morning chai together, when the house is still quiet. ☕', 'Cooking together and making a complete mess of the kitchen. 👨‍🍳', 'Arguing over what movie to watch and then both falling asleep before it ends. 🎬', 'Going on a spontaneous trip because we just felt like it. ✈️', 'Celebrating every festival together — our own way. 🎉', 'Calling you "my husband" for the first time and feeling my heart explode. 💍', 'Watching you become the person you\'re meant to be. 🌟', 'Growing old together and still making each other laugh. 👴👵', 'Having inside jokes that nobody else understands. 🤫', 'Crying happy tears at moments we can\'t imagine yet. 🥹'];
+        const dreamCols = ['#F48FB1', '#B39DDB', '#FFD54F', '#80CBC4', '#FFAB91', '#CE93D8', '#F48FB1', '#B39DDB', '#FFD54F', '#80CBC4', '#CE93D8', '#F48FB1'];
+        function buildDreams() {
+            const sc = document.getElementById('dreamscroll'); sc.innerHTML = '';
+            dreams.forEach((d, i) => {
+                const li = document.createElement('div');
+                li.className = 'ditem' + (i === dreams.length - 1 ? ' ditem-sp' : '');
+                li.innerHTML = `<div class="ditem-dot" style="background:${dreamCols[i]};"></div><div class="ditem-text">${d}</div>`;
+                li.style.transitionDelay = i * .05 + 's';
+                sc.appendChild(li);
+                setTimeout(() => li.classList.add('vis'), i * 60 + 100);
+            });
+        }
+        function showRandDream() {
+            const d = dreams[Math.floor(Math.random() * dreams.length)];
+            const el = document.getElementById('dreamrand');
+            el.style.display = 'block';
+            el.style.animation = 'none'; void el.offsetWidth;
+            el.style.animation = 'fuA .4s ease';
+            el.textContent = '✦ ' + d;
+        }
+
+        /* ══ BALLOONS ══ */
+        let bSc = 0, bCnt = 0, bMax = 14, bTmr = null;
+        const bCols = ['#FFCDD2', '#F8BBD0', '#E1BEE7', '#D1C4E9', '#BBDEFB', '#FFE082', '#FFCCBC', '#C8E6C9'];
+        const bNotes = ['You make me smile every single day 😊', 'I love you more than words 💖', 'You are my safe place 🏠', 'You never gave up on us ❤️', 'You\'re my favorite person 🌟', 'I choose you. Every day. 💍', 'You are my home 🌸', 'Best 10 years of my life ✨', 'Can\'t wait to marry you 💒', 'You\'re my person. Always. ❤️', 'Thank you for staying 🙏', 'My love for you has no end 💕', 'You handle my tantrums with grace 😂', 'You\'re not perfect, but perfect for me 🥰'];
+        function startBalloons() {
+            const f = document.getElementById('bfield'); f.innerHTML = ''; bSc = 0; bCnt = 0;
+            document.getElementById('bscore').textContent = '0 love notes found';
+            document.getElementById('bnext').style.display = 'none';
+            if (bTmr) clearInterval(bTmr);
+            spawnB(); bTmr = setInterval(() => { if (bCnt < bMax) spawnB(); else { clearInterval(bTmr); setTimeout(() => document.getElementById('bnext').style.display = 'flex', 2200); } }, 780);
+        }
+        function spawnB() {
+            bCnt++; const f = document.getElementById('bfield');
+            const w = document.createElement('div'); w.className = 'balloon';
+            const dur = 5 + Math.random() * 4; const sx = (Math.random() - 0.5) * 60 + 'px';
+            w.style.cssText = `left:${8 + Math.random() * 78}%;bottom:-90px;animation-duration:${dur}s;--sx:${sx};`;
+            const col = bCols[Math.floor(Math.random() * bCols.length)];
+            const note = bNotes[Math.floor(Math.random() * bNotes.length)];
+            const sc = 0.85 + Math.random() * 0.3;
+            w.innerHTML = `<div class="bnote">${note}</div><div class="bb" style="background:${col};transform:scale(${sc});">💕</div><div class="bstring"></div>`;
+            w.addEventListener('click', e => {
+                e.stopPropagation(); bSc++;
+                document.getElementById('bscore').textContent = bSc + ' love note' + (bSc !== 1 ? 's' : '') + ' found';
+                w.classList.add('pp');
+                const burst = document.createElement('div'); burst.className = 'pburst'; burst.textContent = '✨';
+                const r = w.getBoundingClientRect(); burst.style.cssText = `left:${r.left + r.width / 2 - 14}px;top:${r.top}px;`;
+                document.body.appendChild(burst); setTimeout(() => burst.remove(), 700);
+                setTimeout(() => w.remove(), 500);
+            });
+            f.appendChild(w);
+        }
+
+        /* ══ CAKE ══ */
+        let cLit = 0, cCut = false;
+        function lightC(n, btn) {
+            if (btn.classList.contains('lit')) return;
+            btn.classList.add('lit'); btn.innerHTML = '🔥 Lit!';
+            const fl = document.getElementById('cf' + n); fl.style.opacity = '1'; fl.classList.add('cglow');
+            cLit++;
+            if (cLit === 3) { document.getElementById('caketitle').textContent = 'All lit! Tap the cake 🎂'; document.getElementById('cakesub').textContent = 'Cut it!'; }
+        }
+        function cutCake() {
+            if (cLit < 3) return; if (cCut) return; cCut = true;
+            document.getElementById('cutline').style.opacity = '1';
+            setTimeout(() => {
+                document.getElementById('cakehb').style.display = 'block';
+                document.getElementById('cakewish').style.display = 'block';
+                document.getElementById('cndlrow').style.display = 'none';
+                document.getElementById('cakesub').style.display = 'none';
+                document.getElementById('caketitle').style.display = 'none';
+                document.getElementById('cakenext').style.display = 'flex';
+                fireConfetti();
+            }, 500);
+        }
+
+        /* ══ QUESTION RUNAWAY ══ */
+        let noFix = false, noN = 0;
+        function runAway(btn) {
+            noN++;
+            if (!noFix) { const r = btn.getBoundingClientRect(); btn.style.position = 'fixed'; btn.style.left = r.left + 'px'; btn.style.top = r.top + 'px'; btn.style.margin = '0'; btn.style.zIndex = '8000'; noFix = true; }
+            const bw = btn.offsetWidth, bh = btn.offsetHeight, mg = 55;
+            const x = mg + Math.random() * (innerWidth - bw - mg * 2); const y = mg + Math.random() * (innerHeight - bh - mg * 2);
+            btn.style.transition = 'left .2s cubic-bezier(.34,1.5,.64,1),top .2s cubic-bezier(.34,1.5,.64,1)';
+            btn.style.left = x + 'px'; btn.style.top = y + 'px';
+            btn.textContent = ['Not a choice 😏', 'Nope! 🏃', 'Still no 😂', 'Catch me! 💨', 'Give up? ❤️'][Math.min(noN - 1, 4)];
+        }
+        function sayYes() {
+            document.getElementById('qbtns').style.display = 'none';
+            const nb = document.getElementById('qno'); if (nb) nb.style.display = 'none';
+            document.getElementById('qpre').style.display = 'none';
+            document.getElementById('qans').style.display = 'block';
+            setTimeout(() => document.getElementById('qnext').style.display = 'flex', 2000);
+            fireConfetti();
+        }
+
+        /* ══ CONFETTI ══ */
+        function fireConfetti() {
+            const cv = document.getElementById('cc'), cx = cv.getContext('2d');
+            cv.width = innerWidth; cv.height = innerHeight; cv.style.display = 'block';
+            const cols = ['#F48FB1', '#B39DDB', '#FFD54F', '#FFCCBC', '#fff', '#CE93D8', '#80CBC4'];
+            const pp = Array.from({ length: 180 }, () => ({ x: Math.random() * cv.width, y: Math.random() * cv.height - cv.height, w: 5 + Math.random() * 9, h: 3 + Math.random() * 7, c: cols[~~(Math.random() * cols.length)], s: 2 + Math.random() * 4, a: Math.random() * Math.PI * 2, sp: (Math.random() - .5) * .22, d: (Math.random() - .5) * 1.6, h: Math.random() > .72 }));
+            let f = 0;
+            (function drop() { cx.clearRect(0, 0, cv.width, cv.height); pp.forEach(p => { p.y += p.s; p.x += p.d; p.a += p.sp; cx.save(); cx.translate(p.x, p.y); cx.rotate(p.a); cx.fillStyle = p.c; cx.globalAlpha = .88; if (p.h) { cx.font = '15px serif'; cx.fillText('❤', 0, 0); } else cx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); cx.restore(); }); if (++f < 260) requestAnimationFrame(drop); else { cx.clearRect(0, 0, cv.width, cv.height); cv.style.display = 'none'; } })();
+        }
+
+        // init
+        showProm(0);
+    </script>
+</body>
+
+</html>
