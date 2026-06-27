@@ -1570,22 +1570,26 @@
             font-weight: 500;
         }
 
-        .timeline-photo {
-            width: 100%;
-            height: 160px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #fde8ef, #ede7f6);
-            overflow: hidden;
-            position: relative;
-            margin-top: 8px;
-        }
+        .timeline-photo{
+    width:100%;
+    min-height:180px;
+    max-height:320px;
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:10px;
+    background:#faf7fb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-        .timeline-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+.timeline-photo img{
+    width:100%;
+    height:auto;
+    max-height:320px;
+    object-fit:contain;
+    display:block;
+}
 
         .timeline-emoji {
             position: absolute;
@@ -1991,7 +1995,7 @@
         /* ═══════════════════════════════════════════
            PUZZLE GAME ENGINE - FIXED & COMPLETE
         ═══════════════════════════════════════════ */
-        
+
         let puzzleState = {
             pieces: [],
             placedCount: 0,
@@ -2322,37 +2326,6 @@
              REASONS ENGINE - FIXED & COMPLETE
           ═══════════════════════════════════════════ */
 
-        const REASONS = [
-            { num: 1, reason: "Your smile makes my heart skip a beat every single time", emoji: "😊" },
-            { num: 2, reason: "The way you listen when I talk like I'm the only person in the world", emoji: "👂" },
-            { num: 3, reason: "How you remember the little things I mention in passing", emoji: "💭" },
-            { num: 4, reason: "Your terrible jokes that somehow always make me laugh", emoji: "😂" },
-            { num: 5, reason: "The warmth of your hand in mine", emoji: "🤝" },
-            { num: 6, reason: "How you make ordinary moments feel special and memorable", emoji: "✨" },
-            { num: 7, reason: "Your loyalty and how you always have my back", emoji: "🛡️" },
-            { num: 8, reason: "The way you look at me like I'm your entire world", emoji: "👀" },
-            { num: 9, reason: "Your random acts of kindness that come from the heart", emoji: "🎁" },
-            { num: 10, reason: "How you support my dreams without hesitation", emoji: "🚀" },
-            { num: 11, reason: "Your patience when I'm being difficult or moody", emoji: "☮️" },
-            { num: 12, reason: "The way you sing (even though you think you can't)", emoji: "🎵" },
-            { num: 13, reason: "How comfortable silence feels when I'm with you", emoji: "🤫" },
-            { num: 14, reason: "Your ability to make me feel brave when I'm scared", emoji: "💪" },
-            { num: 15, reason: "The way you hug me like you don't want to let go", emoji: "🤗" },
-            { num: 16, reason: "Your sense of humor and how you make me laugh at life", emoji: "😄" },
-            { num: 17, reason: "How you forgive me without me having to ask twice", emoji: "🕊️" },
-            { num: 18, reason: "Your passion for the things you love and care about", emoji: "🔥" },
-            { num: 19, reason: "The way you dance like nobody's watching with me", emoji: "💃" },
-            { num: 20, reason: "How you challenge me to be a better version of myself", emoji: "🌱" },
-            { num: 21, reason: "Your random texts that brighten up my entire day", emoji: "💬" },
-            { num: 22, reason: "The way you make me feel safe and protected", emoji: "🏡" },
-            { num: 23, reason: "Your ability to make plans and actually see them through", emoji: "📅" },
-            { num: 24, reason: "How you celebrate my wins like they're your own", emoji: "🏆" },
-            { num: 25, reason: "The late-night talks where we share our deepest thoughts", emoji: "🌙" },
-            { num: 26, reason: "Your consistency and how I know I can always count on you", emoji: "⏰" },
-            { num: 27, reason: "The way your eyes light up when you see me", emoji: "💫" },
-            { num: 28, reason: "How you love me on my worst days just as much", emoji: "💖" },
-            { num: 29, reason: "Because you're my best friend, my love, and my forever", emoji: "👑" }
-        ];
 
         function buildReasons() {
             const grid = document.getElementById('reasons-grid');
@@ -2391,7 +2364,7 @@
                 <div class="timeline-year">Year ${item.year}</div>
                 <div class="timeline-memory">${item.memory}</div>
                 <div class="timeline-photo">
-                    <img src="${item.img}" alt="Year ${item.year}" style="width:100%;height:100%;object-fit:cover;" />
+                    <img src="${item.img}" alt="Year ${item.year}" />
                     <div class="timeline-emoji">${item.emoji}</div>
                 </div>
             </div>`;
