@@ -495,12 +495,13 @@
       flex-shrink: 0;
     }
 
-    /* ── CLOTHESLINE CONTAINER ── */
+    /* ── GALLERY SCROLL CONTAINER ── */
     .clothesline {
       flex: 1;
       overflow-y: auto;
       overflow-x: hidden;
       padding: 4px 10px 10px;
+      min-height: 0;
     }
 
     .clothesline::-webkit-scrollbar {
@@ -516,34 +517,29 @@
       border-radius: 3px;
     }
 
-    /* ── ROPE ROW ── */
-    .rope-row {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      gap: clamp(10px, 3vw, 24px);
-      padding: 30px 4px 20px;
-      flex-wrap: wrap;
+    /* ── GALLERY GRID — 3 cols mobile, 4 cols desktop/tablet ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px 10px;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 26px 4px 16px;
     }
 
-    /* the rope line */
-    .rope-row::before {
-      content: '';
-      position: absolute;
-      top: 12px;
-      left: 4%;
-      right: 4%;
-      height: 2px;
-      background: linear-gradient(to right, transparent, rgba(180, 140, 100, .5) 10%, rgba(160, 120, 80, .6) 50%, rgba(180, 140, 100, .5) 90%, transparent);
-      border-radius: 2px;
+    @media (min-width: 700px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 760px;
+        gap: 30px 18px;
+      }
     }
 
     /* ── POLAROID ── */
     .pol {
-      flex-shrink: 0;
-      width: clamp(110px, 25vw, 155px);
+      width: 100%;
       background: #fff;
-      padding: clamp(7px, 1.5vw, 10px) clamp(7px, 1.5vw, 10px) clamp(24px, 5vw, 34px);
+      padding: clamp(6px, 1.5vw, 9px) clamp(6px, 1.5vw, 9px) clamp(18px, 4vw, 26px);
       border-radius: 3px;
       box-shadow: 0 6px 28px rgba(0, 0, 0, .22), 0 1px 4px rgba(0, 0, 0, .12);
       cursor: pointer;
@@ -673,6 +669,9 @@
       gap: 10px;
       align-items: center;
       z-index: 10;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 94vw;
     }
 
     .gbot-btn {
@@ -693,6 +692,14 @@
 
     .gbot-btn:hover {
       transform: translateY(-2px);
+    }
+
+    @media (max-width: 380px) {
+      .gbot-btn {
+        padding: 10px 14px;
+        font-size: 10.5px;
+        letter-spacing: .5px;
+      }
     }
 
     .gbot-btn.primary {
@@ -781,6 +788,7 @@
       gap: 12px;
       padding: 12px 16px;
       min-height: 0;
+      margin-bottom: 56px;
     }
 
     .puzzle-reference-side,
@@ -790,6 +798,32 @@
       flex-direction: column;
       gap: 6px;
       min-width: 0;
+    }
+
+    @media (max-width: 640px) {
+      .puzzle-title {
+        font-size: 19px;
+      }
+
+      .puzzle-main-container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 8px 14px;
+        margin-bottom: 58px;
+      }
+
+      .puzzle-reference-side {
+        flex: 0 0 auto;
+      }
+
+      .puzzle-reference {
+        height: 110px;
+      }
+
+      .puzzle-pieces-side {
+        flex: 1;
+        min-height: 260px;
+      }
     }
 
     .puzzle-label {
@@ -864,6 +898,9 @@
       display: flex;
       gap: 10px;
       z-index: 10;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 94vw;
     }
 
     .puzzle-completion {
@@ -966,7 +1003,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       position: relative;
-      padding: 10px 0 30px;
+      padding: 10px 0 76px;
     }
 
     .promises-scroll::-webkit-scrollbar {
@@ -1154,6 +1191,9 @@
       display: flex;
       gap: 10px;
       z-index: 10;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 94vw;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1174,18 +1214,29 @@
         ════════════════════════════════════════════ */
 
     #s4 {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .reasons-inner {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
-      height: 100%;
-      overflow: hidden;
-      padding: 18px 14px 90px;
+      background: linear-gradient(145deg, #fce4ec, #ede7f6, #e8eaf6);
+    }
+
+    .reasons-header-bar {
+      flex: 0 0 auto;
+      text-align: center;
+      padding: 14px 16px 4px;
     }
 
     .reasons-scroll {
-      flex: 1;
+      flex: 1 1 auto;
       overflow-y: auto;
-      margin-top: 16px;
-      padding-right: 6px;
+      min-height: 0;
+      padding: 14px 14px 10px;
 
       /* Hide scrollbar */
       -ms-overflow-style: none;
@@ -1299,7 +1350,8 @@
     }
 
     .reasons-footer {
-      margin-top: 20px;
+      max-width: 440px;
+      margin: 20px auto 0;
       padding: 16px;
       background: rgba(255, 255, 255, .65);
       backdrop-filter: blur(12px);
@@ -1321,210 +1373,261 @@
     }
 
     .reasons-nav {
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
+      flex: 0 0 auto;
       display: flex;
       gap: 10px;
-      z-index: 10;
+      padding: 10px 16px 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 94vw;
+      margin: 0 auto;
     }
 
-            /* ════════════════════════════════════════════
+    /* ════════════════════════════════════════════
            JOURNEY SECTION - SLIDE 4
         ════════════════════════════════════════════ */
- 
-        #s4 {
-            padding: 0;
-            overflow: hidden;
-        }
- 
-        .journey-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(145deg, #fce4ec, #ede7f6, #e8eaf6);
-            overflow-y: auto;
-            padding: 20px 16px 100px;
-        }
- 
-        .journey-header {
-            text-align: center;
-            margin-bottom: 24px;
-            flex-shrink: 0;
-        }
- 
-        .journey-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            color: #3d2550;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
- 
-        .journey-subtitle {
-            font-family: 'Caveat', cursive;
-            font-size: 14px;
-            color: #b09cc5;
-            font-weight: 500;
-        }
- 
-        /* Timeline Container */
-        .timeline {
-            max-width: 440px;
-            margin: 0 auto;
-            position: relative;
-        }
- 
-        /* Central Timeline Line */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(244, 143, 177, .3), rgba(179, 157, 219, .3));
-            top: 0;
-        }
- 
-        /* Timeline Year Card */
-        .timeline-item {
-            margin-bottom: 32px;
-            opacity: 0;
-            animation: tItemFade .5s ease forwards;
-        }
- 
-        @keyframes tItemFade {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
- 
-        .timeline-item:nth-child(1) { animation-delay: .05s; }
-        .timeline-item:nth-child(2) { animation-delay: .1s; }
-        .timeline-item:nth-child(3) { animation-delay: .15s; }
-        .timeline-item:nth-child(4) { animation-delay: .2s; }
-        .timeline-item:nth-child(5) { animation-delay: .25s; }
-        .timeline-item:nth-child(6) { animation-delay: .3s; }
-        .timeline-item:nth-child(7) { animation-delay: .35s; }
-        .timeline-item:nth-child(8) { animation-delay: .4s; }
-        .timeline-item:nth-child(9) { animation-delay: .45s; }
-        .timeline-item:nth-child(10) { animation-delay: .5s; }
- 
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #F48FB1, #B39DDB);
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, .9);
-            box-shadow: 0 2px 8px rgba(244, 143, 177, .4);
-            top: 14px;
-            z-index: 2;
-        }
- 
-        .timeline-content {
-            background: rgba(255, 255, 255, .72);
-            backdrop-filter: blur(16px);
-            border-radius: 16px;
-            border: 1.5px solid rgba(255, 255, 255, .85);
-            padding: 14px 16px;
-            box-shadow: 0 4px 16px rgba(120, 80, 180, .1);
-            transition: all .25s;
-            margin-left: 0;
-            margin-right: 0;
-            position: relative;
-            width: 100%;
-        }
- 
-        .timeline-item:hover .timeline-content {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(120, 80, 180, .15);
-            border-color: rgba(244, 143, 177, .4);
-            background: rgba(255, 255, 255, .85);
-        }
- 
-        .timeline-year {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #F48FB1;
-            margin-bottom: 6px;
-        }
- 
-        .timeline-memory {
-            font-size: 13px;
-            color: #3d2550;
-            line-height: 1.4;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
- 
-        .timeline-photo {
-            width: 100%;
-            height: 160px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #fde8ef, #ede7f6);
-            overflow: hidden;
-            position: relative;
-            margin-top: 8px;
-        }
- 
-        .timeline-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
- 
-        .timeline-emoji {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 24px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,.2));
-        }
- 
-        .journey-footer {
-            margin-top: 20px;
-            padding: 16px;
-            background: rgba(255, 255, 255, .65);
-            backdrop-filter: blur(12px);
-            border-radius: 18px;
-            border: 1.5px solid rgba(255, 255, 255, .88);
-            text-align: center;
-            box-shadow: 0 4px 16px rgba(120, 80, 180, .1);
-        }
- 
-        .journey-footer p {
-            font-family: 'Caveat', cursive;
-            font-size: 14px;
-            color: #7b5ea7;
-            line-height: 1.6;
-        }
- 
-        .journey-footer strong {
-            color: #F48FB1;
-        }
- 
-        .journey-nav {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
+
+    #s5 {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .journey-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(145deg, #fce4ec, #ede7f6, #e8eaf6);
+    }
+
+    .journey-header {
+      text-align: center;
+      flex: 0 0 auto;
+      padding: 14px 16px 4px;
+    }
+
+    .journey-scroll {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      min-height: 0;
+      padding: 14px 16px 24px;
+    }
+
+    .journey-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .journey-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .journey-scroll::-webkit-scrollbar-thumb {
+      background: rgba(180, 130, 200, .2);
+      border-radius: 3px;
+    }
+
+    .journey-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: #3d2550;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .journey-subtitle {
+      font-family: 'Caveat', cursive;
+      font-size: 14px;
+      color: #b09cc5;
+      font-weight: 500;
+    }
+
+    /* Timeline Container */
+    .timeline {
+      max-width: 440px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Central Timeline Line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(244, 143, 177, .3), rgba(179, 157, 219, .3));
+      top: 0;
+    }
+
+    /* Timeline Year Card */
+    .timeline-item {
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: tItemFade .5s ease forwards;
+    }
+
+    @keyframes tItemFade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-item:nth-child(1) {
+      animation-delay: .05s;
+    }
+
+    .timeline-item:nth-child(2) {
+      animation-delay: .1s;
+    }
+
+    .timeline-item:nth-child(3) {
+      animation-delay: .15s;
+    }
+
+    .timeline-item:nth-child(4) {
+      animation-delay: .2s;
+    }
+
+    .timeline-item:nth-child(5) {
+      animation-delay: .25s;
+    }
+
+    .timeline-item:nth-child(6) {
+      animation-delay: .3s;
+    }
+
+    .timeline-item:nth-child(7) {
+      animation-delay: .35s;
+    }
+
+    .timeline-item:nth-child(8) {
+      animation-delay: .4s;
+    }
+
+    .timeline-item:nth-child(9) {
+      animation-delay: .45s;
+    }
+
+    .timeline-item:nth-child(10) {
+      animation-delay: .5s;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #F48FB1, #B39DDB);
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, .9);
+      box-shadow: 0 2px 8px rgba(244, 143, 177, .4);
+      top: 14px;
+      z-index: 2;
+    }
+
+    .timeline-content {
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(16px);
+      border-radius: 16px;
+      border: 1.5px solid rgba(255, 255, 255, .85);
+      padding: 14px 16px;
+      box-shadow: 0 4px 16px rgba(120, 80, 180, .1);
+      transition: all .25s;
+      margin-left: 0;
+      margin-right: 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .timeline-item:hover .timeline-content {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(120, 80, 180, .15);
+      border-color: rgba(244, 143, 177, .4);
+      background: rgba(255, 255, 255, .85);
+    }
+
+    .timeline-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #F48FB1;
+      margin-bottom: 6px;
+    }
+
+    .timeline-memory {
+      font-size: 13px;
+      color: #3d2550;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .timeline-photo {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fde8ef, #ede7f6);
+      overflow: hidden;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .timeline-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .timeline-emoji {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 24px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .2));
+    }
+
+    .journey-footer {
+      max-width: 440px;
+      margin: 20px auto 0;
+      padding: 16px;
+      background: rgba(255, 255, 255, .65);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      border: 1.5px solid rgba(255, 255, 255, .88);
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(120, 80, 180, .1);
+    }
+
+    .journey-footer p {
+      font-family: 'Caveat', cursive;
+      font-size: 14px;
+      color: #7b5ea7;
+      line-height: 1.6;
+    }
+
+    .journey-footer strong {
+      color: #F48FB1;
+    }
+
+    .journey-nav {
+      flex: 0 0 auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      padding: 10px 16px 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 94vw;
+    }
   </style>
 </head>
 
@@ -1698,71 +1801,72 @@
       </div>
     </div>
 
-    <!-- SLIDE 4: 29 zreasons TIMELINE -->
+    <!-- SLIDE 4: 29 REASONS -->
     <div class="slide" id="s4">
-      <div style="padding:0 14px;flex-shrink:0;max-width:460px;width:100%;margin:0 auto;">
-        <div class="gal-card">
-          <div class="dots">
-            <div class="dot r"></div>
-            <div class="dot y"></div>
-            <div class="dot g"></div>
+      <div class="reasons-inner">
+        <div class="reasons-header-bar">
+          <div style="padding:0 14px;max-width:460px;width:100%;margin:0 auto;">
+            <div class="gal-card">
+              <div class="dots">
+                <div class="dot r"></div>
+                <div class="dot y"></div>
+                <div class="dot g"></div>
+              </div>
+              <div class="tbar-lbl">REASONS.EXE</div>
+            </div>
           </div>
-          <div class="tbar-lbl">REASONS.EXE</div>
+          <div class="promises-title">29 Reasons to Love You</div>
+          <div class="promises-hint">
+            One reason for every beautiful year of your life.
+          </div>
+        </div>
+
+        <div class="reasons-scroll">
+          <div class="reasons-grid" id="reasons-grid"></div>
+
+          <div class="reasons-footer">
+            <p>
+              These 29 reasons are just the beginning of why you mean everything to me.<br>
+              <strong>Happy Birthday, My Love 💕</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="reasons-nav">
+          <button class="gbot-btn" onclick="goTo(3)">← Back</button>
+          <button class="gbot-btn primary" onclick="goTo(5)">Our Journey →</button>
         </div>
       </div>
-      <div class="promises-title">29 Reasons to Love You</div>
-      <div class="promises-hint">
-        One reason for every beautiful year of your life.
-      </div>
-
-      <div class="reasons-scroll">
-        <div class="reasons-grid" id="reasons-grid"></div>
-      </div>
-
-      <div class="reasons-footer">
-        <p>
-          These 29 reasons are just the beginning of why you mean everything to me.<br>
-          <strong>Happy Birthday, My Love 💕</strong>
-        </p>
-      </div>
-
-      <div class="reasons-nav">
-        <button class="gbot-btn" onclick="goTo(3)">← Back</button>
-        <button class="gbot-btn primary" onclick="goTo(5)">Our Journey →</button>
-      </div>
-
     </div>
 
     <!-- SLIDE 5: 10 YEARS JOURNEY -->
     <div class="slide" id="s5">
-      <div style="padding:0 14px;flex-shrink:0;max-width:460px;width:100%;margin:0 auto;">
-        <div class="gal-card">
-          <div class="dots">
-            <div class="dot r"></div>
-            <div class="dot y"></div>
-            <div class="dot g"></div>
-          </div>
-          <div class="tbar-lbl">JOURNEY.EXE</div>
-        </div>
-      </div>
-      <div class="promises-title">Our 10 Year Journey</div>
-      <div class="promises-hint">
-      From Then to Now 💕
-      </div>
       <div class="journey-inner">
         <div class="journey-header">
+          <div style="padding:0 14px;max-width:460px;width:100%;margin:0 auto;">
+            <div class="gal-card">
+              <div class="dots">
+                <div class="dot r"></div>
+                <div class="dot y"></div>
+                <div class="dot g"></div>
+              </div>
+              <div class="tbar-lbl">JOURNEY.EXE</div>
+            </div>
+          </div>
           <div class="journey-title">Our 10 Year Journey</div>
           <div class="journey-subtitle">From Then to Now 💕</div>
         </div>
-    
-        <div class="timeline" id="timeline-container"></div>
-    
-        <div class="journey-footer">
-          <p>10 years of love, laughter, and beautiful memories.<br />
-            <strong>Here's to forever with you 💕</strong>
-          </p>
+
+        <div class="journey-scroll">
+          <div class="timeline" id="timeline-container"></div>
+
+          <div class="journey-footer">
+            <p>10 years of love, laughter, and beautiful memories.<br />
+              <strong>Here's to forever with you 💕</strong>
+            </p>
+          </div>
         </div>
-    
+
         <div class="journey-nav">
           <button class="gbot-btn" onclick="goTo(4)">← Back</button>
           <button class="gbot-btn primary" onclick="goTo(6)">Next →</button>
@@ -1856,46 +1960,38 @@
 
       const tilts = [-5, 0, 5, -3, 2, -4, 1, -2, 3, -5, 0, 4, -3, 2, -1];
 
-      // Create 3 rows: 4 photos, 4 photos, 7 photos = 15 total
-      const rows = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14]];
+      const grid = document.createElement('div');
+      grid.className = 'gallery-grid';
 
-      rows.forEach((idxs) => {
-        const row = document.createElement('div');
-        row.className = 'rope-row';
+      galleryPhotos.forEach((g, gi) => {
+        const tilt = tilts[gi % tilts.length];
 
-        idxs.forEach((gi) => {
-          if (gi >= galleryPhotos.length) return;
+        const card = document.createElement('div');
+        card.className = 'pol';
+        card.style.setProperty('--tilt', `rotate(${tilt}deg)`);
+        card.style.animationDelay = gi * 0.12 + 's';
 
-          const g = galleryPhotos[gi];
-          const tilt = tilts[gi % tilts.length];
-
-          const card = document.createElement('div');
-          card.className = 'pol';
-          card.style.setProperty('--tilt', `rotate(${tilt}deg)`);
-          card.style.animationDelay = gi * 0.12 + 's';
-
-          card.innerHTML = `
-                        <div class="pol-img">
-                            <img src="${g.data}" alt="${g.caption}" style="width:100%;height:100%;object-fit:cover;">
-                            <div class="pol-ov">
-                               
-                                <div class="pol-msg">${g.message}</div>
-                            </div>
+        card.innerHTML = `
+                    <div class="pol-img">
+                        <img src="${g.data}" alt="${g.caption}" style="width:100%;height:100%;object-fit:cover;">
+                        <div class="pol-ov">
+                           
+                            <div class="pol-msg">${g.message}</div>
                         </div>
-                        <div class="pol-caption">${g.caption}</div>`;
+                    </div>
+                    <div class="pol-caption">${g.caption}</div>`;
 
-          card.addEventListener('click', () => card.classList.toggle('flipped'));
-          row.appendChild(card);
-        });
-
-        c.appendChild(row);
+        card.addEventListener('click', () => card.classList.toggle('flipped'));
+        grid.appendChild(card);
       });
+
+      c.appendChild(grid);
     }
 
     /* ═══════════════════════════════════════════
        PUZZLE GAME ENGINE - FIXED & COMPLETE
     ═══════════════════════════════════════════ */
- 
+
     let puzzleState = {
       pieces: [],
       placedCount: 0,
@@ -2278,18 +2374,18 @@
       });
     }
 
-            /* ════════════════════════════════════════════
-             BUILD JOURNEY SECTION
-          ════════════════════════════════════════════ */
-              function buildJourney() {
-                  const timeline = document.getElementById('timeline-container');
-                  if (!timeline) return;
-                  timeline.innerHTML = '';
+    /* ════════════════════════════════════════════
+     BUILD JOURNEY SECTION
+  ════════════════════════════════════════════ */
+    function buildJourney() {
+      const timeline = document.getElementById('timeline-container');
+      if (!timeline) return;
+      timeline.innerHTML = '';
 
-                  journeyYears.forEach((item, idx) => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'timeline-item';
-                    itemDiv.innerHTML = `
+      journeyYears.forEach((item, idx) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'timeline-item';
+        itemDiv.innerHTML = `
             <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <div class="timeline-year">Year ${item.year}</div>
@@ -2299,10 +2395,10 @@
                     <div class="timeline-emoji">${item.emoji}</div>
                 </div>
             </div>`;
-                    timeline.appendChild(itemDiv);
-                  });
-                }
-            
+        timeline.appendChild(itemDiv);
+      });
+    }
+
 
   </script>
 </body>
