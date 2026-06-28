@@ -1572,18 +1572,22 @@
 
     .timeline-photo {
       width: 100%;
-      height: 160px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #fde8ef, #ede7f6);
+      min-height: 180px;
+      max-height: 320px;
+      border-radius: 14px;
       overflow: hidden;
-      position: relative;
-      margin-top: 8px;
+      margin-top: 10px;
+      background: #faf7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .timeline-photo img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
       display: block;
     }
 
@@ -1628,6 +1632,14 @@
       justify-content: center;
       max-width: 94vw;
     }
+     @media (max-width: 380px) {
+    .timeline-content {
+      padding: 12px 12px;
+    }
+    .timeline-photo {
+      height: 130px;
+    }
+  }
   </style>
 </head>
 
@@ -2322,7 +2334,7 @@
          REASONS ENGINE - FIXED & COMPLETE
       ═══════════════════════════════════════════ */
 
-   
+
     function buildReasons() {
       const grid = document.getElementById('reasons-grid');
       grid.innerHTML = '';
@@ -2360,7 +2372,7 @@
                 <div class="timeline-year">Year ${item.year}</div>
                 <div class="timeline-memory">${item.memory}</div>
                 <div class="timeline-photo">
-                    <img src="${item.img}" alt="Year ${item.year}" style="width:100%;height:100%;object-fit:cover;" />
+                    <img src="${item.img}" alt="Year ${item.year}" />
                     <div class="timeline-emoji">${item.emoji}</div>
                 </div>
             </div>`;
