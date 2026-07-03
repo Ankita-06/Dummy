@@ -1746,11 +1746,24 @@
       animation: hintBounce 1.5s ease-in-out infinite;
     }
 
-    @media (max-width: 480px) {
+   @media (max-width: 480px) {
     .jar-wrap { width: 170px; height: 210px; }
     .heart-shape { width: 118px; height: 104px; }
     .jar-note.note-md .heart-shape { width: 146px; height: 128px; }
     .jar-note.note-lg .heart-shape { width: 172px; height: 150px; }
+
+    @keyframes noteRiseMobile {
+        0%   { bottom: 14%; opacity: 0; transform: translateX(-50%) scale(.2) rotate(0deg); }
+        18%  { opacity: 1; }
+        46%  { bottom: 60%; transform: translateX(-50%) scale(.55) rotate(9deg); }
+        72%  { bottom: 86%; transform: translateX(-50%) scale(.88) rotate(-6deg); }
+        100% { bottom: 100%; transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+    }
+    .jar-note.rise { animation-name: noteRiseMobile; }
+}
+
+@media (max-height: 780px) {
+    .reasons-stage { flex: 0 1 auto; }
 }
 
     @keyframes hintBounce {
@@ -1782,14 +1795,13 @@
       animation: noteExit .55s ease forwards;
     }
 
-    @keyframes noteRise {
-    0%   { bottom: 16%; opacity: 0; transform: translateX(-50%) scale(.2) rotate(0deg); }
+   @keyframes noteRise {
+    0%   { bottom: 40px; opacity: 0; transform: translateX(-50%) scale(.2) rotate(0deg); }
     18%  { opacity: 1; }
-    46%  { bottom: 60%; transform: translateX(-50%) scale(.55) rotate(9deg); }
-    72%  { bottom: 86%; transform: translateX(-50%) scale(.88) rotate(-6deg); }
-    100% { bottom: 100%; transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+    46%  { bottom: 150px; transform: translateX(-50%) scale(.55) rotate(9deg); }
+    72%  { bottom: 215px; transform: translateX(-50%) scale(.88) rotate(-6deg); }
+    100% { bottom: 250px; transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
 }
-
     @keyframes noteExit {
       0% {
         opacity: 1;
