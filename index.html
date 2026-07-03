@@ -4474,73 +4474,6 @@
       display: none;
     }
 
-    /* Letter Card */
-    .letter-card {
-      background: rgba(255, 255, 255, .78);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-radius: 24px;
-      border: 1.5px solid rgba(255, 255, 255, .9);
-      padding: 28px 24px;
-      max-width: 460px;
-      margin: 0 auto;
-      box-shadow: 0 12px 40px rgba(120, 80, 180, .15);
-      animation: letterFadeIn .8s cubic-bezier(.22, 1, .36, 1);
-    }
-
-    @keyframes letterFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(.97);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Letter Title */
-    .letter-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(32px, 8vw, 48px);
-      font-weight: 700;
-      color: #B39DDB;
-      text-align: center;
-      margin-bottom: 24px;
-      letter-spacing: 2px;
-      animation: titlePulse 2s ease-in-out infinite;
-    }
-
-    @keyframes titlePulse {
-
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .85;
-        transform: scale(1.02);
-      }
-    }
-
-    /* Letter Content */
-    .letter-content {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(16px, 4vw, 18px);
-      color: #3d2550;
-      line-height: 1.9;
-      text-align: justify;
-    }
-
-    .letter-content p {
-      margin-bottom: 16px;
-      animation: contentSlideIn .8s cubic-bezier(.22, 1, .36, 1) forwards;
-      opacity: 0;
-    }
-
     @keyframes contentSlideIn {
       from {
         opacity: 0;
@@ -4553,37 +4486,265 @@
       }
     }
 
-    .letter-content p:nth-child(1) {
-      animation-delay: .1s;
+    /* ═══ ENVELOPE ═══ */
+.env-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    max-height: 640px;
+    padding: 20px 16px;
+    perspective: 1400px;
+    overflow: hidden;
+    transition: max-height .6s cubic-bezier(.65,0,.35,1), opacity .45s ease, padding .6s ease;
+}
+
+.env-stage.collapsed {
+    max-height: 0;
+    min-height: 0;
+    opacity: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.envelope-scene {
+    position: relative;
+    width: min(280px, 80vw);
+    aspect-ratio: 3/2;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.envelope-scene.hide {
+    opacity: 0;
+    transform: scale(.82) translateY(-14px);
+    pointer-events: none;
+}
+
+.env-body {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(160deg, #fffaf2, #fdf1e2);
+    border: 2px solid #e3c68f;
+    box-shadow: 0 20px 50px rgba(120, 80, 180, .22), inset 0 0 0 1px rgba(255, 255, 255, .6);
+}
+
+.env-body::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 34%;
+    width: 58%;
+    height: 38%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at top, rgba(0, 0, 0, .07), transparent 72%);
+    pointer-events: none;
+}
+
+.env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64%;
+    z-index: 5;
+    transform-origin: top center;
+    transform: rotateX(0deg);
+    transition: transform .85s cubic-bezier(.45, 0, .2, 1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.env-flap.opening {
+    transform: rotateX(180deg);
+}
+
+.env-flap-border {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    background: #e3c68f;
+    border-radius: 12px 12px 0 0;
+}
+
+.env-flap-fill {
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    right: 2.5px;
+    bottom: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    background: linear-gradient(155deg, #ffd9e5, #f4a4c2 55%, #e88ba7);
+}
+
+.env-flap-shine {
+    position: absolute;
+    top: 6px;
+    left: 14%;
+    width: 22%;
+    height: 28%;
+    background: rgba(255, 255, 255, .4);
+    border-radius: 50%;
+    filter: blur(6px);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.env-hint {
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    color: #F48FB1;
+    animation: hintBounce 1.5s ease-in-out infinite;
+    transition: opacity .3s;
+}
+
+.env-hint.hide {
+    opacity: 0;
+}
+
+/* ═══ LETTER CARD ═══ */
+.letter-card {
+    position: relative;
+    background: rgba(255, 255, 255, .85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, .9);
+    padding: 30px 24px 26px;
+    max-width: 460px;
+    margin: 0 auto;
+    box-shadow: 0 16px 46px rgba(120, 80, 180, .18);
+    opacity: 0;
+    transform: scale(.28) translateY(10px) rotateX(-18deg);
+    transform-origin: top center;
+    transition: opacity .7s cubic-bezier(.22, 1, .36, 1), transform .7s cubic-bezier(.22, 1, .36, 1);
+    pointer-events: none;
+}
+
+.letter-card.show {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotateX(0deg);
+    pointer-events: all;
+}
+
+.letter-heart-badge {
+    position: absolute;
+    top: -14px;
+    right: 18px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #F48FB1, #c2185b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    box-shadow: 0 6px 16px rgba(194, 24, 91, .4), inset 0 2px 3px rgba(255, 255, 255, .35);
+}
+
+.letter-salutation {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(20px, 5.5vw, 25px);
+    color: #3d2550;
+    margin-bottom: 14px;
+}
+
+.letter-content {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(16px, 4vw, 18px);
+    color: #3d2550;
+    line-height: 1.85;
+    text-align: justify;
+}
+
+.letter-content p {
+    margin-bottom: 15px;
+}
+
+.letter-signature {
+    text-align: center;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 2px dashed rgba(244, 143, 177, .3);
+    opacity: 0;
+}
+
+.sig-tag {
+    font-family: 'Caveat', cursive;
+    font-size: 15px;
+    color: #9b7ba8;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.sig-main {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: #F48FB1;
+    font-weight: 700;
+    margin: 0;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #F48FB1;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    animation: cursorBlink .8s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
     }
 
-    .letter-content p:nth-child(2) {
-      animation-delay: .2s;
+    50.01%,
+    100% {
+        opacity: 0;
     }
+}
 
-    .letter-content p:nth-child(3) {
-      animation-delay: .3s;
-    }
+.footer-text {
+    font-family: 'Caveat', cursive;
+    font-size: 15px;
+    color: #7b5ea7;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0;
+    transition: opacity .6s ease;
+}
 
-    .letter-content p:nth-child(4) {
-      animation-delay: .4s;
-    }
+.letter-nav {
+    transition: opacity .5s ease, transform .5s ease;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
 
-    .letter-content p:nth-child(5) {
-      animation-delay: .5s;
-    }
+.letter-nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
 
-    .letter-content p:nth-child(6) {
-      animation-delay: .6s;
-    }
-
-    .letter-content p:nth-child(7) {
-      animation-delay: .7s;
-    }
-
-    .letter-content p:nth-child(8) {
-      animation-delay: .8s;
-    }
+        .letter-content {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(16px, 4vw, 18px);
+            color: #3d2550;
+            line-height: 1.9;
+            text-align: justify;
+        }
 
     /* Highlighted words */
     .highlight {
@@ -4603,43 +4764,6 @@
       padding-left: 16px;
     }
 
-    /* Signature */
-    .letter-signature {
-      text-align: center;
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 2px dashed rgba(244, 143, 177, .3);
-    }
-
-    .sig-tag {
-      font-family: 'Caveat', cursive;
-      font-size: 15px;
-      color: #9b7ba8;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .sig-main {
-      font-family: 'Caveat', cursive;
-      font-size: 22px;
-      color: #F48FB1;
-      font-weight: 700;
-      margin: 0;
-      animation: signatureBounce 2s ease-in-out infinite;
-    }
-
-    @keyframes signatureBounce {
-
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-3px) scale(1.05);
-      }
-    }
-
     /* Footer */
     .letter-footer {
       flex: 0 0 auto;
@@ -4655,16 +4779,6 @@
       margin: 0;
       animation: footerFadeIn .8s ease .8s forwards;
       opacity: 0;
-    }
-
-    @keyframes footerFadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
     }
 
     /* Navigation */
@@ -5730,71 +5844,52 @@
       </div>
     </div>
 
-    <!-- SLIDE 12: BIRTHDAY LETTER -->
-    <div class="slide" id="s12">
-      <div class="letter-inner">
-        <div class="letter-header">
-          <div style="padding:0 14px;max-width:460px;width:100%;margin:0 auto;">
-            <div class="gal-card">
-              <div class="dots">
-                <div class="dot r"></div>
-                <div class="dot y"></div>
-                <div class="dot g"></div>
-              </div>
-              <div class="tbar-lbl">LETTER.EXE</div>
-            </div>
+<!-- SLIDE 12: BIRTHDAY LETTER -->
+<div class="slide" id="s12">
+  <div class="letter-inner">
+    <div class="letter-header">
+      <div style="padding:0 14px;max-width:460px;width:100%;margin:0 auto;">
+        <div class="gal-card">
+          <div class="dots">
+            <div class="dot r"></div>
+            <div class="dot y"></div>
+            <div class="dot g"></div>
           </div>
-        </div>
-
-        <div class="letter-scroll">
-          <div class="letter-card" id="letter-card">
-            <div class="letter-title">Happy Birthday</div>
-
-            <div class="letter-content">
-              <p>📌 <em>To my favorite person,</em></p>
-
-              <p>Thanks for being fun, genuine, and unforgettable. Every moment feels a little better with
-                you
-                around.</p>
-
-              <p>For 10 years you showed up — not dramatically, not with <span class="highlight">grand
-                  gestures</span> — just consistently, quietly, <span class="highlight">every single
-                  day</span>. And I realised: this is what love actually feels like.</p>
-
-              <p>You stayed when staying was hard. You chose me when choosing was a decision, not just a
-                feeling.
-                You never made me feel like a burden — even on the days I was one.</p>
-
-              <p>I want to grow old making chai with you in the morning. I want to argue about small
-                things and
-                make up easily. I want to watch you become everything you're meant to be and be standing
-                right
-                there when it happens.</p>
-
-              <p>I want the ordinary life — <span class="highlight">with you</span>. That's the dream.</p>
-
-              <p class="closing-main">Happy 29th Birthday. Thank you for 10 years of choosing me. I love
-                you more
-                than this letter can hold. More than anything.</p>
-
-              <div class="letter-signature">
-                <p class="sig-tag">with love, always</p>
-                <p class="sig-main">With lots of love 💖</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="letter-footer">
-          <p class="footer-text">Every word is true. Every promise is forever. 💕</p>
-        </div>
-
-        <div class="letter-nav">
-          <button class="gbot-btn" onclick="goTo(11)">← Back</button>
-          <button class="gbot-btn primary" onclick="goTo(13)">Cake →</button>
+          <div class="tbar-lbl">LETTER.EXE</div>
         </div>
       </div>
     </div>
+
+    <div class="letter-scroll">
+      <div class="env-stage" id="envStage">
+        <div class="envelope-scene" id="envScene" onclick="openEnvelope()">
+          <div class="env-body"></div>
+          <div class="env-flap" id="envFlap">
+            <div class="env-flap-border"></div>
+            <div class="env-flap-fill"></div>
+            <div class="env-flap-shine"></div>
+          </div>
+        </div>
+        <div class="env-hint" id="envHint">Tap to open the letter 💌</div>
+      </div>
+
+      <div class="letter-card" id="letter-card">
+        <div class="letter-heart-badge">♥</div>
+        <div class="letter-salutation">Dear Umesh,</div>
+        <div class="letter-content" id="letterContent"></div>
+      </div>
+    </div>
+
+    <div class="letter-footer">
+      <p class="footer-text" id="footerText">Every word is true. Every promise is forever. 💕</p>
+    </div>
+
+    <div class="letter-nav" id="letterNav">
+      <button class="gbot-btn" onclick="goTo(11)">← Back</button>
+      <button class="gbot-btn primary" onclick="goTo(13)">Cake →</button>
+    </div>
+  </div>
+</div>
 
     <!-- SLIDE 13: BIRTHDAY CAKE -->
     <div class="slide" id="s13">
@@ -7184,35 +7279,167 @@
 BIRTHDAY LETTER - BUILD FUNCTION
 ════════════════════════════════════════════ */
 
-    function buildLetter() {
-      // Reset animations by removing and re-adding the letter card
-      const letterCard = document.getElementById('letter-card');
-      if (letterCard) {
-        letterCard.style.animation = 'none';
-        setTimeout(() => {
-          letterCard.style.animation = 'letterFadeIn .8s cubic-bezier(.22, 1, .36, 1)';
-        }, 10);
-      }
+  const LETTER_PARAGRAPHS = [
+    'Happy Birthday to someone truly special. 🎂',
+    "Thanks for being fun, genuine, and unforgettable. Every moment feels a little better with you around.",
+    'For 10 years you showed up — not dramatically, not with <span class="highlight">grand gestures</span> — just consistently, quietly, <span class="highlight">every single day</span>. And I realised: this is what love actually feels like.',
+    "You stayed when staying was hard. You chose me when choosing was a decision, not just a feeling. You never made me feel like a burden — even on the days I was one.",
+    "I want to grow old making chai with you in the morning. I want to argue about small things and make up easily. I want to watch you become everything you're meant to be and be standing right there when it happens.",
+    'I want the ordinary life — <span class="highlight">with you</span>. That\'s the dream.'
+  ];
+  const LETTER_CLOSING = "Happy 29th Birthday. Thank you for 10 years of choosing me. I love you more than this letter can hold. More than anything.";
 
-      // Reset paragraph animations
-      const paragraphs = document.querySelectorAll('.letter-content p');
-      paragraphs.forEach((p, idx) => {
-        p.style.animation = 'none';
-        setTimeout(() => {
-          p.style.animation = `contentSlideIn .8s cubic-bezier(.22, 1, .36, 1) forwards`;
-          p.style.animationDelay = `${(.1 * (idx + 1))}s`;
-        }, 10);
-      });
+  let letterOpened = false;
+  let letterTimer = null;
 
-      // Reset footer animation
-      const footerText = document.querySelector('.footer-text');
-      if (footerText) {
-        footerText.style.animation = 'none';
-        setTimeout(() => {
-          footerText.style.animation = 'footerFadeIn .8s ease .8s forwards';
-        }, 10);
+  function scrollCursorIntoView(cursorNode) {
+      if (!cursorNode) return;
+      const scrollEl = document.querySelector('.letter-scroll');
+      if (!scrollEl) return;
+      const cRect = cursorNode.getBoundingClientRect();
+      const sRect = scrollEl.getBoundingClientRect();
+      if (cRect.bottom > sRect.bottom - 60) {
+        scrollEl.scrollTop += (cRect.bottom - sRect.bottom) + 80;
       }
     }
+
+    function typeHTMLInto(el, cursorNode, html, speed, callback) {
+      let i = 0;
+      function step() {
+        if (i >= html.length) {
+          if (cursorNode && cursorNode.parentNode) cursorNode.remove();
+          if (callback) callback();
+          return;
+        }
+        if (html[i] === '<') {
+          const close = html.indexOf('>', i);
+          i = close + 1;
+        } else { i += 1; }
+        el.innerHTML = html.substring(0, i);
+        el.appendChild(cursorNode);
+        scrollCursorIntoView(cursorNode);
+        letterTimer = setTimeout(step, speed);
+      }
+      step();
+    }
+
+  function startLetterTyping() {
+    const contentEl = document.getElementById('letterContent');
+    contentEl.innerHTML = '';
+    let idx = 0;
+
+    function next() {
+      if (idx >= LETTER_PARAGRAPHS.length) { typeClosing(); return; }
+      const p = document.createElement('p');
+      const cursor = document.createElement('span');
+      cursor.className = 'typing-cursor';
+      p.appendChild(cursor);
+      contentEl.appendChild(p);
+      typeHTMLInto(p, cursor, LETTER_PARAGRAPHS[idx], 15, () => {
+        idx++;
+        letterTimer = setTimeout(next, 240);
+      });
+    }
+
+    function typeClosing() {
+      const p = document.createElement('p');
+      p.className = 'closing-main';
+      const cursor = document.createElement('span');
+      cursor.className = 'typing-cursor';
+      p.appendChild(cursor);
+      contentEl.appendChild(p);
+      typeHTMLInto(p, cursor, LETTER_CLOSING, 15, appendSig);
+    }
+
+  function appendSig() {
+      const sig = document.createElement('div');
+      sig.className = 'letter-signature';
+      sig.innerHTML = '<p class="sig-tag">with love, always</p><p class="sig-main">With lots of love 💖</p>';
+      contentEl.appendChild(sig);
+      requestAnimationFrame(() => {
+        sig.style.transition = 'opacity .6s ease';
+        sig.style.opacity = '1';
+        const scrollEl = document.querySelector('.letter-scroll');
+        if (scrollEl) scrollEl.scrollTo({ top: scrollEl.scrollHeight, behavior: 'smooth' });
+      });
+      const footer = document.getElementById('footerText');
+      if (footer) footer.style.opacity = '1';
+
+      const nav = document.getElementById('letterNav');
+      if (nav) nav.classList.add('visible');
+    }
+    
+    next();
+  }
+  function openEnvelope() {
+    if (letterOpened) return;
+    letterOpened = true;
+
+    const envScene = document.getElementById('envScene');
+    const envFlap = document.getElementById('envFlap');
+    const envHint = document.getElementById('envHint');
+    const envStage = document.getElementById('envStage');
+    const letterCard = document.getElementById('letter-card');
+
+    envFlap.classList.add('opening');
+    envHint.classList.add('hide');
+
+    setTimeout(() => { letterCard.classList.add('show'); }, 450);
+    setTimeout(() => { envScene.classList.add('hide'); }, 750);
+    setTimeout(() => { envStage.classList.add('collapsed'); }, 900);
+    setTimeout(() => { startLetterTyping(); }, 1050);
+  }
+  function buildLetter() {
+      letterOpened = false;
+      if (letterTimer) clearTimeout(letterTimer);
+
+      const envScene = document.getElementById('envScene');
+      const envFlap = document.getElementById('envFlap');
+      const envHint = document.getElementById('envHint');
+      const envStage = document.getElementById('envStage');
+      const letterCard = document.getElementById('letter-card');
+      const footer = document.getElementById('footerText');
+      const nav = document.getElementById('letterNav');
+
+      if (envFlap) envFlap.classList.remove('opening');
+      if (envHint) envHint.classList.remove('hide');
+      if (envScene) envScene.classList.remove('hide');
+      if (envStage) envStage.classList.remove('collapsed');
+      const contentEl = document.getElementById('letterContent');
+      if (contentEl) contentEl.innerHTML = '';
+      if (footer) footer.style.opacity = '0';
+      if (nav) nav.classList.remove('visible');
+    }
+
+    // function buildLetter() {
+    //   // Reset animations by removing and re-adding the letter card
+    //   const letterCard = document.getElementById('letter-card');
+    //   if (letterCard) {
+    //     letterCard.style.animation = 'none';
+    //     setTimeout(() => {
+    //       letterCard.style.animation = 'letterFadeIn .8s cubic-bezier(.22, 1, .36, 1)';
+    //     }, 10);
+    //   }
+
+    //   // Reset paragraph animations
+    //   const paragraphs = document.querySelectorAll('.letter-content p');
+    //   paragraphs.forEach((p, idx) => {
+    //     p.style.animation = 'none';
+    //     setTimeout(() => {
+    //       p.style.animation = `contentSlideIn .8s cubic-bezier(.22, 1, .36, 1) forwards`;
+    //       p.style.animationDelay = `${(.1 * (idx + 1))}s`;
+    //     }, 10);
+    //   });
+
+    //   // Reset footer animation
+    //   const footerText = document.querySelector('.footer-text');
+    //   if (footerText) {
+    //     footerText.style.animation = 'none';
+    //     setTimeout(() => {
+    //       footerText.style.animation = 'footerFadeIn .8s ease .8s forwards';
+    //     }, 10);
+    //   }
+    // }
 
     /* ════════════════════════════════════════════
 BIRTHDAY CAKE - INTERACTIVE LOGIC
