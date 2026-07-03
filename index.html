@@ -961,16 +961,26 @@
       border-radius: 3px;
     }
 
-    .thread-track {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
+   .thread-track {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.thread-path-fill {
+    fill: none;
+    stroke: url(#threadGradient);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 1 9;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset .1s linear;
+    filter: drop-shadow(0 0 3px rgba(244, 143, 177, .4));
+}
 
     .thread-svg {
       width: 100%;
@@ -5162,7 +5172,12 @@
         </div>
 
         <div class="promises-scroll" id="promises-scroll">
-          <div class="thread-track">...</div>
+          <div class="thread-track">
+            <svg class="thread-svg" id="thread-svg" preserveAspectRatio="none">
+              <path id="thread-path-bg" class="thread-path-bg" />
+              <path id="thread-path-fill" class="thread-path-fill" />
+            </svg>
+          </div>
           <div class="promise-list" id="promise-list"></div>
         
           <!-- MOVED HERE, was outside before -->
