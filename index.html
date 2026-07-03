@@ -1187,7 +1187,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      /* justify-content: center; */
+      justify-content: flex-end;   /* was: center */
+    padding-bottom: 30px;
       overflow: hidden;
       perspective: 1200px;
     }
@@ -1444,7 +1446,7 @@
     }
 
     /* PROGRESS BAR */
-    .reasons-progress {
+    /* .reasons-progress {
       position: absolute;
       bottom: 90px;
       left: 50%;
@@ -1459,7 +1461,21 @@
     .reasons-progress.showing {
       opacity: 1;
       pointer-events: all;
-    }
+    } */
+     .reasons-progress {
+    text-align: center;
+    z-index: 5;
+    margin-top: 14px;
+    opacity: 0;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .4s, max-height .4s;
+}
+
+.reasons-progress.showing {
+    max-height: 60px;
+}
 
     .prog-num {
       font-family: 'Cormorant Garamond', serif;
@@ -1778,11 +1794,13 @@
     }
 
     .jar-note.rise {
-      animation: noteRise 1.05s cubic-bezier(.22, 1, .36, 1) forwards;
+      /* animation: noteRise 1.05s cubic-bezier(.22, 1, .36, 1) forwards; */
+      animation: noteRise 0.65s cubic-bezier(.22, 1, .36, 1) forwards;
     }
 
     .jar-note.exit {
-      animation: noteExit .55s ease forwards;
+      /* animation: noteExit .55s ease forwards; */
+      animation: noteExit 0.4s ease forwards;
     }
 
     @keyframes noteRise {
@@ -1825,13 +1843,20 @@
       }
     }
 
-    .heart-shape {
+    /* .heart-shape {
       position: relative;
       width: 140px;
       height: 124px;
       transform: rotateY(78deg) scaleX(.28);
       transform-style: preserve-3d;
-    }
+    } */
+     .heart-shape {
+    position: relative;
+    width: 140px;
+    height: 124px;
+    transform: scale(.35);
+    opacity: 0;
+}
 
     .jar-note.note-md .heart-shape {
       width: 174px;
@@ -1843,7 +1868,7 @@
       height: 182px;
     }
 
-    .jar-note.unfold .heart-shape {
+    /* .jar-note.unfold .heart-shape {
       animation: noteUnfold .75s cubic-bezier(.34, 1.35, .64, 1) forwards;
     }
 
@@ -1859,8 +1884,29 @@
       100% {
         transform: rotateY(0deg) scaleX(1);
       }
+    } */
+
+    .jar-note.unfold .heart-shape {
+    animation: noteUnfold .6s cubic-bezier(.34, 1.6, .64, 1) forwards;
+}
+
+@keyframes noteUnfold {
+    0% {
+        transform: scale(.35);
+        opacity: 0;
     }
 
+    60% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+    
     .heart-shape::before,
     .heart-shape::after {
       content: '';
@@ -5328,7 +5374,7 @@
           </div>
 
           <!-- LIGHTS BACK ON BUTTON -->
-          <button class="lights-on-btn" onclick="lightsBackOn()">💡 Lights On</button>
+          <!-- <button class="lights-on-btn" onclick="lightsBackOn()">💡 Lights On</button> -->
 
         </div>
 
@@ -6226,7 +6272,8 @@
     let jarIdx = 0;
     let isJarRevealing = false;
     let jarTimer = null;
-    const RISE_MS = 1050, UNFOLD_DELAY = 650, HOLD_MS = 1700, EXIT_MS = 550;
+    // const RISE_MS = 1050, UNFOLD_DELAY = 650, HOLD_MS = 1700, EXIT_MS = 550;
+    const RISE_MS = 650, UNFOLD_DELAY = 350, HOLD_MS = 1300, EXIT_MS = 400;
 
     function jarData() {
       return (typeof promisesData !== 'undefined') ? promisesData : [];
