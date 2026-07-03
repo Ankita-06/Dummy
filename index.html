@@ -2857,7 +2857,7 @@
     }
 
     /* NAV */
-    .proj-nav {
+    /* .proj-nav {
       flex: 0 0 auto;
       display: flex;
       gap: 10px;
@@ -2867,7 +2867,44 @@
       max-width: 94vw;
       margin: 0 auto;
       transition: all .5s ease;
-    }
+    } */
+     .proj-nav {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 8px 16px 14px;
+    flex-wrap: wrap;
+    max-width: 94vw;
+    margin: 0 auto;
+    transition: opacity .5s ease, transform .5s ease;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+}
+
+.proj-nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.proj-controls {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 16px 4px;
+    transition: opacity .5s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.proj-controls.visible {
+    opacity: 1;
+    pointer-events: all;
+}
 
     .proj-nav.dark .gbot-btn {
       background: rgba(255, 255, 255, .08);
@@ -6614,6 +6651,12 @@
         var next = document.getElementById('nextBtn');
         if (prev) prev.disabled = (idx === 0);
         if (next) next.disabled = (idx === JOURNEY.length - 1);
+
+        var isLast = (idx === JOURNEY.length - 1);
+        var nav = document.getElementById('projNav');
+        var controls = document.querySelector('.proj-controls');
+        if (nav) nav.classList.toggle('visible', isLast);
+        if (controls) controls.classList.toggle('visible', isLast);
       }
 
       window.projPrev = function () {
@@ -6668,8 +6711,12 @@
         var hdr = document.getElementById('projHeader');
         if (hdr) hdr.classList.remove('dim');
 
+        // var nav = document.getElementById('projNav');
+        // if (nav) nav.classList.remove('dark');
         var nav = document.getElementById('projNav');
-        if (nav) nav.classList.remove('dark');
+        var controls = document.querySelector('.proj-controls');
+        if (nav) nav.classList.remove('visible');
+        if (controls) controls.classList.remove('visible');
 
         var rays = document.getElementById('bulbRays');
         if (rays) { rays.style.opacity = '1'; rays.style.transition = ''; }
