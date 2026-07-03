@@ -1125,18 +1125,16 @@
       }
     }
 
-    .promises-bot {
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 10;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 94vw;
-    }
+  .promises-bot {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px 16px 16px;
+    flex-wrap: wrap;
+    max-width: 94vw;
+    margin: 0 auto;
+}
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1163,6 +1161,7 @@
       inset: 0;
       display: flex;
       flex-direction: column;
+      justify-content: center; 
       background: linear-gradient(145deg, #fce4ec, #ede7f6, #e8eaf6);
     }
 
@@ -1173,7 +1172,7 @@
     }
 
     .reasons-stage {
-      flex: 1 1 auto;
+      flex: 0 1 auto;
       position: relative;
       min-height: 0;
       display: flex;
@@ -1748,6 +1747,13 @@
       animation: hintBounce 1.5s ease-in-out infinite;
     }
 
+    @media (max-width: 480px) {
+    .jar-wrap { width: 170px; height: 210px; }
+    .heart-shape { width: 118px; height: 104px; }
+    .jar-note.note-md .heart-shape { width: 146px; height: 128px; }
+    .jar-note.note-lg .heart-shape { width: 172px; height: 150px; }
+}
+
     @keyframes hintBounce {
 
       0%,
@@ -1778,32 +1784,12 @@
     }
 
     @keyframes noteRise {
-      0% {
-        bottom: 40px;
-        opacity: 0;
-        transform: translateX(-50%) scale(.2) rotate(0deg);
-      }
-
-      18% {
-        opacity: 1;
-      }
-
-      46% {
-        bottom: 150px;
-        transform: translateX(-50%) scale(.55) rotate(9deg);
-      }
-
-      72% {
-        bottom: 215px;
-        transform: translateX(-50%) scale(.88) rotate(-6deg);
-      }
-
-      100% {
-        bottom: 250px;
-        transform: translateX(-50%) scale(1) rotate(0deg);
-        opacity: 1;
-      }
-    }
+    0%   { bottom: 16%; opacity: 0; transform: translateX(-50%) scale(.2) rotate(0deg); }
+    18%  { opacity: 1; }
+    46%  { bottom: 60%; transform: translateX(-50%) scale(.55) rotate(9deg); }
+    72%  { bottom: 86%; transform: translateX(-50%) scale(.88) rotate(-6deg); }
+    100% { bottom: 100%; transform: translateX(-50%) scale(1) rotate(0deg); opacity: 1; }
+}
 
     @keyframes noteExit {
       0% {
@@ -2236,6 +2222,14 @@
         0 0 100px rgba(180, 120, 255, .12),
         inset 0 0 30px rgba(0, 0, 0, .5);
     }
+
+    @media (max-height: 720px) {
+    .proj-screen { width: min(68vw, 260px); }
+}
+
+@media (max-height: 620px) {
+    .proj-screen { width: min(58vw, 220px); }
+}
 
     .screen-scanlines {
       position: absolute;
@@ -5127,9 +5121,6 @@
             </div>
           </div>
         </div>
-
-        <div class="reasons-scroll">
-        </div>
         
         <div class="reasons-footer" id="jarFooter">
           <p>
@@ -5164,27 +5155,21 @@
         </div>
 
         <div class="promises-scroll" id="promises-scroll">
-          <div class="thread-track">
-            <svg class="thread-svg" id="thread-svg" preserveAspectRatio="none">
-              <path id="thread-path-bg" class="thread-path-bg" />
-              <path id="thread-path-fill" class="thread-path-fill" />
-            </svg>
-          </div>
-        
+          <div class="thread-track">...</div>
           <div class="promise-list" id="promise-list"></div>
-        </div>
         
-        <div class="reasons-footer show" id="reasons29Footer">
-          <p>
-            These 29 reasons are just the beginning of why you mean everything to me.<br>
-            <strong>Happy Birthday, My Love 💕</strong>
-          </p>
+          <!-- MOVED HERE, was outside before -->
+          <div class="reasons-footer show" id="reasons29Footer">
+            <p>These 29 reasons are just the beginning of why you mean everything to me.<br>
+              <strong>Happy Birthday, My Love 💕</strong>
+            </p>
+          </div>
         </div>
         
         <div class="promises-bot">
-  <button class="gbot-btn" onclick="goTo(3)">← Back</button>
-  <button class="gbot-btn primary" onclick="goTo(5)">Journey →</button>
-</div>
+          <button class="gbot-btn" onclick="goTo(3)">← Back</button>
+          <button class="gbot-btn primary" onclick="goTo(5)">Journey →</button>
+        </div>
        
       </div>
     </div>
